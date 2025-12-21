@@ -613,7 +613,9 @@ We say that $g(k)$ is the \emph{size} of the kernel.
 \section{Reducing modules without changing the thinness}
 \label{sec:reducing-modules}
 
-We begin by showing that if a sufficiently large group of vertices have the same neighborhood, some of them can be removed from a graph without affecting its thinness. We state here a result by \cite{thinness-of-product-graphs} on the thinness of a graph after contracting a complete module.
+We begin by showing that if a sufficiently large group of vertices have the same neighborhood, some of them can be removed from a graph without affecting its thinness. This will be key in proving the kernelizations results for \textsc{Thinness} in \cref{sec:parameterizations}, and when showing the linear time algorithm to compute the $\intervals$-modular cardinality in \cref{prop:calculate-interval-module-partition}.
+
+We state here a result by \cite{thinness-of-product-graphs} on the thinness of a graph after contracting a complete module.
 
 \begin{lemma}[{\citep[Theorem 35]{thinness-of-product-graphs}}]
     \label[lemma]{prop:contract-complete-module}
@@ -651,7 +653,7 @@ A similar lemma holds for modules that induce interval graphs that are not compl
     This proves that $(<, S)$ is a consistent solution with at most $\thin(G')$ classes for the vertices in $V(G)$, and thus $\thin(G) \leq \thin(G')$. Combining this result with $\thin(G) \geq \thin(G')$ we have that $\thin(G) = \thin(G')$.
 \end{proof}
 
-In \cref{prop:contract-interval-module}, the choice of replacing $H$ with two independent vertices is superfluous: in fact, replacing the module with any non-complete interval graph would maintain the thinness of the whole graph. Recalling that interval graphs are exactly the graphs of thinness one, it seems sensible ask whether \cref{prop:contract-interval-module} could be generalized to modules of greater thinness. In particular, \emph{is the thinness of a graph $G$ maintained when modules of thinness two are replaced by any other graph $H'$ such that $\thin(H') = 2$?} 
+In \cref{prop:contract-interval-module}, the choice of replacing $H$ with two independent vertices is superfluous: in fact, replacing the module with any non-complete interval graph would maintain the thinness of the whole graph. Recalling that interval graphs are exactly the graphs of thinness one, it seems sensible to ask whether \cref{prop:contract-interval-module} could be generalized to modules of greater thinness. In particular, \emph{is the thinness of a graph $G$ maintained when modules of thinness two are replaced by any other graph $H'$ such that $\thin(H') = 2$?} 
 The answer is negative, and we defer the construction of a counterexample to Appendix~\ref{sec:counterexample}.
 
 % \vspace{0.5em}
