@@ -583,13 +583,7 @@ call the tuple $(<, S)$ a \emph{consistent solution} for $G$. The minimum $k$ su
 $k$-thin is called the \textit{thinness} of $G$, and denoted by
 $\thin(G)$. A consistent solution for $G$ that uses $\thin(G)$ classes is said to be \emph{optimal}. The \textsc{Thinness} problem takes as input a graph and a natural number $k$ and consists of deciding if the input graph has thinness at most $k$.
 
-[Agregar dibujito de thinness]
-
-
 \paragraph{Simultaneous interval number} A \emph{simultaneous interval representation} of a graph $G$ is the result of assigning an interval and a subset of \emph{labels} from $\{1,\dots,d\}$ for $d \in \N$ to each vertex in $V(G)$ such that two vertices are adjacent in $G$ if and only if both their intervals and their sets of labels intersect. We say that $d$ is the \emph{size} of a simultaneous interval representation. The \emph{simultaneous interval number} $\si(G)$ of a graph $G$ is the smallest size of a simultaneous interval representation of $G$. The \textsc{Simultaneous Interval Number} problem consists in determining, for a graph $G$ and an integer $d \geq 0$, if $G$ admits a $d$-simultaneous representation or not.
-
-[Agregar dibujito de sim int num]
-
 
 \paragraph{Neighborhood diversity} We say that two vertices $v$ and $v'$ of a graph $G$ have the same \emph{neighborhood type} if and only if $N(v) \setminus \{v'\} = N(v') \setminus \{v\}$ \citep[Definition 1]{neighborhood-diversity}. In other words, $v$ and $v'$ have the same neighborhood type if and only if they induce a module in $G$. A graph $G$ has \emph{neighborhood diversity} at most $w$ if there exists a partition of $V(G)$ into at most $w$ sets such that all the vertices in each set have the same neighborhood type. We will call this partition a \emph{neighborhood partition} of the vertices of $G$. The neighborhood diversity of $G$, denoted $\nd(G)$, is the smallest such $w$ \citep[Definition 2]{neighborhood-diversity}.
 
