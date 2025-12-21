@@ -657,7 +657,7 @@ In \cref{prop:contract-interval-module}, the choice of replacing $H$ with two in
 The answer is negative, and we defer the construction of a counterexample to Appendix~\ref{sec:counterexample}.
 
 % \vspace{0.5em}
-Combining \cref{prop:contract-complete-module} and \cref{prop:contract-interval-module}, we see that if a module $H$ induces an interval graph, almost all vertices of $H$ can be removed without altering the thinness of the graph. Given a \textsc{Thinness} instance, this can be used in a preprocessing step to reduce the size of the input graph. For this, we need a way to efficiently calculate the minimum number of modules in an $\intervals$-modular partition of the graph, and this is done in the next section.
+Combining \cref{prop:contract-complete-module} and \cref{prop:contract-interval-module}, we see that if a module $H$ induces an interval graph, almost all vertices of $H$ can be removed without altering the thinness of the graph. Given a \textsc{Thinness} instance and a partition of the input graph into $\intervals$-modules, this can be used in a preprocessing step to reduce the size of the input graph, and thus obtain a kernel. We thus need a way to efficiently calculate the minimum number of modules in an $\intervals$-modular partition of the graph, and this is done in the next section.
 
 
 \section{Linear-time algorithms for \texorpdfstring{$\clusters$}{clusters}-modular cardinality and\\ \texorpdfstring{$\intervals$}{intervals}-modular cardinality}
