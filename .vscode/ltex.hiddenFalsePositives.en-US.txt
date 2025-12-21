@@ -1,0 +1,4 @@
+{"rule":"MORFOLOGIK_RULE_EN_US","sentence":"^\\Qedgelayer nodelayer background,edgelayer,nodelayer,main\\E$"}
+{"rule":"COMMA_PARENTHESIS_WHITESPACE","sentence":"^\\Qedgelayer nodelayer background,edgelayer,nodelayer,main\\E$"}
+{"rule":"MORFOLOGIK_RULE_EN_US","sentence":"^\\Qnone=[inner sep=0mm]\\E$"}
+{"rule":"MORFOLOGIK_RULE_EN_US","sentence":"^\\Qnodo=[fill=black, draw=black, shape=circle, inner sep=1.5pt] class 1=[fill=red, draw=red, shape=circle, inner sep=1.5pt] class 2=[fill=blue, draw=blue, shape=circle, inner sep=1.5pt] class 3=[fill=green, draw=green, shape=circle, inner sep=1.5pt] class 4=[fill=magenta, draw=magenta, shape=circle, inner sep=1.5pt] class 5=[fill=rgb,255: red,255; green,128; blue,0, draw=rgb,255: red,255; green,128; blue,0, shape=circle, inner sep=1.5pt] class 6=[fill=yellow, draw=yellow, shape=circle, inner sep=1.5pt]\\E$"}

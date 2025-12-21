@@ -259,7 +259,7 @@ width=0.3mm}, c2/.style={line width=0.2mm} }
 %----------------------------------------------------------------------------------------------------
 
 
-\author[Flavia Bonomo-Braberman et. al]{Flavia Bonomo-Braberman\affiliationmark{1,2}\thanks{Partially supported by ANPCyT (PICT-2021-I-A-00755).}
+\author[Flavia Bonomo-Braberman et al.]{Flavia Bonomo-Braberman\affiliationmark{1,2}\thanks{Partially supported by ANPCyT (PICT-2021-I-A-00755).}
   \and Eric Brandwein\affiliationmark{1, 2}\thanks{Partially supported by IRP SINFIN (France-Argentina), CONICET (PIP 11220200100084CO), and UBACyT (20020220300079BA).}
   \and Ignasi Sau\affiliationmark{3}\thanks{Partially supported by French project ELIT (ANR-20-CE48-0008-01).}}
 \title{Computing parameters that generalize interval graphs using restricted modular partitions}
@@ -297,13 +297,13 @@ Recently, Lafond and Luo [MFCS 2023] defined the $\mathcal{G}$-modular cardinali
 
 We present a linear kernel for the \textsc{Thinness} problem parameterized by the $\textsf{intervals}$-modular cardinality, which implies a linear kernel when parameterized by the neighborhood diversity of the input graph, and exponential kernels when parameterized by the twin-cover number and vertex cover number. We also show an \textsf{FPT} algorithm for \textsc{Simultaneous Interval Number} when parameterized by the $\textsf{clusters}$-modular cardinality plus the size of the solution, which implies \textsf{FPT} algorithms for the problem when parameterized by the neighborhood diversity plus the size of the solution, twin-cover number, and vertex cover number.
 
-On the negative side, we observe that \textsc{Thinness} and \textsc{Simultaneous Interval Number} parameterized by treewidth, pathwidth, bandwidth, (linear) mim-width, clique-width, modular-width, or even the thinness or simultaneous interval number themselves, admit no polynomial kernels assuming $\mathsf{NP} \not\subseteq \mathsf{coNP}/\mathsf{poly}$.
+On the negative side, we observe that \textsc{Thinness} and \textsc{Simultaneous Interval Number} parameterized by tree\-width, pathwidth, bandwidth, (linear) mim-width, clique-width, modular-width, or even the thinness or simultaneous interval number themselves, admit no polynomial kernels assuming $\mathsf{NP} \not\subseteq \mathsf{coNP}/\mathsf{poly}$.
 \end{abstract}
 
 
 \section{Introduction}
 \label{sec:intro} 
-The class of interval graphs~\citep{interval-graphs} has many useful properties that makes it amenable to fast algorithms for many common problems~\citep{Ola-interval,R-PR-interval}. Thus, many graph parameters were defined aiming at quantifying the distance of a graph to an interval graph in some way, including the \emph{interval number}~\citep{interval-number}, the \emph{track number}~\citep{multitrack-interval-graphs}, the \emph{thinness}~\citep{M-O-R-C-thinness}, and, more recently, the \emph{simultaneous interval number}~\citep{Milanic-sim}, among others. If one of these parameters is small for a class of graphs $\G$, some properties of interval graphs are possibly maintained on $\G$, and therefore some problems that are easy on interval graphs might be easy on $\G$ as well. In this work we focus on two of these parameters: the thinness and the simultaneous interval number. In particular, we will be interesting in computing them efficiently. We defer their formal definitions to \cref{sec:preliminaries}. We now proceed to briefly motivate the study of these graph parameters.
+The class of interval graphs~\citep{interval-graphs} has many useful properties that makes it amenable to fast algorithms for many common problems~\citep{Ola-interval,R-PR-interval}. Thus, many graph parameters were defined aiming at quantifying the distance of a graph to an interval graph in some way, including the \emph{interval number}~\citep{interval-number}, the \emph{track number}~\citep{multitrack-interval-graphs}, the \emph{thinness}~\citep{M-O-R-C-thinness}, and, more recently, the \emph{simultaneous interval number}~\citep{Milanic-sim}, among others. If one of these parameters is small for a class of graphs $\G$, some properties of interval graphs are possibly maintained on $\G$, and therefore some problems that are easy on interval graphs might be easy on $\G$ as well. In this work we focus on two of these parameters: the thinness and the simultaneous interval number. In particular, we will be interested in computing them efficiently. We defer their formal definitions to \cref{sec:preliminaries}. We now proceed to briefly motivate the study of these graph parameters.
 
 
 \paragraph{Thinness} The thinness of a graph was introduced by \cite{M-O-R-C-thinness} to solve the \textsc{Maximum Independent Set} problem in polynomial time when a suitable representation of the input graph is given. The concept of thinness can be seen as a generalization of the characterization of interval graphs as those that admit an ordering $<$ of the vertices such that for every triple of vertices $u < v < w$, if $(u,w)$ is an edge, then $(v,w)$ is also an edge~\citep{forbidden-ordered-subgraphs}. The thinness of a graph is the minimum size of a partition of the vertices such that every triple of vertices $u < v < w$ either meets the condition mentioned above, or $u$ and $v$ belong to different parts of the partition. Observe that interval graphs are exactly the graphs of thinness one.
@@ -379,7 +379,7 @@ Our main technical contributions are, in our opinion:
 
 \paragraph{Organization of the paper} In \cref{sec:preliminaries} we state some necessary definitions. In \cref{sec:reducing-modules} we prove some lemmas about the thinness of a graph after removing vertices that belong to the same module. In \cref{sec:modular-cardinality} we show linear-time algorithms to compute the $\clusters$- and $\intervals$-modular cardinality of a graph. In \cref{sec:parameterizations} we use the results from \cref{sec:reducing-modules} to compute kernels for the {\sc Thinness} problem parameterized by the $\intervals$- and $\clusters$-modular cardinality, neighborhood diversity, twin-cover number, and vertex cover number of the input graph.
 {In \cref{sec:sim-int} we present \FPT algorithms for the {\sc Simultaneous Interval Number} problem parameterized by the $\clusters$-modular cardinality plus the solution size, neighborhood diversity plus the solution size, twin-cover number, and vertex cover number.}
-In Appendix~\ref{sec:modw-vs-lmimw} we show that there exist graph families with bounded modular-width and unbounded linear mim-width, completing the diagram of \cref{fig:diagram}. In Appendx~\ref{sec:counterexample} we show a counterexample to a possible generalization of the results of \cref{sec:reducing-modules}. In Appendix~\ref{sec:lower-bounds} we observe that polynomial kernels are unlikely to exist for the \textsc{Thinness} {and \textsc{Simultaneous Interval Number} problems} parameterized by some common graph parameters, including treewidth, modular-width, and the thinness {and simultaneous interval number themselves}; {we moved this section to the appendix because its proofs are nowadays standard in the field of parameterized complexity.}
+In Appendix~\ref{sec:modw-vs-lmimw} we show that there exist graph families with bounded modular-width and unbounded linear mim-width, completing the diagram of \cref{fig:diagram}. In Appendix~\ref{sec:counterexample} we show a counterexample to a possible generalization of the results of \cref{sec:reducing-modules}. In Appendix~\ref{sec:lower-bounds} we observe that polynomial kernels are unlikely to exist for the \textsc{Thinness} {and \textsc{Simultaneous Interval Number} problems} parameterized by some common graph parameters, including treewidth, modular-width, and the thinness {and simultaneous interval number themselves}; {we moved this section to the appendix because its proofs are nowadays standard in the field of parameterized complexity.}
 
 \section{Preliminaries}
 \label{sec:preliminaries}
@@ -587,11 +587,7 @@ $\thin(G)$. A consistent solution for $G$ that uses $\thin(G)$ classes is said t
 
 \paragraph{Neighborhood diversity} We say that two vertices $v$ and $v'$ of a graph $G$ have the same \emph{neighborhood type} if and only if $N(v) \setminus \{v'\} = N(v') \setminus \{v\}$ \citep[Definition 1]{neighborhood-diversity}. In other words, $v$ and $v'$ have the same neighborhood type if and only if they induce a module in $G$. A graph $G$ has \emph{neighborhood diversity} at most $w$ if there exists a partition of $V(G)$ into at most $w$ sets such that all the vertices in each set have the same neighborhood type. We will call this partition a \emph{neighborhood partition} of the vertices of $G$. The neighborhood diversity of $G$, denoted $\nd(G)$, is the smallest such $w$ \citep[Definition 2]{neighborhood-diversity}.
 
-[Agregar dibujito de neihgborhood diversity]
-
 \paragraph{Twin-cover} $X \subseteq V(G)$ is a \emph{twin-cover} of $G$ if for every edge $(a,b) \in E(G)$ either $a \in X$, or $b \in X$, or $a$ and $b$ are \emph{twins}, i.e. $N[a]=N[b]$. The \emph{twin-cover number} of $G$, $\tc(G)$, is the minimum size of a twin-cover of $G$ \citep[Definition 3.1]{twin-cover}.
-
-[Agregar dibujito de twin cover?]
 
 \paragraph{Vertex cover} Let $G$ be a graph. A subset $X$ of $V(G)$ is a vertex cover of $G$ if for every edge $(u, v)$ of $E(G)$ at least one of $\{u, v\}$ belongs to $X$. The \emph{vertex cover number} of $G$, $\vc(G)$, is the minimum size of a vertex cover of $G$. 
 
@@ -895,7 +891,7 @@ For complete bipartite graphs, it was proved by \cite{Milanic-sim} that $\si(K_{
 \begin{proof}
     Suppose first we have a $d$-simultaneous interval representation of $G$ such that there are two disjoint intervals representing vertices of $H$. Since the intervals are disjoint, the two vertices represented by them are not neighbors. So, deleting all the intervals representing vertices of $H$ except for two disjoint intervals gives a $d$-simultaneous interval representation of $G'$ such that the intervals representing $v$ and $w$ are disjoint.
     
-    Suppose now that we have a $d$-simultaneous interval representation of $G'$ such that the intervals representing $v$ and $w$ are disjoint, and suppose without loss of generality that the interval $A$ representing $v$ lies entirely at the left of the interval $B$ representing $w$. Since $H$ is a module, any vertex that is adjacent to a vertex in $H$ must be adjacent to both $v$ and $w$, so its corresponding interval intersects both the right endpoint of $A$ and the left endpoint of $B$. Therefore, there is a sub-interval of $A$, sharing its right endpoint, that is contained in all the intervals corresponding to vertices that are adjacent to the vertices of $H$. We can then replace $A$ with a subdivision of that sub-interval into an interval representation for $H$, with all the vertices of $H$ having the same label set as $A$. As $H$ is not complete, there exist two non-adjacent vertices, and the intervals fo these vertices in an interval representation of $H$ cannot intersect. Thus, we obtain a $d$-simultaneous interval representation of $G$ such that there are two disjoint intervals representing vertices of $H$.
+    Suppose now that we have a $d$-simultaneous interval representation of $G'$ such that the intervals representing $v$ and $w$ are disjoint, and suppose without loss of generality that the interval $A$ representing $v$ lies entirely at the left of the interval $B$ representing $w$. Since $H$ is a module, any vertex that is adjacent to a vertex in $H$ must be adjacent to both $v$ and $w$, so its corresponding interval intersects both the right endpoint of $A$ and the left endpoint of $B$. Therefore, there is a sub-interval of $A$, sharing its right endpoint, that is contained in all the intervals corresponding to vertices that are adjacent to the vertices of $H$. We can then replace $A$ with a subdivision of that sub-interval into an interval representation for $H$, with all the vertices of $H$ having the same label set as $A$. As $H$ is not complete, there exist two non-adjacent vertices, and the intervals for these vertices in an interval representation of $H$ cannot intersect. Thus, we obtain a $d$-simultaneous interval representation of $G$ such that there are two disjoint intervals representing vertices of $H$.
 \end{proof}
 
 As a corollary of \cref{prop:si-contract-complete-module}, we have the following result. 
@@ -1265,7 +1261,7 @@ The graphs in $\{H_n\}_{n\geq 0}$ have modular-width~7, since in the modular dec
 
 
 \begin{theorem}\label{incomp}
-The family of graphs $\{H_n\}_{n\geq 0}$ has unbounded linear mim-width, more precisely, $\lmimw(H_n)=n$ for $n \geq 0$. In particular, there are classes of graphs of bounded modular-width and unbounded linear mim-width.
+The family of graphs $\{H_n\}_{n\geq 0}$ has unbounded linear mim-width. More precisely, for every $n \geq 0$ we have that $\lmimw(H_n)=n$. In particular, there are classes of graphs of bounded modular-width and unbounded linear mim-width.
 \end{theorem}
 
 \begin{proof} 
@@ -1496,7 +1492,7 @@ In this section, $\Sigma$ will denote a finite set of symbols, and $\Sigma^*$ wi
     Let $L \subseteq \Sigma^*$  be a language, let $\mathcal{R}$ be a polynomial equivalence relation on $\Sigma^*$, and let $\mathcal{Q} \subseteq \Sigma^* \times \N$ be a parameterized problem. An \emph{\textsc{and}-cross-composition of $L$ into $\mathcal{Q}$} (with respect to $\mathcal{R}$) is an algorithm that, given $t$ instances $x_1, x_2, \dots, x_t \in \Sigma^*$ of $L$ belonging to the same equivalence class of $\mathcal{R}$, takes time polynomial in $\sum_{i=1}^t \abs{x_i}$ and outputs an instance $(y, k) \in \Sigma^* \times \N$ such that $k$ is polynomially bounded in $\max_i \abs{x_i} + \log t$, and the instance $(y, k)$ belongs to $\mathcal{Q}$ if and only if all instances $x_i$ belong to $L$.
 \end{definition}
 
-The cross-composition framework is a generalization of earlier work by \cite{composition-kernelization}. A conjecture presented there was proved later by \cite{and-distillation-conjecture-proof}, which allows to state the following theorem.
+The cross-composition framework is a generalization of earlier work by \cite{composition-kernelization}. A conjecture presented there was proved later by \cite{and-distillation-conjecture-proof}, which allows us to state the following theorem.
 
 \begin{theorem}[\!\citep{kernelization-cross-composition}]
 \label{theorem:and-cross-composition-kernelization-lower-bound}
@@ -1506,7 +1502,7 @@ The cross-composition framework is a generalization of earlier work by \cite{com
 The main objective of this section is to prove the following theorem.
 \begin{theorem}
 \label{theorem:thinness-kernelization-lower-bound}
-    Let $\p$ be a graph parameter such that for every graph $G$, we have {$\p(G) \leq \max\{\abs{V(G)},\abs{E(G)}\}$}, and such that if $H$ is the disjoint union of two graphs $G_1$ and $G_2$, we have $\p(H) \leq \max\{\p(G_1), \p(G_2)\}$. Then {\sc Thinness} {and {\sc Simultaneous Interval Number}} parameterized by $\p$ {have} no polynomial kernel assuming \Hip.
+    Let $\p$ be a graph parameter such that for every graph $G$ we have $\p(G) \leq \max\{\abs{V(G)},\allowbreak \abs{E(G)}\}$, and such that if $H$ is the disjoint union of two graphs $G_1$ and $G_2$, we have $\p(H) \leq \max\{\p(G_1),\allowbreak \p(G_2)\}$. Then {\sc Thinness} {and {\sc Simultaneous Interval Number}} parameterized by $\p$ {have} no polynomial kernel assuming \Hip.
 \end{theorem}
 
 Examples of graph parameters that meet these criteria are treewidth, pathwidth, bandwidth, clique-width, mim-width, linear mim-width, modular-width, and even thinness {and simultaneous interval number}, as \cref{prop:thinness-union} shows.
