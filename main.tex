@@ -1502,7 +1502,7 @@ In this section, $\Sigma$ will denote a finite set of symbols, and $\Sigma^*$ wi
     Let $L \subseteq \Sigma^*$  be a language, let $\mathcal{R}$ be a polynomial equivalence relation on $\Sigma^*$, and let $\mathcal{Q} \subseteq \Sigma^* \times \N$ be a parameterized problem. An \emph{\textsc{and}-cross-composition of $L$ into $\mathcal{Q}$} (with respect to $\mathcal{R}$) is an algorithm that, given $t$ instances $x_1, x_2, \dots, x_t \in \Sigma^*$ of $L$ belonging to the same equivalence class of $\mathcal{R}$, takes time polynomial in $\sum_{i=1}^t \abs{x_i}$ and outputs an instance $(y, k) \in \Sigma^* \times \N$ such that $k$ is polynomially bounded in $\max_i \abs{x_i} + \log t$, and the instance $(y, k)$ belongs to $\mathcal{Q}$ if and only if all instances $x_i$ belong to $L$.
 \end{definition}
 
-The cross-composition framework is a generalization of earlier work by \cite{composition-kernelization}. A conjecture presented there was proven later by \cite{and-distillation-conjecture-proof}, which allows to state the following theorem.
+The cross-composition framework is a generalization of earlier work by \cite{composition-kernelization}. A conjecture presented there was proved later by \cite{and-distillation-conjecture-proof}, which allows to state the following theorem.
 
 \begin{theorem}[\!\citep{kernelization-cross-composition}]
 \label{theorem:and-cross-composition-kernelization-lower-bound}
