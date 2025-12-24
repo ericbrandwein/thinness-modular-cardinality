@@ -1,16 +1,7 @@
-\documentclass[
-%%% one of
-% submission
-final
-%%% if all authors have the same affiliation
-% , nomarks
-]{dmtcs-episciences}
-
-% DON'T LOAD ANY STYLES THAT CHANGE THE PAGE LAYOUT
-% AND DON'T CHANGE THE PAGE LAYOUT BY HAND, EITHER.
-
+\documentclass[11pt]{article}
 
 \usepackage[utf8]{inputenc}
+\usepackage[margin=1in]{geometry}
 \usepackage{subcaption}
 
 % graphicx is now loaded automatically no need to put this in here anymore.
@@ -89,7 +80,6 @@ final
 
 \usepackage{booktabs}
 \usepackage{graphicx}
-\usepackage{subcaption}
 \usepackage{xspace}
 \usepackage{comment}
 \usepackage{etoolbox}
@@ -259,39 +249,26 @@ width=0.3mm}, c2/.style={line width=0.2mm} }
 %----------------------------------------------------------------------------------------------------
 
 
-\author[Flavia Bonomo-Braberman et al.]{Flavia Bonomo-Braberman\affiliationmark{1,2}\thanks{Partially supported by ANPCyT (PICT-2021-I-A-00755).}
-  \and Eric Brandwein\affiliationmark{1, 2}\thanks{Partially supported by IRP SINFIN (France-Argentina), CONICET (PIP 11220200100084CO), and UBACyT (20020220300079BA).}
-  \and Ignasi Sau\affiliationmark{3}\thanks{Supported by French project ELIT (ANR-20-CE48-0008-01).}}
 \title{Computing parameters that generalize interval graphs using restricted modular partitions}
-% put your affiliation here, not your full address.
-% If you like to give away your email or other parts of your address,
-% THIS IS NOT THE RIGHT PLACE, your address will change, this paper
-% will not.
-% Just watch that your personal data that you want to communicate on
-% the episcience server is always up to date.
-\affiliation{
-  % one line per affiliation, no postal codes, grant numbers or similar
-  Departamento de Computaci\'{o}n, FCEyN, Universidad de Buenos Aires, Buenos Aires, Argentina\\
-  Instituto de Investigaci\'{o}n en Ciencias de la Computaci\'{o}n (ICC), CONICET-UBA, Buenos Aires, Argentina\\
-  LIRMM, Universit\'{e} de Montpellier, CNRS, Montpellier, France}
-\keywords{thinness, simultaneous interval number, modular cardinality, interval graphs, parameterized complexity}
-% \received{1998-10-14}
-% \revised{2002-07-19, 2014-02-05, 2015-09-09}
-% \accepted{2015-09-09}
+
+\author{
+  Flavia Bonomo-Braberman\thanks{Partially supported by ANPCyT (PICT-2021-I-A-00755). ORCID: 0000-0002-9872-7528.} \\
+  \small Departamento de Computaci\'{o}n, FCEyN, Universidad de Buenos Aires, Argentina \\
+  \small Instituto de Investigaci\'{o}n en Ciencias de la Computaci\'{o}n (ICC), CONICET-UBA, Argentina
+  \and
+  Eric Brandwein\thanks{Partially supported by IRP SINFIN (France-Argentina), CONICET (PIP 11220200100084CO), and UBACyT (20020220300079BA). ORCID: 0009-0003-2559-7173.} \\
+  \small Departamento de Computaci\'{o}n, FCEyN, Universidad de Buenos Aires, Argentina \\
+  \small Instituto de Investigaci\'{o}n en Ciencias de la Computaci\'{o}n (ICC), CONICET-UBA, Argentina
+  \and
+  Ignasi Sau\thanks{Supported by French project ELIT (ANR-20-CE48-0008-01). ORCID: 0000-0002-8981-9287.} \\
+  \small LIRMM, Universit\'{e} de Montpellier, CNRS, Montpellier, France
+}
+
+\date{}
 \begin{document}
-% This is only used if you are compiling for a volume before vol 25
-% \publicationdetails{VOL}{2015}{ISS}{NUM}{SUBM}
-% This is the new form of collecting the data, starting with vol 25
-\publicationdata
-{vol. 25:3 special issue for main purpose}
-{2022}
-{1}
-{10.46298/dmtcs.10472}
-%{1998-10-14; 1998-10-14; 2002-07-19; 2014-02-05; 2015-09-09; 2022-12-25}
-%{2022-12-3}
-{2022-12-3; None}
-{2023-1-1}
+
 \maketitle
+
 \begin{abstract}
 Recently, Lafond and Luo [MFCS 2023] defined the $\mathcal{G}$-modular cardinality of a graph $G$ as the minimum size of a partition of $V(G)$ into modules that belong to a graph class $\mathcal{G}$. We analyze the complexity of calculating parameters that generalize interval graphs when parameterized by the $\mathcal{G}$-modular cardinality, where $\mathcal{G}$ corresponds either to the class of interval graphs or to the union of complete graphs. In particular, we analyze the complexity of computing the thinness and the simultaneous interval number of a graph.
 
@@ -299,6 +276,8 @@ We present a linear kernel for the \textsc{Thinness} problem parameterized by th
 
 On the negative side, we observe that \textsc{Thinness} and \textsc{Simultaneous Interval Number} parameterized by tree\-width, pathwidth, bandwidth, (linear) mim-width, clique-width, modular-width, or even the thinness or simultaneous interval number themselves, admit no polynomial kernels assuming $\mathsf{NP} \not\subseteq \mathsf{coNP}/\mathsf{poly}$.
 \end{abstract}
+
+\noindent\textbf{Keywords:} thinness, simultaneous interval number, modular cardinality, interval graphs, parameterized complexity
 
 
 \section{Introduction}
@@ -529,7 +508,7 @@ A proper module $X$ is \emph{maximal} if there is no strict superset of $X$ that
 \node[draw, gray!30!black,fill=gray!50,rounded corners=3,opacity=0.5, fit={(5,1.7) (7,2.3)}, inner sep=0.25pt, label=center:\small\phantom{j}Series\phantom{j}] (C) {};
 \node[draw, gray!30!black,fill=gray!50,rounded corners=3,opacity=0.5, fit={(9,0.7) (11,1.3)}, inner sep=0.25pt, label=center:\small\phantom{j}Parallel\phantom{j}] (D) {};
 \node[draw, gray!30!black,fill=gray!50,rounded corners=3,opacity=0.5, fit={(8,1.7) (10,2.3)}, inner sep=0.25pt, label=center:\small\phantom{j}Series\phantom{j}] (E) {};
-\node[draw, gray!30!black,fill=gray!50,rounded corners=3,opacity=0.5, fit={(3.6,3.75) (7.4,4.35)}, inner sep=0.25pt, label=center:{\small\phantom{j}Prime\phantom{aaaaaaaaaa}}] (F) {};
+\node[draw, gray!30!black,fill=gray!50,rounded corners=3,opacity=0.5, fit={(3.6,3.75) (7.4,4.35)}, inner sep=0.25pt, label=center:{\small\phantom{j}Prime\phantom{aaaaaaaaa}}] (F) {};
 \draw (A)--(v4);
 \draw (A)--(v3);
 \draw (B)--(A);
@@ -705,9 +684,6 @@ We present two lemmas that will be useful to compute an optimal $\interval$-modu
 \end{lemma}
 
 In particular, \cref{prop:thinness-join} implies that the join of two graphs is an interval graph if and only if one of them is an interval graph, and the other one is a complete graph.
-
-{ % Override dmtcs proof environment to fix QED
-\renewcommand\endproof{\medskip}
 \begin{theorem}
     \label{prop:calculate-interval-module-partition}
     An optimal $\interval$-modular partition of a graph $G$ can be computed in linear time.
@@ -759,10 +735,9 @@ In particular, \cref{prop:thinness-join} implies that the join of two graphs is 
 
         To remedy this, we will utilize the lemmas presented in \cref{sec:reducing-modules} to reduce the number of vertices in $G_t$ without changing the thinness. First, if any one of the children of $G_t$ is not an interval graph, then, as the thinness is a hereditary property, graph $G_t$ is also not an interval graph. Otherwise, we create a graph $G'_t$ by contracting every child that is a complete graph into a single vertex, and contracting every other child that is an interval graph into two nonadjacent vertices. By \cref{prop:contract-complete-module,prop:contract-interval-module}, graph $G'_t$ has the same thinness as $G_t$. In particular, $G'_t$ is an interval graph if and only if $G_t$ is an interval graph. Thus, we finish by running a linear-time algorithm to decide if $G'_t$ is an interval graph or not.
 
-        As the number of nodes in a modular decomposition tree is $\O(n)$, and the number of vertices in $G'_t$ is at most twice the number of children of $G_t$, this algorithm takes linear time on the size of $G$, taking into account that we need to store a flag for each node that signals if a node is a complete graph or not. \qed
+        As the number of nodes in a modular decomposition tree is $\O(n)$, and the number of vertices in $G'_t$ is at most twice the number of children of $G_t$, this algorithm takes linear time on the size of $G$, taking into account that we need to store a flag for each node that signals if a node is a complete graph or not.\qedhere
      \end{itemize}
 \end{proof}
-}
 
 \section{Parameterizations for computing the thinness}\label{sec:parameterizations}
 
@@ -854,7 +829,7 @@ As every vertex cover is also a twin-cover, we have the following corollary.
 \end{corollary}
 
 
-\section{{Parameterizations for computing the simultaneous interval number}}
+\section{Parameterizations for computing the simultaneous interval number}
 \label{sec:sim-int}
 
 We prove here the bounds shown in \cref{fig:diagram}, as well as some algorithmic results involving the computation of the simultaneous interval number.
