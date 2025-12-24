@@ -156,20 +156,20 @@ final
 \declarefunction{si}
 \declarefunction{cc}
 \declarefunction{mc}
-\declarefunction{clusters}
-\declarefunction{intervals}
+\declarefunction{cluster}
+\declarefunction{interval}
 \newcommand{\G}{\mathcal{G}}
 %\newcommand{\mc}{{\textsf{mc}}}
 \newcommand{\Gmc}{\text{$\G$-$\mc$}}
-%\newcommand{\intervals}{{\mathsmaller[1]\textsf{interval}}}
-%\newcommand{\intervals}{{\text{\small  \textsf{interval}}}}
+%\newcommand{\interval}{{\mathsmaller[1]\textsf{interval}}}
+%\newcommand{\interval}{{\text{\small  \textsf{interval}}}}
 
-\newcommand{\intervalmc}{\text{$\intervals$-$\mc$}}
-%\newcommand{\clusters}{{\mathsmaller[1]\textsf{cluster}}}
-%\newcommand{\clusters}{{\text{\small \textsf{cluster}}}}
+\newcommand{\intervalmc}{\text{$\interval$-$\mc$}}
+%\newcommand{\cluster}{{\mathsmaller[1]\textsf{cluster}}}
+%\newcommand{\cluster}{{\text{\small \textsf{cluster}}}}
 \newcommand{\sclusters}{{\text{\footnotesize \textsf{cluster}}}}
 \newcommand{\ssclusters}{{\text{\scriptsize \textsf{cluster}}}}
-\newcommand{\clustermc}{\text{$\clusters$-$\mc$}}
+\newcommand{\clustermc}{\text{$\cluster$-$\mc$}}
 \newcommand{\cm}{\clustermc}
 
 \newcommand{\FPT}{{\smaller[0.83]\textsf{\textup{FPT}}}\xspace}
@@ -261,7 +261,7 @@ width=0.3mm}, c2/.style={line width=0.2mm} }
 
 \author[Flavia Bonomo-Braberman et al.]{Flavia Bonomo-Braberman\affiliationmark{1,2}\thanks{Partially supported by ANPCyT (PICT-2021-I-A-00755).}
   \and Eric Brandwein\affiliationmark{1, 2}\thanks{Partially supported by IRP SINFIN (France-Argentina), CONICET (PIP 11220200100084CO), and UBACyT (20020220300079BA).}
-  \and Ignasi Sau\affiliationmark{3}\thanks{Partially supported by French project ELIT (ANR-20-CE48-0008-01).}}
+  \and Ignasi Sau\affiliationmark{3}\thanks{Supported by French project ELIT (ANR-20-CE48-0008-01).}}
 \title{Computing parameters that generalize interval graphs using restricted modular partitions}
 % put your affiliation here, not your full address.
 % If you like to give away your email or other parts of your address,
@@ -306,24 +306,26 @@ On the negative side, we observe that \textsc{Thinness} and \textsc{Simultaneous
 The class of interval graphs~\citep{interval-graphs} has many useful properties that makes it amenable to fast algorithms for many common problems~\citep{Ola-interval,R-PR-interval}. Thus, many graph parameters were defined aiming at quantifying the distance of a graph to an interval graph in some way, including the \emph{interval number}~\citep{interval-number}, the \emph{track number}~\citep{multitrack-interval-graphs}, the \emph{thinness}~\citep{M-O-R-C-thinness}, and, more recently, the \emph{simultaneous interval number}~\citep{Milanic-sim}, among others. If one of these parameters is small for a class of graphs $\G$, some properties of interval graphs are possibly maintained on $\G$, and therefore some problems that are easy on interval graphs might be easy on $\G$ as well. In this work we focus on two of these parameters: the thinness and the simultaneous interval number. In particular, we will be interested in computing them efficiently. We defer their formal definitions to \cref{sec:preliminaries}. We now proceed to briefly motivate the study of these graph parameters.
 
 
-\paragraph{Thinness} The thinness of a graph was introduced by \cite{M-O-R-C-thinness} to solve the \textsc{Maximum Independent Set} problem in polynomial time when a suitable representation of the input graph is given. The concept of thinness can be seen as a generalization of the characterization of interval graphs as those that admit an ordering $<$ of the vertices such that for every triple of vertices $u < v < w$, if $(u,w)$ is an edge, then $(v,w)$ is also an edge~\citep{forbidden-ordered-subgraphs}. The thinness of a graph is the minimum size of a partition of the vertices such that every triple of vertices $u < v < w$ either meets the condition mentioned above, or $u$ and $v$ belong to different parts of the partition. Observe that interval graphs are exactly the graphs of thinness one.
+\paragraph{Thinness.} The thinness of a graph was introduced by \cite{M-O-R-C-thinness} to solve the \textsc{Maximum Independent Set} problem in polynomial time when a suitable representation of the input graph is given. The concept of thinness can be seen as a generalization of the characterization of interval graphs as those that admit an ordering $<$ of the vertices such that for every triple of vertices $u < v < w$, if $(u,w)$ is an edge, then $(v,w)$ is also an edge~\citep{forbidden-ordered-subgraphs}. The thinness of a graph is the minimum size of a partition of the vertices such that every triple of vertices $u < v < w$ either meets the condition mentioned above, or $u$ and $v$ belong to different parts of the partition. Observe that interval graphs are exactly the graphs of thinness one.
 
 Given a suitable representation for a graph with thinness bounded by $t$, many other problems including \textsc{Clique} were shown to be solvable in \XP-time parameterized by $t$, while problems like \textsc{Capacitated $k$-Coloring} and \textsc{List $k$-Coloring} are \XP parameterized by $t$ plus the number of color classes~\citep{M-O-R-C-thinness,B-M-O-thin-tcs,C-T-V-Z--H-top-thin,tesis-diego}. It is worth noting that \textsc{Chromatic Number} is \NP-complete for $t=2$, even if the representation is given~\citep{BBOSSS-thin-coloring}.
 
 
-\paragraph{Simultaneous interval number} The simultaneous interval number was recently introduced by \cite{Milanic-sim}. It generalizes the class of interval graphs by assigning not only an interval to each vertex, but also a subset of \emph{labels} from the set $\{1,\dots,d\}$, with $d\in \N$. The representation must be such that two vertices are adjacent in the graph if and only if their intervals \textbf{and} their sets of labels intersect. The simultaneous interval number is the minimum number $d$ for which there exists such a representation.
+\paragraph{Simultaneous interval number.} The simultaneous interval number was recently introduced by \cite{Milanic-sim}. It generalizes the class of interval graphs by assigning not only an interval to each vertex, but also a subset of \emph{labels} from the set $\{1,\dots,d\}$, with $d\in \N$. The representation must be such that two vertices are adjacent in the graph if and only if their intervals \textbf{and} their sets of labels intersect. The simultaneous interval number is the minimum number $d$ for which there exists such a representation.
 
 In their work, \cite{Milanic-sim} show that when given a suitable representation for a graph with simultaneous interval number bounded by $d$, \textsc{Clique} is \FPT parameterized by $d$, and \textsc{Independent Set} and \textsc{Dominating Set} are \FPT parameterized by $d$ plus the solution size. On the other hand, \textsc{Chromatic Number} is \NP-complete for $d=2$, even if the representation is given.
 
-Unfortunately, determining the value of these two parameters is \NP-hard on general graphs \citep{Milanic-sim, thinness-np-complete}. This prompts the investigation of algorithms for these two parameters on restricted classes of inputs. For a start, \textsc{Thinness} was solved in polynomial time for cographs by \cite{tesis-diego} and for trees by \cite{thinness-of-trees}. Some classes of graphs with bounded thinness, where a bounded-size consistent solution can be obtained in polynomial time, were identified by \cite{B-B-M-P-convex-jcss}.
+Unfortunately, determining the value of these two parameters is \NP-hard on general graphs \citep{Milanic-sim, thinness-np-complete}. This prompts the investigation of algorithms for these two parameters on restricted classes of inputs. For a start, \textsc{Thinness} was solved in polynomial time for cographs by \cite{tesis-diego} and for trees by \cite{thinness-of-trees}. Some classes of graphs with bounded thinness, where a bounded-size consistent solution can be obtained in polynomial time, were identified by \cite{B-B-M-P-convex-jcss}. On the other hand, not much is known about the complexity of \textsc{Simultaneous Interval Number} on restricted graph classes. 
 
-Given the inherent hardness discussed above, a natural approach is to search for parameterized algorithms for the \textsc{Thinness} and \textsc{Simultaneous Interval Number} problems, which ask to find the value of the corresponding parameters for a given graph. In the field of parameterized complexity, one way of finding an \FPT algorithm for a problem is to find a \emph{kernel} for it.
+Given the inherent hardness discussed above, a natural approach is to search for parameterized algorithms for the \textsc{Thinness} and \textsc{Simultaneous Interval Number} problems, which ask to find the value of the corresponding parameters for a given graph. In particular, previous to this work there were no known \FPT or even \XP algorithms for computing any of the two parameters.
+
+In the field of parameterized complexity, one way of finding an \FPT algorithm for a problem is to find a \emph{kernel} for it.
  
 A \emph{kernelization} (or \emph{kernel}) for a problem $Q$ is a polynomial-time algorithm that transforms each input $(x, k)$ into an \emph{equivalent} instance $(x', k')$ such that $\abs{x'}, k' \leq g(k)$ for some computable function $g$. We say that $g(k)$ is the \emph{size} of the kernel. Finding a kernel for a problem is equivalent to proving that it is \FPT~\citep[Lemma 2]{parameterized-algorithms}. Kernels of polynomial size are of particular interest due to their practical applications.
 
-We make use of a concept introduced by \cite{modular-partitions-MFCS23}: the \emph{$\G$-modular cardinality} of a graph $G$ for a fixed graph class $\G$, which is the minimum number of parts in a partition of $G$ into modules, each inducing a graph in the class $\G$. We will focus on the $\clusters$-modular cardinality and $\intervals$-modular cardinality, where $\clusters$ is the class of unions of complete graphs, and $\intervals$ is the class of interval graphs. 
+We make use of a concept introduced by \cite{modular-partitions-MFCS23}: the \emph{$\G$-modular cardinality} of a graph $G$ for a fixed graph class $\G$, which is the minimum number of parts in a partition of $G$ into modules, each inducing a graph in the class $\G$. We will focus on the $\cluster$-modular cardinality and $\interval$-modular cardinality, where $\cluster$ is the class of unions of complete graphs, and $\interval$ is the class of interval graphs. 
 
-If a parameter $p(G)$ is not greater than a function $f$ of another parameter $s(G)$ for every graph $G$, we say that $p$ \emph{generalizes} $s$. In particular, the $\intervals$-modular cardinality generalizes the $\clusters$-modular cardinality. This means that obtaining a kernel for a problem parameterized by the $\intervals$-modular cardinality of the input graph automatically yields a kernel for the problem parameterized by the $\clusters$-modular cardinality. In turn, the $\clusters$-modular cardinality generalizes the neighborhood diversity and the twin-cover number (both of which generalize the vertex cover number), and is less general than the modular-width. A relationship diagram of thinness and other graph width parameters can be found in a work by \cite{B-B-M-P-convex-jcss}. We combine in \cref{fig:diagram} the figure by \cite{B-B-M-P-convex-jcss} with figures by \cite{Milanic-sim},~\cite{Belm-mw}, and~\cite{modular-width}, and further include the $\clusters$- and $\intervals$-modular cardinalities.
+If a parameter $p(G)$ is not greater than a function $f$ of another parameter $s(G)$ for every graph $G$, we say that $p$ \emph{generalizes} $s$. In particular, the $\interval$-modular cardinality generalizes the $\cluster$-modular cardinality. This means that obtaining a kernel for a problem parameterized by the $\interval$-modular cardinality of the input graph automatically yields a kernel for the problem parameterized by the $\cluster$-modular cardinality. In turn, the $\cluster$-modular cardinality generalizes the neighborhood diversity and the twin-cover number (both of which generalize the vertex cover number), and is less general than the modular-width. A relationship diagram of thinness and other graph width parameters can be found in a work by \cite{B-B-M-P-convex-jcss}. We combine in \cref{fig:diagram} the figure by \cite{B-B-M-P-convex-jcss} with figures by \cite{Milanic-sim},~\cite{Belm-mw}, and~\cite{modular-width}, and further include the $\cluster$- and $\interval$-modular cardinalities.
 
 
 \begin{figure}[ht]
@@ -339,8 +341,8 @@ If a parameter $p(G)$ is not greater than a function $f$ of another parameter $s
     \node[draw,rounded corners=3,inner sep=2.6pt] at (-5.75,1) (tc) {\phantom{j}twin-cover number\phantom{j}};
     \node[draw,rounded corners=3,inner sep=2.6pt] at (0,1) (bw) {\phantom{j}bandwidth\phantom{j}};
     \node[draw,rounded corners=3,inner sep=2.6pt] at (-7.75,-1) (vc) {\phantom{j}vertex cover number\phantom{j}};
-    \node[draw,rounded corners=3,inner sep=2.6pt] at (-7.75,4.5) (im) {\phantom{j}$\intervals$-modular cardinality\phantom{j}};
-    \node[draw,rounded corners=3,inner sep=2.6pt] at (-7.75,2.5) (cm) {\phantom{j}$\clusters$-modular cardinality\phantom{j}};
+    \node[draw,rounded corners=3,inner sep=2.6pt] at (-7.75,4.5) (im) {\phantom{j}$\interval$-modular cardinality\phantom{j}};
+    \node[draw,rounded corners=3,inner sep=2.6pt] at (-7.75,2.5) (cm) {\phantom{j}$\cluster$-modular cardinality\phantom{j}};
     \node[draw,rounded corners=3,inner sep=2.6pt] at (-11,6) (mw) {\phantom{j}modular-width\phantom{j}};
     \node[draw,rounded corners=3,inner sep=2.6pt] at (-3,5.5) (th) {\phantom{j}thinness\phantom{j}};
     \node[draw,rounded corners=3,inner sep=2.6pt] at (-3,3.5) (si) {\phantom{j}simultaneous interval number\phantom{j}};
@@ -365,34 +367,31 @@ If a parameter $p(G)$ is not greater than a function $f$ of another parameter $s
     \end{tikzpicture}}
     \end{center}
     \caption{The relationships between the different width parameters that we consider in this work, and some classical ones. Here, an arrow from parameter $A$ to parameter $B$ means that $A$ is bounded by a function on $B$. Most of the relationships were known and appear in diagrams of~\citep{Milanic-sim,Belm-mw,B-B-M-P-convex-jcss,modular-width}. The remaining ones are proved in \cref{prop:interval-modular-cardinality-parametrization}, \cref{prop:neighborhood-partition-is-cluster-modular-partition,lemma:twin-cover-hcupn,lemma:si-tc}, and the results in \cref{sec:modular-cardinality,sec:parameterizations}.
-    {To explain the incomparability between thinness and modular-width, between simultaneous interval number and both $\intervals$-modular cardinality and neighborhood diversity, and between $\intervals$-modular cardinality and modular-width, observe that cographs have modular-width~$2$ and unbounded thinness~\citep{tesis-diego}, and complete bipartite graphs have neighborhood diversity~$2$ and unbounded simultaneous interval number~\citep{Milanic-sim}, while paths have simultaneous interval number~$1$, $\intervals$-modular cardinality~$1$, and unbounded modular-width.} Cographs have bounded linear mim-width, but inspired by the ideas of \cite{H-A-R-lin-mim-trees}, we can also build graph families of bounded modular-width and unbounded linear mim-width (see Appendix~\ref{sec:modw-vs-lmimw}). %%ver bien 
+    {To explain the incomparability between thinness and modular-width, between simultaneous interval number and both $\interval$-modular cardinality and neighborhood diversity, and between $\interval$-modular cardinality and modular-width, observe that cographs have modular-width~$2$ and unbounded thinness~\citep{tesis-diego}, and complete bipartite graphs have neighborhood diversity~$2$ and unbounded simultaneous interval number~\citep{Milanic-sim}, while paths have simultaneous interval number~$1$, $\interval$-modular cardinality~$1$, and unbounded modular-width.} Cographs have bounded linear mim-width, but inspired by the ideas of \cite{H-A-R-lin-mim-trees}, we can also build graph families of bounded modular-width and unbounded linear mim-width (see Appendix~\ref{sec:modw-vs-lmimw}). %%ver bien 
     }\label{fig:diagram}
 \end{figure}
 
-\paragraph{Our contribution} In this work, we first show that computing the $\clusters$- and $\intervals$-modular cardinality of a graph can be done in linear time in \cref{prop:calculate-cluster-module-partition,prop:calculate-interval-module-partition}. In the case of the $\intervals$-modular cardinality, this necessitates the results in \cref{prop:contract-complete-module,prop:contract-interval-module}, which allow the elimination of most of the vertices of a module that induces an interval graph without modifying the thinness of the whole graph. Then, we use these results to present linear kernels for the \textsc{Thinness} problem when parameterized by the $\intervals$-modular cardinality (\cref{prop:interval-modular-cardinality-parametrization}) and neighborhood diversity (\cref{prop:neighborhood-diversity-parametrization}) of the input graph, and exponential kernels when parameterized by the twin-cover number (\cref{prop:twin-cover-parametrization}) and vertex cover number (\cref{prop:vertex-cover-parametrization}). Additionally, we show \FPT algorithms for the \textsc{Simultaneous Interval Number} problem parameterized by the $\clusters$-modular cardinality plus the solution size (\cref{theorem:si-param-cm}), neighborhood diversity plus the solution size (\cref{corol:si-param-nd-vc}), twin-cover number (\cref{cor:si-param-twin-cover}), and vertex cover number (\cref{corol:si-param-nd-vc}). It is important to note that no \FPT or even \XP algorithms were known for computing these two parameters previous to this work. Finally, we observe in \cref{theorem:thinness-kernelization-lower-bound} that no polynomial kernels are likely to exist for the \textsc{Thinness} or \textsc{Simultaneous Interval Number} problems when parameterized by a number of graph parameters, including treewidth, modular-width, and the thinness and simultaneous interval number themselves.
+\paragraph{Our contribution.} The article that introduces the $\G$-modular cardinality~\citep{modular-partitions-MFCS23}\footnote{Full proofs can be found in~\citep{modular-partitions-arxiv}.} presents a polynomial-time algorithm to obtain it for an arbitrary graph when $\G$ meets conditions that are satisfied by the classes $\cluster$ and $\interval$, but their algorithm does not explicitly run in linear time. Thus, we first show that computing the $\cluster$- and $\interval$-modular cardinality of a graph can be done in linear time in \cref{prop:calculate-cluster-module-partition,prop:calculate-interval-module-partition}. 
+ In the case of the $\interval$-modular cardinality, this necessitates the results in \cref{prop:contract-complete-module,prop:contract-interval-module}, which allow the elimination of most of the vertices of a module that induces an interval graph without modifying the thinness of the whole graph. These results cannot be easily generalized to modules that induce graphs with bounded thinness; we show this in Appendix~\ref{sec:counterexample} by providing a counterexample to a possible generalization of them. Then, we use these results to present linear kernels for the \textsc{Thinness} problem when parameterized by the $\interval$-modular cardinality (\cref{prop:interval-modular-cardinality-parametrization}) and neighborhood diversity (\cref{prop:neighborhood-diversity-parametrization}) of the input graph, and exponential kernels when parameterized by the twin-cover number (\cref{prop:twin-cover-parametrization}) and vertex cover number (\cref{prop:vertex-cover-parametrization}). Additionally, we show \FPT algorithms for the \textsc{Simultaneous Interval Number} problem parameterized by the $\cluster$-modular cardinality plus the solution size (\cref{theorem:si-param-cm}), neighborhood diversity plus the solution size (\cref{corol:si-param-nd-vc}), twin-cover number (\cref{cor:si-param-twin-cover}), and vertex cover number (\cref{corol:si-param-nd-vc}). For kernelization lower bounds, we observe in \cref{theorem:thinness-kernelization-lower-bound} that no polynomial kernels are likely to exist for the \textsc{Thinness} or \textsc{Simultaneous Interval Number} problems when parameterized by a number of graph parameters, including treewidth, modular-width, and the thinness and simultaneous interval number themselves. Finally, in Appendix~\ref{sec:modw-vs-lmimw} we complete the relationships of \cref{fig:diagram} by proving that modular-width and linear mim-width do not generalize one another.
 
-Our main technical contributions are, in our opinion:
-\begin{enumerate}
-\item determining in \cref{prop:contract-interval-module} that almost all vertices belonging to a module that induces an interval graph can be eliminated without modifying the thinness of the graph; and 
-\item presenting an \FPT algorithm for \textsc{Simultaneous Interval Number} when parameterized by the $\clusters$-modular cardinality in \cref{theorem:si-param-cm} by reducing the problem to a limited number of small instances.
-\end{enumerate}
+In order to achieve the results mentioned above, we highlight, in particular, the following technical contributions: determining in \cref{prop:contract-interval-module} that almost all vertices belonging to a module that induces an interval graph can be eliminated without modifying the thinness of the graph, and presenting an \FPT algorithm for \textsc{Simultaneous Interval Number} when parameterized by the $\cluster$-modular cardinality in \cref{theorem:si-param-cm} by reducing the problem to a limited number of small instances.
 
-\paragraph{Organization of the paper} In \cref{sec:preliminaries} we state some necessary definitions. In \cref{sec:reducing-modules} we prove some lemmas about the thinness of a graph after removing vertices that belong to the same module. In \cref{sec:modular-cardinality} we show linear-time algorithms to compute the $\clusters$- and $\intervals$-modular cardinality of a graph. In \cref{sec:parameterizations} we use the results from \cref{sec:reducing-modules} to compute kernels for the {\sc Thinness} problem parameterized by the $\intervals$- and $\clusters$-modular cardinality, neighborhood diversity, twin-cover number, and vertex cover number of the input graph.
-{In \cref{sec:sim-int} we present \FPT algorithms for the {\sc Simultaneous Interval Number} problem parameterized by the $\clusters$-modular cardinality plus the solution size, neighborhood diversity plus the solution size, twin-cover number, and vertex cover number.}
+\paragraph{Organization of the paper.} In \cref{sec:preliminaries} we state some necessary definitions. In \cref{sec:reducing-modules} we prove some lemmas about the thinness of a graph after removing vertices that belong to the same module. In \cref{sec:modular-cardinality} we show linear-time algorithms to compute the $\cluster$- and $\interval$-modular cardinality of a graph. In \cref{sec:parameterizations} we use the results from \cref{sec:reducing-modules} to compute kernels for the {\sc Thinness} problem parameterized by the $\interval$- and $\cluster$-modular cardinality, neighborhood diversity, twin-cover number, and vertex cover number of the input graph.
+In \cref{sec:sim-int} we present \FPT algorithms for the {\sc Simultaneous Interval Number} problem parameterized by the $\cluster$-modular cardinality plus the solution size, neighborhood diversity plus the solution size, twin-cover number, and vertex cover number. We summarize our algorithmic results and present some open problems in \cref{sec:open-problems}.
 In Appendix~\ref{sec:modw-vs-lmimw} we show that there exist graph families with bounded modular-width and unbounded linear mim-width, completing the diagram of \cref{fig:diagram}. In Appendix~\ref{sec:counterexample} we show a counterexample to a possible generalization of the results of \cref{sec:reducing-modules}. In Appendix~\ref{sec:lower-bounds} we observe that polynomial kernels are unlikely to exist for the \textsc{Thinness} {and \textsc{Simultaneous Interval Number} problems} parameterized by some common graph parameters, including treewidth, modular-width, and the thinness {and simultaneous interval number themselves}; {we moved this section to the appendix because its proofs are nowadays standard in the field of parameterized complexity.}
 
 \section{Preliminaries}
 \label{sec:preliminaries}
-\paragraph{Graphs} All graphs in this work are finite, undirected, and have no loops or multiple edges. 
+\paragraph{Graphs.} All graphs in this work are finite, undirected, and have no loops or multiple edges. 
 %For all graph-theoretic notions and notation not defined here, we refer to West~\citep{introduction-to-graph-theory}.
 Let $G$ be a graph. We denote by $V(G)$ and $E(G)$ its vertex and edge set, respectively. We denote by $N(v)$ and $N[v]$, respectively,
 the neighborhood and closed neighborhood of a vertex $v \in V(G)$. The complement of $G$ is denoted $\overline{G}$.
 Let $X \subseteq V(G)$.
 We denote by $G[X]$ the subgraph of $G$ induced by $X$, and by $G \setminus X$ the graph $G[V(G) \setminus X]$. If $X = \{v\}$, we simply write $G \setminus v$.
 
-A subset $X$ of $V(G)$ is \emph{complete} (or a \emph{clique}) if every pair of vertices in $X$ are adjacent, and \emph{independent} if no pair of vertices in $X$ are adjacent. A \emph{cluster} is a union of cliques. We denote the class of all cluster graphs by $\clusters$, and the class of all interval graphs by $\intervals$.
+A subset $X$ of $V(G)$ is \emph{complete} (or a \emph{clique}) if every pair of vertices in $X$ are adjacent, and \emph{independent} if no pair of vertices in $X$ are adjacent. A \emph{cluster} is a union of cliques. We denote the class of all cluster graphs by $\cluster$, and the class of all interval graphs by $\interval$.
 
-\paragraph{Modules} A \emph{module} of a graph $G$ is a subset $X$ of its vertices such that every vertex not in $X$ is either adjacent to all vertices in $X$, or to none of them. We say that a vertex is a \emph{neighbor} of or is \emph{adjacent} to the module if it is not in the module and is adjacent to the vertices in the module.
+\paragraph{Modules.} A \emph{module} of a graph $G$ is a subset $X$ of its vertices such that every vertex not in $X$ is either adjacent to all vertices in $X$, or to none of them. We say that a vertex is a \emph{neighbor} of or is \emph{adjacent} to the module if it is not in the module and is adjacent to the vertices in the module.
 A \emph{modular partition} of a graph is a partition of its vertex set into modules. The \textit{contraction of $X$ into a  vertex} is defined as the graph $\contract{G}{X}$ resulting of removing all vertices in $X$ from $G$ and adding a new vertex $x$ adjacent to all neighbors of a vertex in $X$.
 
 A module is \emph{proper} if it is not $V(G)$. 
@@ -530,7 +529,7 @@ A proper module $X$ is \emph{maximal} if there is no strict superset of $X$ that
 \node[draw, gray!30!black,fill=gray!50,rounded corners=3,opacity=0.5, fit={(5,1.7) (7,2.3)}, inner sep=0.25pt, label=center:\small\phantom{j}Series\phantom{j}] (C) {};
 \node[draw, gray!30!black,fill=gray!50,rounded corners=3,opacity=0.5, fit={(9,0.7) (11,1.3)}, inner sep=0.25pt, label=center:\small\phantom{j}Parallel\phantom{j}] (D) {};
 \node[draw, gray!30!black,fill=gray!50,rounded corners=3,opacity=0.5, fit={(8,1.7) (10,2.3)}, inner sep=0.25pt, label=center:\small\phantom{j}Series\phantom{j}] (E) {};
-\node[draw, gray!30!black,fill=gray!50,rounded corners=3,opacity=0.5, fit={(3.6,3.75) (7.4,4.35)}, inner sep=0.25pt, label=center:{\small\phantom{j}Prime\phantom{aaaaaaaa}}] (F) {};
+\node[draw, gray!30!black,fill=gray!50,rounded corners=3,opacity=0.5, fit={(3.6,3.75) (7.4,4.35)}, inner sep=0.25pt, label=center:{\small\phantom{j}Prime\phantom{aaaaaaaaaa}}] (F) {};
 \draw (A)--(v4);
 \draw (A)--(v3);
 \draw (B)--(A);
@@ -574,7 +573,7 @@ $G$}, denoted by $\Gmc(G)$, is the minimum cardinality of a $\mathcal{G}$-modula
 \end{definition}
 
 
-\paragraph{Thinness} A graph $G$ is \emph{$k$-thin} if there exists a strict total order $<$ on $V(G)$ and a partition $S$ of $V(G)$ into
+\paragraph{Thinness.} A graph $G$ is \emph{$k$-thin} if there exists a strict total order $<$ on $V(G)$ and a partition $S$ of $V(G)$ into
 $k$ classes such that, for each $u, v, w \in V(G)$ with $u < v <
 w$, if $u$ and $v$ belong to the same class and $(u,w) \in
 E(G)$, then $(v,w) \in E(G)$. The three vertices $u, v, w$ satisfying those conditions are said to form a \emph{consistent triple}. An order and a partition
@@ -583,17 +582,17 @@ call the tuple $(<, S)$ a \emph{consistent solution} for $G$. The minimum $k$ su
 $k$-thin is called the \textit{thinness} of $G$, and denoted by
 $\thin(G)$. A consistent solution for $G$ that uses $\thin(G)$ classes is said to be \emph{optimal}. The \textsc{Thinness} problem takes as input a graph and a natural number $k$ and consists of deciding if the input graph has thinness at most $k$.
 
-\paragraph{Simultaneous interval number} A \emph{simultaneous interval representation} of a graph $G$ is the result of assigning an interval and a subset of \emph{labels} from $\{1,\dots,d\}$ for $d \in \N$ to each vertex in $V(G)$ such that two vertices are adjacent in $G$ if and only if both their intervals and their sets of labels intersect. We say that $d$ is the \emph{size} of a simultaneous interval representation. The \emph{simultaneous interval number} $\si(G)$ of a graph $G$ is the smallest size of a simultaneous interval representation of $G$. The \textsc{Simultaneous Interval Number} problem consists in determining, for a graph $G$ and an integer $d \geq 0$, if $G$ admits a $d$-simultaneous representation or not.
+\paragraph{Simultaneous interval number.} A \emph{simultaneous interval representation} of a graph $G$ is the result of assigning an interval and a subset of \emph{labels} from $\{1,\dots,d\}$ for $d \in \N$ to each vertex in $V(G)$ such that two vertices are adjacent in $G$ if and only if both their intervals and their sets of labels intersect. We say that $d$ is the \emph{size} of a simultaneous interval representation. The \emph{simultaneous interval number} $\si(G)$ of a graph $G$ is the smallest size of a simultaneous interval representation of $G$. The \textsc{Simultaneous Interval Number} problem consists in determining, for a graph $G$ and an integer $d \geq 0$, if $G$ admits a $d$-simultaneous representation or not.
 
-\paragraph{Neighborhood diversity} We say that two vertices $v$ and $v'$ of a graph $G$ have the same \emph{neighborhood type} if and only if $N(v) \setminus \{v'\} = N(v') \setminus \{v\}$ \citep[Definition 1]{neighborhood-diversity}. In other words, $v$ and $v'$ have the same neighborhood type if and only if they induce a module in $G$. A graph $G$ has \emph{neighborhood diversity} at most $w$ if there exists a partition of $V(G)$ into at most $w$ sets such that all the vertices in each set have the same neighborhood type. We will call this partition a \emph{neighborhood partition} of the vertices of $G$. The neighborhood diversity of $G$, denoted $\nd(G)$, is the smallest such $w$ \citep[Definition 2]{neighborhood-diversity}.
+\paragraph{Neighborhood diversity.} We say that two vertices $v$ and $v'$ of a graph $G$ have the same \emph{neighborhood type} if and only if $N(v) \setminus \{v'\} = N(v') \setminus \{v\}$ \citep[Definition 1]{neighborhood-diversity}. In other words, $v$ and $v'$ have the same neighborhood type if and only if they induce a module in $G$. A graph $G$ has \emph{neighborhood diversity} at most $w$ if there exists a partition of $V(G)$ into at most $w$ sets such that all the vertices in each set have the same neighborhood type. We will call this partition a \emph{neighborhood partition} of the vertices of $G$. The neighborhood diversity of $G$, denoted $\nd(G)$, is the smallest such $w$ \citep[Definition 2]{neighborhood-diversity}.
 
-\paragraph{Twin-cover} $X \subseteq V(G)$ is a \emph{twin-cover} of $G$ if for every edge $(a,b) \in E(G)$ either $a \in X$, or $b \in X$, or $a$ and $b$ are \emph{twins}, i.e. $N[a]=N[b]$. The \emph{twin-cover number} of $G$, $\tc(G)$, is the minimum size of a twin-cover of $G$ \citep[Definition 3.1]{twin-cover}.
+\paragraph{Twin-cover.} $X \subseteq V(G)$ is a \emph{twin-cover} of $G$ if for every edge $(a,b) \in E(G)$ either $a \in X$, or $b \in X$, or $a$ and $b$ are \emph{twins}, i.e. $N[a]=N[b]$. The \emph{twin-cover number} of $G$, $\tc(G)$, is the minimum size of a twin-cover of $G$ \citep[Definition 3.1]{twin-cover}.
 
-\paragraph{Vertex cover} Let $G$ be a graph. A subset $X$ of $V(G)$ is a vertex cover of $G$ if for every edge $(u, v)$ of $E(G)$ at least one of $\{u, v\}$ belongs to $X$. The \emph{vertex cover number} of $G$, $\vc(G)$, is the minimum size of a vertex cover of $G$. 
+\paragraph{Vertex cover.} Let $G$ be a graph. A subset $X$ of $V(G)$ is a vertex cover of $G$ if for every edge $(u, v)$ of $E(G)$ at least one of $\{u, v\}$ belongs to $X$. The \emph{vertex cover number} of $G$, $\vc(G)$, is the minimum size of a vertex cover of $G$. 
 
-\paragraph{Parameterized complexity} The field of \emph{parameterized complexity} seeks to find efficient algorithms for problems when the input is accompanied by a number that bounds a \emph{parameter} of the input. Algorithms that take polynomial time when that parameter is fixed are of special interest. Formally, a \emph{parameterized problem} is a language $Q \subseteq \Sigma^* \times N$, and such a problem is \emph{fixed-parameter tractable} (\FPT) if there is an algorithm that decides membership of an instance $(x, k)$ in time $f(k)\cdot\abs{x}^{\O(1)}$ for some computable function~$f$. A problem is \emph{slice-wise polynomial} (\XP) if there is an algorithm that decides membership of an instance $(x, k)$ in time $f(k)\cdot \abs{x}^{f(k)}$ for some computable function $f$.
+\paragraph{Parameterized complexity.} The field of \emph{parameterized complexity} seeks to find efficient algorithms for problems when the input is accompanied by a number that bounds a \emph{parameter} of the input. Algorithms that take polynomial time when that parameter is fixed are of special interest. Formally, a \emph{parameterized problem} is a language $Q \subseteq \Sigma^* \times N$, and such a problem is \emph{fixed-parameter tractable} (\FPT) if there is an algorithm that decides membership of an instance $(x, k)$ in time $f(k)\cdot\abs{x}^{\O(1)}$ for some computable function~$f$. A problem is \emph{slice-wise polynomial} (\XP) if there is an algorithm that decides membership of an instance $(x, k)$ in time $f(k)\cdot \abs{x}^{f(k)}$ for some computable function $f$.
 
-\paragraph{Kernelization} A \emph{kernelization} (or \emph{kernel}) for a parameterized problem $Q$ is a po\-ly\-no\-mial-time algorithm that transforms each instance $(x, k)$ into an instance $(x', k')$ such that:
+\paragraph{Kernelization.} A \emph{kernelization} (or \emph{kernel}) for a parameterized problem $Q$ is a po\-ly\-no\-mial-time algorithm that transforms each instance $(x, k)$ into an instance $(x', k')$ such that:
 \begin{itemize}
 \item $(x', k') \in Q$ if and only if $(x,k) \in Q$, and
 \item $\abs{x'}, k' \leq g(k)$ for some computable function $g$.
@@ -603,7 +602,7 @@ We say that $g(k)$ is the \emph{size} of the kernel.
 \section{Reducing modules without changing the thinness}
 \label{sec:reducing-modules}
 
-We begin by showing that if a sufficiently large group of vertices have the same neighborhood, some of them can be removed from a graph without affecting its thinness. This will be key in proving the kernelizations results for \textsc{Thinness} in \cref{sec:parameterizations}, and when showing the linear time algorithm to compute the $\intervals$-modular cardinality in \cref{prop:calculate-interval-module-partition}.
+We begin by showing that if a sufficiently large group of vertices have the same neighborhood, some of them can be removed from a graph without affecting its thinness. This will be key in proving the kernelizations results for \textsc{Thinness} in \cref{sec:parameterizations}, and when showing the linear time algorithm to compute the $\interval$-modular cardinality in \cref{prop:calculate-interval-module-partition}.
 
 We state here a result by \cite{thinness-of-product-graphs} on the thinness of a graph after contracting a complete module.
 
@@ -647,22 +646,22 @@ In \cref{prop:contract-interval-module}, the choice of replacing $H$ with two in
 The answer is negative, and we defer the construction of a counterexample to Appendix~\ref{sec:counterexample}.
 
 % \vspace{0.5em}
-Combining \cref{prop:contract-complete-module} and \cref{prop:contract-interval-module}, we see that if a module $H$ induces an interval graph, almost all vertices of $H$ can be removed without altering the thinness of the graph. Given a \textsc{Thinness} instance and a partition of the input graph into $\intervals$-modules, this can be used in a preprocessing step to reduce the size of the input graph, and thus obtain a kernel. We thus need a way to efficiently calculate the minimum number of modules in an $\intervals$-modular partition of the graph, and this is done in the next section.
+Combining \cref{prop:contract-complete-module} and \cref{prop:contract-interval-module}, we see that if a module $H$ induces an interval graph, almost all vertices of $H$ can be removed without altering the thinness of the graph. Given a \textsc{Thinness} instance and a partition of the input graph into $\interval$-modules, this can be used in a preprocessing step to reduce the size of the input graph, and thus obtain a kernel. We thus need a way to efficiently calculate the minimum number of modules in an $\interval$-modular partition of the graph, and this is done in the next section.
 
 
-\section{Linear-time algorithms for \texorpdfstring{$\clusters$}{clusters}-modular cardinality and\\ \texorpdfstring{$\intervals$}{intervals}-modular cardinality}
+\section{Linear-time algorithms for \texorpdfstring{$\cluster$}{clusters}-modular cardinality and\\ \texorpdfstring{$\interval$}{intervals}-modular cardinality}
 \label{sec:modular-cardinality}
 
-The article that introduces the $\G$-modular cardinality~\citep{modular-partitions-MFCS23}\footnote{Full proofs can be found in~\citep{modular-partitions-arxiv}.} presents a polynomial-time algorithm to obtain it for an arbitrary graph when $\G$ meets some conditions, which the classes $\clusters$ and $\intervals$ meet. Their algorithm does not explicitly run in linear time when $\G$ corresponds to the class of interval or cluster graphs. Thus, we present similar linear-time algorithms for these two parameters that utilize the modular decomposition of the input graph.
+As mentioned in the introduction, the article that introduces the $\G$-modular cardinality~\citep{modular-partitions-MFCS23}\footnote{Full proofs can be found in~\citep{modular-partitions-arxiv}.} presents a polynomial-time algorithm to obtain it for an arbitrary graph when $\G$ meets some conditions, which the classes $\cluster$ and $\interval$ meet. Their algorithm does not explicitly run in linear time when $\G$ corresponds to the class of interval or cluster graphs. Thus, we present similar linear-time algorithms for these two parameters that utilize the modular decomposition of the input graph.
 
 \begin{theorem}
 \label{prop:calculate-cluster-module-partition}
-    An optimal $\clusters$-modular partition of a graph $G$ can be computed in linear time.
+    An optimal $\cluster$-modular partition of a graph $G$ can be computed in linear time.
 \end{theorem}
 \begin{proof}
 \newcommand{\Shead}{C_1}
 \newcommand{\Stail}{\mathsf{tail}}
-First, we compute the modular decomposition tree $T$ of $G$, which can be done in linear time~\citep{modular-decomposition-linear-cournier,modular-decomposition-linear-mcconnell,modular-decomposition-linear}. Then, for each node $G_t \in T$ (which is an induced subgraph of $G$), we compute an optimal $\clusters$-modular partition $S_t$ of the vertices of $G_t$ depending on the type of node $G_t$. Let $\mathcal{C} \coloneqq \{G_1, \dots, G_h\}$ be the children of $G_t$, if there are any. 
+First, we compute the modular decomposition tree $T$ of $G$, which can be done in linear time~\citep{modular-decomposition-linear-cournier,modular-decomposition-linear-mcconnell,modular-decomposition-linear}. Then, for each node $G_t \in T$ (which is an induced subgraph of $G$), we compute an optimal $\cluster$-modular partition $S_t$ of the vertices of $G_t$ depending on the type of node $G_t$. Let $\mathcal{C} \coloneqq \{G_1, \dots, G_h\}$ be the children of $G_t$, if there are any. 
     \begin{itemize}
         \item \textbf{Leaf}: The only class in $S_t$ is formed by the only vertex in $G_t$. This vertex is trivially a cluster module, and the partition is unique, thus optimal.
         \item \textbf{Parallel or Series}: Let $\mathcal{K} \subseteq \mathcal{C}$ be the children of $G_t$ that are complete graphs. We define $S_t \coloneqq \{\Shead\} \cup \Stail$, where
@@ -674,7 +673,7 @@ First, we compute the modular decomposition tree $T$ of $G$, which can be done i
 
         As shown by \cite{modular-decomposition}, the only modules present in $G_t$ are the possible unions of elements of $\mathcal{C}$, and the submodules of elements of $\mathcal{C}$. That is to say, $G_t$ has no modules that contain some but not all vertices of some $G_i$, and some but not all vertices of some $G_j$, with $i \neq j$.
 
-        Let us see first that this is a valid $\clusters$-modular partition. By the previous remark, the class $\Shead$ and every element of $\Stail$ are modules. If $G_t$ is a parallel node, $\Shead$ is a union of complete graphs, meaning, a cluster. If $G_t$ is a series node, $\Shead$ is itself a complete graph, and so it is also a cluster. The elements of $\Stail$ are clusters, as they are part of the $\clusters$-modular partitions of the children of~$G_t$. Moreover, all vertices of $G_t$ are present in some set of the partition, and thus $S_t$ is a valid $\clusters$-modular partition.
+        Let us see first that this is a valid $\cluster$-modular partition. By the previous remark, the class $\Shead$ and every element of $\Stail$ are modules. If $G_t$ is a parallel node, $\Shead$ is a union of complete graphs, meaning, a cluster. If $G_t$ is a series node, $\Shead$ is itself a complete graph, and so it is also a cluster. The elements of $\Stail$ are clusters, as they are part of the $\cluster$-modular partitions of the children of~$G_t$. Moreover, all vertices of $G_t$ are present in some set of the partition, and thus $S_t$ is a valid $\cluster$-modular partition.
 
         Next, let us see that it is optimal. Suppose there is an optimal partition $Q_t$ of the vertices of $G_t$ that uses fewer classes than $S_t$. As noted before, the classes of $Q_t$ must each be either a union of elements of $\mathcal{C}$, or submodules of elements of $\mathcal{C}$.
         
@@ -683,17 +682,17 @@ First, we compute the modular decomposition tree $T$ of $G$, which can be done i
             \item \emph{$G_t$ is a parallel node}: Every element of $\mathcal{C}$ is a connected graph. As $G_j$ is not complete, it cannot be part of a cluster.
             \item \emph{$G_t$ is a series node}: Let $G_l$ be another element of $\mathcal{C}$ present in $Q^i_t$. Every vertex of $G_j$ is adjacent to every vertex of $G_l$. As $G_j$ is not complete, there are two nonadjacent vertices $v$ and $w$ in $V(G_j)$ that are each adjacent to a vertex $u$ in $G_l$. Thus, $v$, $w$, and $u$ cannot be part of the same cluster. 
         \end{itemize}
-        These two cases show that the previous scenario cannot happen, and so every class of $Q_t$ is either a union of elements of $\mathcal{C}$ that are complete graphs, or submodules of elements of $\mathcal{C}$. Moreover, there cannot be more than one class of $Q_t$ that is a union of elements of $\mathcal{C}$, because otherwise we could join those classes into only one, reducing the size of $Q_t$. Also, there cannot be a proper submodule of an element $G_i$ of $\mathcal{C}$ that is a complete graph as a class in $Q_t$, as otherwise we could join that submodule with the rest of $G_i$ to reduce the size of $Q_t$. Thus, the union of the elements of $\mathcal{C}$ that are complete graphs defines a class in $Q_t$. Finally, as each other class is a submodule of an element of $\mathcal{C}$, the classes that have some vertex of a given graph $G_i$ must form a partition of the vertices of $G_i$, meaning, they should be a $\clusters$-modular partition of $G_i$. Partition $Q_t$ then contains an optimal cluster partition of each $G_i$, and necessarily has the same amount of classes as $S_t$.
+        These two cases show that the previous scenario cannot happen, and so every class of $Q_t$ is either a union of elements of $\mathcal{C}$ that are complete graphs, or submodules of elements of $\mathcal{C}$. Moreover, there cannot be more than one class of $Q_t$ that is a union of elements of $\mathcal{C}$, because otherwise we could join those classes into only one, reducing the size of $Q_t$. Also, there cannot be a proper submodule of an element $G_i$ of $\mathcal{C}$ that is a complete graph as a class in $Q_t$, as otherwise we could join that submodule with the rest of $G_i$ to reduce the size of $Q_t$. Thus, the union of the elements of $\mathcal{C}$ that are complete graphs defines a class in $Q_t$. Finally, as each other class is a submodule of an element of $\mathcal{C}$, the classes that have some vertex of a given graph $G_i$ must form a partition of the vertices of $G_i$, meaning, they should be a $\cluster$-modular partition of $G_i$. Partition $Q_t$ then contains an optimal cluster partition of each $G_i$, and necessarily has the same amount of classes as $S_t$.
         
         \item \textbf{Prime}: We define $S_t$ to be the union of $S_i$ for every $1 \leq i \leq h$.
         
-        As shown by \cite{modular-decomposition}, the proper modules of $G_t$ are exactly the submodules of the associated graphs of children of $G_t$. Thus, an optimal $\clusters$-modular partition of $G_t$ must contain an optimal $\clusters$-modular partition of every child $G_i$, and so $S_t$ is optimal.
+        As shown by \cite{modular-decomposition}, the proper modules of $G_t$ are exactly the submodules of the associated graphs of children of $G_t$. Thus, an optimal $\cluster$-modular partition of $G_t$ must contain an optimal $\cluster$-modular partition of every child $G_i$, and so $S_t$ is optimal.
     \end{itemize}
 
     To achieve linear time on this algorithm, the partitions $S_t$ are not actually computed. Instead, we set a flag on each child $t_i$ of a series or parallel node $t$ such that $G_{t_i}$ belongs to $\Shead$. Recognizing these children can be done with a simple bottom-up traversal of the tree that marks each node whose associated graph is complete (i.e., a parallel node whose children are leaves). Finally, a top-down traversal of the tree allows us to propagate to which class each of the leaf nodes belongs. These operations can be performed in time linear in the number of nodes in the tree, and thus this algorithm runs in linear time.
 \end{proof}
 
-We present two lemmas that will be useful to compute an optimal $\intervals$-modular partition.
+We present two lemmas that will be useful to compute an optimal $\interval$-modular partition.
 
 \begin{lemma}[Thinness of the union {\citep[Theorem 14]{tesis-diego}}]
     \label[lemma]{prop:thinness-union}
@@ -707,13 +706,15 @@ We present two lemmas that will be useful to compute an optimal $\intervals$-mod
 
 In particular, \cref{prop:thinness-join} implies that the join of two graphs is an interval graph if and only if one of them is an interval graph, and the other one is a complete graph.
 
+{ % Override dmtcs proof environment to fix QED
+\renewcommand\endproof{\medskip}
 \begin{theorem}
     \label{prop:calculate-interval-module-partition}
-    An optimal $\intervals$-modular partition of a graph $G$ can be computed in linear time.
+    An optimal $\interval$-modular partition of a graph $G$ can be computed in linear time.
 \end{theorem}
 \begin{proof}
 \newcommand{\Stail}{\mathsf{tail}}
-    The proof follows the structure of the one for \cref{prop:calculate-cluster-module-partition}. We compute the modular decomposition tree $T$ of $G$. Then, for each node $G_t \in T$ (which is an induced subgraph of $G$), we compute an optimal $\intervals$-modular partition $S_t$ of the vertices of $G_t$ depending on the type of node $G_t$. Let $\mathcal{C} \coloneqq \{G_1, \dots, G_h\}$ be the children of $G_t$, if there are any, and let $S_1,\dots, S_h$ be their respective optimal $\intervals$-modular partitions.
+    The proof follows the structure of the one for \cref{prop:calculate-cluster-module-partition}. We compute the modular decomposition tree $T$ of $G$. Then, for each node $G_t \in T$ (which is an induced subgraph of $G$), we compute an optimal $\interval$-modular partition $S_t$ of the vertices of $G_t$ depending on the type of node $G_t$. Let $\mathcal{C} \coloneqq \{G_1, \dots, G_h\}$ be the children of $G_t$, if there are any, and let $S_1,\dots, S_h$ be their respective optimal $\interval$-modular partitions.
     \begin{itemize}
         \item \textbf{Leaf}: The only class in $S_t$ is formed by the only vertex in $G_t$. This vertex is trivially an interval module, and the partition is unique, thus optimal.
         \item \textbf{Parallel}: We build $S_t$ by taking the union of the children that induce interval graphs as class $C_1$, and taking the union of the partitions of all the other children. More formally, if $\mathcal{I}$ is the subset of the children $\mathcal{C}$ that induce interval graphs: 
@@ -722,13 +723,13 @@ In particular, \cref{prop:thinness-join} implies that the join of two graphs is 
             S_t &\coloneqq \{C_1\} \cup \bigcup_{G_i \in \mathcal{C}\setminus\mathcal{I}}S_i.
         \end{align*}
         
-        Note that $S_t$ is in fact an $\intervals$-modular partition:
+        Note that $S_t$ is in fact an $\interval$-modular partition:
         \begin{itemize}
-            \item All the classes induce interval graphs, as $C_1$ is a union of interval graphs (and thus by \cref{prop:thinness-union} it is an interval graph), and all the other classes belong to $\intervals$-modular partitions of the children of $G_t$, and thus are also interval graphs.
-            \item Each class is a module, a $C_1$ is a union of modules, and all the other classes belong to $\intervals$-modular partitions of induced subgraphs.
+            \item All the classes induce interval graphs, as $C_1$ is a union of interval graphs (and thus by \cref{prop:thinness-union} it is an interval graph), and all the other classes belong to $\interval$-modular partitions of the children of $G_t$, and thus are also interval graphs.
+            \item Each class is a module, a $C_1$ is a union of modules, and all the other classes belong to $\interval$-modular partitions of induced subgraphs.
         \end{itemize}
 
-        Let us see that $\abs{S_t}$ is minimum. Again, as shown by \cite{modular-decomposition}, the only modules of $G_t$ are unions of children of $G_t$, or submodules of children of $G_t$. Thus, in every $\intervals$-modular partition $S'_t$ of $G_t$,
+        Let us see that $\abs{S_t}$ is minimum. Again, as shown by \cite{modular-decomposition}, the only modules of $G_t$ are unions of children of $G_t$, or submodules of children of $G_t$. Thus, in every $\interval$-modular partition $S'_t$ of $G_t$,
         \begin{enumerate}
             \item\label{item:union} by \cref{prop:thinness-union}, each class that induces a union of disjoint graphs must have interval graphs as connected components; and
             \item\label{item:submodules} every other class must be a submodule of one of the children of $G_t$.
@@ -742,65 +743,65 @@ In particular, \cref{prop:thinness-join} implies that the join of two graphs is 
 
         If $C_1$ is empty, we just define $S_t \coloneqq \Stail$.
 
-        By \cref{prop:thinness-join}, class $C_1$ induces an interval graph. Every class in $\Stail$ also induces an interval graph, as they belong to $\intervals$-modular partitions of the children of $G_t$. On the other hand, notice that all classes induce modules of $G_t$. Thus, $S_t$ is an $\intervals$-modular partition.
+        By \cref{prop:thinness-join}, class $C_1$ induces an interval graph. Every class in $\Stail$ also induces an interval graph, as they belong to $\interval$-modular partitions of the children of $G_t$. On the other hand, notice that all classes induce modules of $G_t$. Thus, $S_t$ is an $\interval$-modular partition.
 
-        Take another $\intervals$-modular partition $S'_t$ of $G_t$. We will see that $\abs{S'_t} \geq \abs{S_t}$.
+        Take another $\interval$-modular partition $S'_t$ of $G_t$. We will see that $\abs{S'_t} \geq \abs{S_t}$.
         
-        As said earlier, the modules of $G_t$ are unions of children of $G_t$, or submodules of children of $G_t$. For a module that is a join of two graphs to be an interval graph, it must be the join of a complete graph and an interval graph by \cref{prop:thinness-join}. Thus, if two or more children of $G_t$ are joined in a class of $S'_t$, at most one of them is not a complete graph, and it must also be an interval graph. If there is more than one class in $S'_t$ that induces a join of graphs, we can change the classes of all vertices belonging to children that induce complete graphs to just one of those classes, and have an $\intervals$-modular partition with no more classes than $S'_t$.
+        As said earlier, the modules of $G_t$ are unions of children of $G_t$, or submodules of children of $G_t$. For a module that is a join of two graphs to be an interval graph, it must be the join of a complete graph and an interval graph by \cref{prop:thinness-join}. Thus, if two or more children of $G_t$ are joined in a class of $S'_t$, at most one of them is not a complete graph, and it must also be an interval graph. If there is more than one class in $S'_t$ that induces a join of graphs, we can change the classes of all vertices belonging to children that induce complete graphs to just one of those classes, and have an $\interval$-modular partition with no more classes than $S'_t$.
 
-        Furthermore, $S'_t$ is forced to contain $\intervals$-modular partitions of the children of $G_t$ that do not induce interval graphs. Therefore, $S_t$ contains no more classes than $S'_t$.
+        Furthermore, $S'_t$ is forced to contain $\interval$-modular partitions of the children of $G_t$ that do not induce interval graphs. Therefore, $S_t$ contains no more classes than $S'_t$.
 
         \item \textbf{Prime}: If $G_t$ is an interval graph, define $S_t \coloneqq \{V(G_t)\}$. Otherwise, $S_t \coloneqq \bigcup_{G_i \in \mathcal{C}}S_i$.
 
-        It is clear that, in both cases, $S_t$ is an $\intervals$-modular partition. Also, as shown by \cite{modular-decomposition}, the only proper submodules of a prime node are the modules of children of the node. Thus, if $G_t$ is not an interval graph, the partition must be the union of $\intervals$-modular partitions of the children of $G_t$, and therefore $S_t$ is optimal.
+        It is clear that, in both cases, $S_t$ is an $\interval$-modular partition. Also, as shown by \cite{modular-decomposition}, the only proper submodules of a prime node are the modules of children of the node. Thus, if $G_t$ is not an interval graph, the partition must be the union of $\interval$-modular partitions of the children of $G_t$, and therefore $S_t$ is optimal.
 
         It remains to show how to determine if $G_t$ is an interval graph or not. In principle, one could run a linear-time algorithm that decides if a graph is interval or not on $G_t$, for example the one by \cite{B-L-interval}. The issue is that running a linear time algorithm for each of the prime nodes of the modular decomposition yields a runtime complexity of $\O(n^2)$, which is more than what we want.
 
         To remedy this, we will utilize the lemmas presented in \cref{sec:reducing-modules} to reduce the number of vertices in $G_t$ without changing the thinness. First, if any one of the children of $G_t$ is not an interval graph, then, as the thinness is a hereditary property, graph $G_t$ is also not an interval graph. Otherwise, we create a graph $G'_t$ by contracting every child that is a complete graph into a single vertex, and contracting every other child that is an interval graph into two nonadjacent vertices. By \cref{prop:contract-complete-module,prop:contract-interval-module}, graph $G'_t$ has the same thinness as $G_t$. In particular, $G'_t$ is an interval graph if and only if $G_t$ is an interval graph. Thus, we finish by running a linear-time algorithm to decide if $G'_t$ is an interval graph or not.
 
-        As the number of nodes in a modular decomposition tree is $\O(n)$, and the number of vertices in $G'_t$ is at most twice the number of children of $G_t$, this algorithm takes linear time on the size of $G$, taking into account that we need to store a flag for each node that signals if a node is a complete graph or not. \qedhere
+        As the number of nodes in a modular decomposition tree is $\O(n)$, and the number of vertices in $G'_t$ is at most twice the number of children of $G_t$, this algorithm takes linear time on the size of $G$, taking into account that we need to store a flag for each node that signals if a node is a complete graph or not. \qed
      \end{itemize}
 \end{proof}
-
+}
 
 \section{Parameterizations for computing the thinness}\label{sec:parameterizations}
 
-We are now ready to present the kernels for {\sc Thinness} parameterized by the $\intervals$-modular cardinality, neighborhood diversity, twin-cover, and vertex cover.
+We are now ready to present the kernels for {\sc Thinness} parameterized by the $\interval$-modular cardinality, neighborhood diversity, twin-cover, and vertex cover.
 
 \begin{theorem}
     \label{prop:interval-modular-cardinality-parametrization}
-    For every graph $G$, $\thin(G) \leq 2\cdot\intervalmc(G)$. In addition, {\sc Thinness} admits a linear kernel when parameterized by the $\intervals$-modular cardinality of the input graph.
+    For every graph $G$, $\thin(G) \leq 2\cdot\intervalmc(G)$. In addition, {\sc Thinness} admits a linear kernel when parameterized by the $\interval$-modular cardinality of the input graph.
 \end{theorem}
 \begin{proof}
-    We reduce an instance $(G, t, k)$ of \textsc{Thinness} parameterized by $\intervals$-modular cardinality (where $t$ is the thinness parameter and $k$ is the $\intervals$-modular cardinality of $G$) to an instance $(G', t', k')$ in time $n^{\mathcal{O}(1)}$ such that $t' = t$, $k' = k$, and $\abs{V(G')} \leq 2k$.
+    We reduce an instance $(G, t, k)$ of \textsc{Thinness} parameterized by $\interval$-modular cardinality (where $t$ is the thinness parameter and $k$ is the $\interval$-modular cardinality of $G$) to an instance $(G', t', k')$ in time $n^{\mathcal{O}(1)}$ such that $t' = t$, $k' = k$, and $\abs{V(G')} \leq 2k$.
 
-    We first compute an optimal $\intervals$-modular partition $P$ of $G$ in linear time by \cref{prop:calculate-interval-module-partition}. Now, we contract each part of $P$ that induces a complete graph into a single vertex each, and contract every other part of $P$ into two nonadjacent vertices each, obtaining graph $G'$. By \cref{prop:contract-complete-module} and \cref{prop:contract-interval-module} we have that $\thin(G') = \thin(G)$.
+    We first compute an optimal $\interval$-modular partition $P$ of $G$ in linear time by \cref{prop:calculate-interval-module-partition}. Now, we contract each part of $P$ that induces a complete graph into a single vertex each, and contract every other part of $P$ into two nonadjacent vertices each, obtaining graph $G'$. By \cref{prop:contract-complete-module} and \cref{prop:contract-interval-module} we have that $\thin(G') = \thin(G)$.
     
     We now have a graph $G'$ such that $\abs{V(G')} \leq 2k$ and $\thin(G') = \thin(G)$ which serves as our kernel, defining $k'\coloneqq k$. Note that all operations we performed on the graph can be done in linear time, and so the reduction is polynomial.
     This also shows that $\thin(G) \leq 2\cdot\intervalmc(G)$, as desired.
 \end{proof}
 
 
-Note that every cluster graph is also an interval graph, and thus $\intervalmc(G) \leq \clustermc(G)$ for every graph $G$. Therefore, although the upper bounds we present on \cref{prop:neighborhood-partition-is-cluster-modular-partition,lemma:twin-cover-hcupn} are on the $\clusters$-modular cardinality instead of the $\intervals$-modular cardinality, the results transfer directly to the latter parameter.
+Note that every cluster graph is also an interval graph, and thus $\intervalmc(G) \leq \clustermc(G)$ for every graph $G$. Therefore, although the upper bounds we present on \cref{prop:neighborhood-partition-is-cluster-modular-partition,lemma:twin-cover-hcupn} are on the $\cluster$-modular cardinality instead of the $\interval$-modular cardinality, the results transfer directly to the latter parameter.
 
-The following lemmas show that the neighborhood partition of a graph is also a $\clusters$-modular partition.
+The following lemmas show that the neighborhood partition of a graph is also a $\cluster$-modular partition.
 
 \begin{lemma}[{\citep[Theorem 7.1]{neighborhood-diversity}}]
     \label[lemma]{lemma:neighborhood-partition-clique-or-independent}
     Let $G$ be a graph with neighborhood diversity $k$, and let $V_1, \dots, V_k$ be a neighborhood partition of width $k$ of the vertices of $G$. Then each $V_i$ induces either a clique or an independent set.
 \end{lemma}
 
-\cite{modular-partitions-MFCS23} state in their article that the $\clusters$-modular cardinality generalizes the neighborhood diversity. We present a proof of this fact here for completeness.
+\cite{modular-partitions-MFCS23} state in their article that the $\cluster$-modular cardinality generalizes the neighborhood diversity. We present a proof of this fact here for completeness.
 
 \begin{lemma}
     \label[lemma]{prop:neighborhood-partition-is-cluster-modular-partition}
-    For every graph $G$, $\clustermc(G) \leq \nd(G)$. Moreover, a neighborhood partition of the vertices of $G$ is also a $\clusters$-modular partition of $G$.
+    For every graph $G$, $\clustermc(G) \leq \nd(G)$. Moreover, a neighborhood partition of the vertices of $G$ is also a $\cluster$-modular partition of $G$.
 \end{lemma}
 \begin{proof}
-    Let $V_1,\dots,V_k$ be a neighborhood partition of width $k$ of the vertices of $G$. By \cref{lemma:neighborhood-partition-clique-or-independent}, each $V_i$ induces either a clique or an independent set. In either case, $G[V_i]$ is a cluster graph. Also, each $V_i$ is a module, since all the vertices in $V_i$ have the same neighborhood type, and so must all have the same neighbors outside $V_i$. Therefore, $V_1,\dots, V_k$ is a valid $\clusters$-modular partition of width $k$ of $G$, and so $\clustermc(G) \leq k$.
+    Let $V_1,\dots,V_k$ be a neighborhood partition of width $k$ of the vertices of $G$. By \cref{lemma:neighborhood-partition-clique-or-independent}, each $V_i$ induces either a clique or an independent set. In either case, $G[V_i]$ is a cluster graph. Also, each $V_i$ is a module, since all the vertices in $V_i$ have the same neighborhood type, and so must all have the same neighbors outside $V_i$. Therefore, $V_1,\dots, V_k$ is a valid $\cluster$-modular partition of width $k$ of $G$, and so $\clustermc(G) \leq k$.
 \end{proof}
 
-On the other hand, the neighborhood diversity of a graph can be arbitrarily larger than the $\clusters$-modular cardinality, as the graph $cK_2$ has $\clusters$-modular cardinality 1 but neighborhood diversity $c$.
+On the other hand, the neighborhood diversity of a graph can be arbitrarily larger than the $\cluster$-modular cardinality, as the graph $cK_2$ has $\cluster$-modular cardinality 1 but neighborhood diversity $c$.
 
 Combining \cref{prop:interval-modular-cardinality-parametrization} with \cref{prop:neighborhood-partition-is-cluster-modular-partition} we obtain the following result.
 
@@ -812,14 +813,14 @@ Combining \cref{prop:interval-modular-cardinality-parametrization} with \cref{pr
 
 % \subsection{Twin-cover and vertex cover}
 
-The following lemma shows that the $\clusters$-modular cardinality of a graph generalizes the twin-cover number.
+The following lemma shows that the $\cluster$-modular cardinality of a graph generalizes the twin-cover number.
 
 \begin{lemma}
     \label[lemma]{lemma:twin-cover-hcupn}
     For every graph $G$ with twin-cover number $k$, $\cm(G) \leq 2^k + k$.
 \end{lemma}
 \begin{proof}
-   Let $X$ be a twin-cover of $G$ of size $k$. We construct a partition $P$ with parts $P_1, \dots, P_{2^k + k}$ of the vertices of $G$ and prove that it is a $\clusters$-modular partition.
+   Let $X$ be a twin-cover of $G$ of size $k$. We construct a partition $P$ with parts $P_1, \dots, P_{2^k + k}$ of the vertices of $G$ and prove that it is a $\cluster$-modular partition.
     
     We first put each vertex $x_i \in X$ in the set $P_{2^k+i}$. Then, we partition the vertices not in $X$ by the set of vertices in $X$ that they are adjacent to. As there are $k$ vertices in $X$, there are $2^k$ possible subsets of $X$. We assign these sets to $P_1, \dots, P_{2^k}$. 
     
@@ -833,7 +834,7 @@ The following lemma shows that the $\clusters$-modular cardinality of a graph ge
     Now, we prove that sets $P_1,\dots,P_{2^k}$ are clusters. To see that, it is sufficient to show that if $a,b \in P_i$ are adjacent, then $N[a] = N[b]$. As neither $a$ nor $b$ are in $X$, they are twins, and so $N[a] = N[b]$.
 \end{proof}
 
-The twin-cover number, similarly to the neighborhood diversity, can be arbitrarily larger than the $\clusters$-modular cardinality. The class of complete bipartite graphs $K_{n,n}$ serves as an example here, as those graphs have $\clusters$-modular cardinality two and twin-cover number $n$.
+The twin-cover number, similarly to the neighborhood diversity, can be arbitrarily larger than the $\cluster$-modular cardinality. The class of complete bipartite graphs $K_{n,n}$ serves as an example here, as those graphs have $\cluster$-modular cardinality two and twin-cover number $n$.
 
 \begin{theorem}
     \label{prop:twin-cover-parametrization}
@@ -843,7 +844,7 @@ The twin-cover number, similarly to the neighborhood diversity, can be arbitrari
     Let $G$ be a graph with twin-cover number $k$. By \cref{lemma:twin-cover-hcupn}, $\cm(G) \leq 2^k + k$. We thus use the algorithm from \cref{prop:interval-modular-cardinality-parametrization} to obtain a kernel of size $\O(2^k)$.
 \end{proof}
 
-Note that the kernel presented above is not polynomial, as the bound on the $\clusters$-modular cardinality given a twin-cover of size $k$ is $\O(2^k)$.
+Note that the kernel presented above is not polynomial, as the bound on the $\cluster$-modular cardinality given a twin-cover of size $k$ is $\O(2^k)$.
 
 As every vertex cover is also a twin-cover, we have the following corollary.
 
@@ -909,12 +910,12 @@ The twin-cover number can be arbitrarily larger than the simultaneous interval n
 We can use \cref{prop:si-contract-complete-module,prop:si-module-pairwise-intersecting,prop:si-interval-module} to prove the following. 
 \begin{theorem}
     \label{theorem:si-param-cm}
-    {\sc Simultaneous Interval Number} is \FPT when parameterized by the $\clusters$-modular cardinality of the input graph plus the solution size {(the input parameter $d$)}.
+    {\sc Simultaneous Interval Number} is \FPT when parameterized by the $\cluster$-modular cardinality of the input graph plus the solution size {(the input parameter $d$)}.
 \end{theorem}
 \begin{proof}
-    Let $G$ be a graph with $\clusters$-modular cardinality $k$. We want to decide whether it admits a $d$-simultaneous interval representation. If $k=1$, then $\si(G) = 0$ or $1$ depending on the presence of edges. So, suppose $k > 1$. We can assume that there are no isolated cliques in $G$, because in that case the simultaneous interval number of $G$ will be the same as the simultaneous interval number of the graph obtained from $G$ by removing the isolated cliques. We can also assume that $d \geq 2$, since graphs with $\si(G) = 0$ are exactly the edgeless graphs, and graphs with $\si(G) \leq 1$ are exactly the interval graphs~\citep{Milanic-sim}, that can be recognized in polynomial time~\citep{Habib-interval-rec}. 
+    Let $G$ be a graph with $\cluster$-modular cardinality $k$. We want to decide whether it admits a $d$-simultaneous interval representation. If $k=1$, then $\si(G) = 0$ or $1$ depending on the presence of edges. So, suppose $k > 1$. We can assume that there are no isolated cliques in $G$, because in that case the simultaneous interval number of $G$ will be the same as the simultaneous interval number of the graph obtained from $G$ by removing the isolated cliques. We can also assume that $d \geq 2$, since graphs with $\si(G) = 0$ are exactly the edgeless graphs, and graphs with $\si(G) \leq 1$ are exactly the interval graphs~\citep{Milanic-sim}, that can be recognized in polynomial time~\citep{Habib-interval-rec}. 
     
-    Let $M_1, \dots, M_k$ be the modules in an optimal $\clusters$-modular partition, which can be computed in linear time  by \cref{prop:calculate-cluster-module-partition}. The cliques in each cluster $M_i$ are in turn modules of $G$, so we can apply \cref{prop:si-contract-complete-module} and contract each of them into a vertex, obtaining a graph $G'$ and modules $M'_1, \dots, M'_k$ which are independent sets, such that $\si(G)=\si(G')$ and a $d$-simultaneous interval representation of $G$ can be obtained from a $d$-simultaneous interval representation of $G'$. 
+    Let $M_1, \dots, M_k$ be the modules in an optimal $\cluster$-modular partition, which can be computed in linear time  by \cref{prop:calculate-cluster-module-partition}. The cliques in each cluster $M_i$ are in turn modules of $G$, so we can apply \cref{prop:si-contract-complete-module} and contract each of them into a vertex, obtaining a graph $G'$ and modules $M'_1, \dots, M'_k$ which are independent sets, such that $\si(G)=\si(G')$ and a $d$-simultaneous interval representation of $G$ can be obtained from a $d$-simultaneous interval representation of $G'$. 
     
     In such a representation of $G'$, for each $M'_i$, either there exist two disjoint intervals, or the intervals are pairwise intersecting. We will then solve at most $2^k$ constrained instances, where we specify for each $1 \leq i \leq k$ such that $|M'_i|>1$, whether in the representation of $M'_i$ there exist two disjoint intervals, or the intervals are pairwise intersecting. In the first case, by \cref{prop:si-interval-module}, we can keep just 2 vertices of $M'_i$. In the second case, at least $|M'_i|$ labels are needed, since the intervals corresponding to vertices of $M'_i$ require pairwise disjoint label sets. So, if $|M'_i| > d$, we can discard the instance. If $|M'_i| \leq d$, by \cref{prop:si-module-pairwise-intersecting}, we may restrict ourselves to solutions in which all vertices of $M'_i$ are represented by the same interval. This preprocessing of each instance can be done in polynomial time.    
 
@@ -940,7 +941,8 @@ As corollaries of \cref{theorem:si-param-cm} and \cref{cor:si-param-twin-cover},
 \end{corollary}
 
 
-\section{Conclusions}
+\section{Conclusions and open problems}
+\label{sec:open-problems}
 We summarize our complexity and algorithmic results in \cref{tab:results}.  
 
 \begin{table}[h]
@@ -951,8 +953,8 @@ We summarize our complexity and algorithmic results in \cref{tab:results}.
 \toprule
 Problem & General & $\intervalmc$ & $\cm$ & $\nd$ & $\tc$ & $\vc$ \\
 \midrule
-\textsc{$\intervals$-MC}  & linear & & & & &  \\
-\textsc{$\clusters$-MC}  & linear & & & & & \\
+\textsc{$\interval$-MC}  & linear & & & & &  \\
+\textsc{$\cluster$-MC}  & linear & & & & & \\
 \textsc{Thinness}  & ~\NP-c~ & linear kernel & linear kernel & linear kernel & ~\FPT~ & \FPT \\
 \textsc{Sim. Int. Num.}~~~  & ~\NP-c~ & ? & \FPT $(\cm + d)$ & \FPT $(\nd + d)$ & ~\FPT~ & \FPT\\
 \bottomrule
@@ -961,9 +963,6 @@ Problem & General & $\intervalmc$ & $\cm$ & $\nd$ & $\tc$ & $\vc$ \\
 \caption{Parameterized complexity results. The parameter $d$ represents the solution size.}\label{tab:results}
 \end{table}%
 
-\section{Open problems}
-\label{sec:open-problems}
-
 Possible avenues of research that this work leaves open include:
 
 \begin{itemize}
@@ -971,7 +970,7 @@ Possible avenues of research that this work leaves open include:
     \item Is \textsc{Thinness} \FPT (or even \textsf{XP}) when parameterized by other parameters, like for example the treewidth of the input graph? The total order involved in the definition of thinness makes it unclear to be amenable to a {\sf CMSO} logic formulation in order to apply Courcelle's theorem~\citep{Courcelle90}. On the other hand, note that \cref{theorem:thinness-kernelization-lower-bound} implies that \textsc{Thinness} is unlikely to admit polynomial kernels parameterized by treewidth. 
     \item Does \textsc{Thinness} admit polynomial kernels when parameterized by the vertex cover or the twin-cover number of the input graph?
     %Something about approximation?
-    \item {Is \textsc{Simultaneous Interval Number}  \FPT (or even \textsf{XP}) when parameterized by the $\clusters$-modular cardinality or the $\intervals$-modular cardinality?}
+    \item {Is \textsc{Simultaneous Interval Number}  \FPT (or even \textsf{XP}) when parameterized by the $\cluster$-modular cardinality or the $\interval$-modular cardinality?}
 \end{itemize}
 
 
