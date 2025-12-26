@@ -346,18 +346,18 @@ If a parameter $p(G)$ is not greater than a function $f$ of another parameter $s
     \end{tikzpicture}}
     \end{center}
     \caption{The relationships between the different width parameters that we consider in this work, and some classical ones. Here, an arrow from parameter $A$ to parameter $B$ means that $A$ is bounded by a function on $B$. Most of the relationships were known and appear in diagrams of~\citep{Milanic-sim,Belm-mw,B-B-M-P-convex-jcss,modular-width}. The remaining ones are proved in \cref{prop:interval-modular-cardinality-parametrization}, \cref{prop:neighborhood-partition-is-cluster-modular-partition,lemma:twin-cover-hcupn,lemma:si-tc}, and the results in \cref{sec:modular-cardinality,sec:parameterizations}.
-    {To explain the incomparability between thinness and modular-width, between simultaneous interval number and both $\interval$-modular cardinality and neighborhood diversity, and between $\interval$-modular cardinality and modular-width, observe that cographs have modular-width~$2$ and unbounded thinness~\citep{tesis-diego}, and complete bipartite graphs have neighborhood diversity~$2$ and unbounded simultaneous interval number~\citep{Milanic-sim}, while paths have simultaneous interval number~$1$, $\interval$-modular cardinality~$1$, and unbounded modular-width.} Cographs have bounded linear mim-width, but inspired by the ideas of \cite{H-A-R-lin-mim-trees}, we can also build graph families of bounded modular-width and unbounded linear mim-width (see Appendix~\ref{sec:modw-vs-lmimw}). %%ver bien 
+    {To explain the incomparability between thinness and modular-width, between simultaneous interval number and both $\interval$-modular cardinality and neighborhood diversity, and between $\interval$-modular cardinality and modular-width, observe that cographs have modular-width~$2$ and unbounded thinness~\citep{tesis-diego}, and complete bipartite graphs have neighborhood diversity~$2$ and unbounded simultaneous interval number~\citep{Milanic-sim}, while paths have simultaneous interval number~$1$, $\interval$-modular cardinality~$1$, and unbounded modular-width.} Cographs have bounded linear mim-width, but inspired by the ideas of \cite{H-A-R-lin-mim-trees}, we can also build graph families of bounded modular-width and unbounded linear mim-width (see \cref{sec:modw-vs-lmimw}). %%ver bien 
     }\label{fig:diagram}
 \end{figure}
 
 The article that introduces the $\G$-modular cardinality~\citep{modular-partitions-MFCS23}\footnote{Full proofs can be found in~\citep{modular-partitions-arxiv}.} presents a polynomial-time algorithm to obtain it for an arbitrary graph when $\G$ meets conditions that are satisfied by the classes $\cluster$ and $\interval$, but their algorithm does not explicitly run in linear time. Thus, we first show that computing the $\cluster$- and $\interval$-modular cardinality of a graph can be done in linear time in \cref{prop:calculate-cluster-module-partition,prop:calculate-interval-module-partition}. 
- In the case of the $\interval$-modular cardinality, this necessitates the results in \cref{prop:contract-complete-module,prop:contract-interval-module}, which allow the elimination of most of the vertices of a module that induces an interval graph without modifying the thinness of the whole graph. These results cannot be easily generalized to modules that induce graphs with bounded thinness; we show this in Appendix~\ref{sec:counterexample} by providing a counterexample to a possible generalization of them. Then, we use these results to present linear kernels for the \textsc{Thinness} problem when parameterized by the $\interval$-modular cardinality (\cref{prop:interval-modular-cardinality-parametrization}) and neighborhood diversity (\cref{prop:neighborhood-diversity-parametrization}) of the input graph, and exponential kernels when parameterized by the twin-cover number (\cref{prop:twin-cover-parametrization}) and vertex cover number (\cref{prop:vertex-cover-parametrization}). Additionally, we show \FPT algorithms for the \textsc{Simultaneous Interval Number} problem parameterized by the $\cluster$-modular cardinality plus the solution size (\cref{theorem:si-param-cm}), neighborhood diversity plus the solution size (\cref{corol:si-param-nd-vc}), twin-cover number (\cref{cor:si-param-twin-cover}), and vertex cover number (\cref{corol:si-param-nd-vc}). For kernelization lower bounds, we observe in \cref{theorem:thinness-kernelization-lower-bound} that no polynomial kernels are likely to exist for the \textsc{Thinness} or \textsc{Simultaneous Interval Number} problems when parameterized by a number of graph parameters, including treewidth, modular-width, and the thinness and simultaneous interval number themselves. Finally, in Appendix~\ref{sec:modw-vs-lmimw} we complete the relationships of \cref{fig:diagram} by proving that modular-width and linear mim-width do not generalize one another.
+ In the case of the $\interval$-modular cardinality, this necessitates the results in \cref{prop:contract-complete-module,prop:contract-interval-module}, which allow the elimination of most of the vertices of a module that induces an interval graph without modifying the thinness of the whole graph. These results cannot be easily generalized to modules that induce graphs with bounded thinness; we show this in \cref{sec:counterexample} by providing a counterexample to a possible generalization of them. Then, we use these results to present linear kernels for the \textsc{Thinness} problem when parameterized by the $\interval$-modular cardinality (\cref{prop:interval-modular-cardinality-parametrization}) and neighborhood diversity (\cref{prop:neighborhood-diversity-parametrization}) of the input graph, and exponential kernels when parameterized by the twin-cover number (\cref{prop:twin-cover-parametrization}) and vertex cover number (\cref{prop:vertex-cover-parametrization}). Additionally, we show \FPT algorithms for the \textsc{Simultaneous Interval Number} problem parameterized by the $\cluster$-modular cardinality plus the solution size (\cref{theorem:si-param-cm}), neighborhood diversity plus the solution size (\cref{corol:si-param-nd-vc}), twin-cover number (\cref{cor:si-param-twin-cover}), and vertex cover number (\cref{corol:si-param-nd-vc}). For kernelization lower bounds, we observe in \cref{theorem:thinness-kernelization-lower-bound} that no polynomial kernels are likely to exist for the \textsc{Thinness} or \textsc{Simultaneous Interval Number} problems when parameterized by a number of graph parameters, including treewidth, modular-width, and the thinness and simultaneous interval number themselves. Finally, in \cref{sec:modw-vs-lmimw} we complete the relationships of \cref{fig:diagram} by proving that modular-width and linear mim-width do not generalize one another.
 
 In order to achieve the results mentioned above, we highlight, in particular, the following technical contributions: determining in \cref{prop:contract-interval-module} that almost all vertices belonging to a module that induces an interval graph can be eliminated without modifying the thinness of the graph, and presenting an \FPT algorithm for \textsc{Simultaneous Interval Number} when parameterized by the $\cluster$-modular cardinality in \cref{theorem:si-param-cm} by reducing the problem to a limited number of small instances.
 
 \paragraph{Organization of the paper.} In \cref{sec:preliminaries} we state some necessary definitions. In \cref{sec:reducing-modules} we prove some lemmas about the thinness of a graph after removing vertices that belong to the same module. In \cref{sec:modular-cardinality} we show linear-time algorithms to compute the $\cluster$- and $\interval$-modular cardinality of a graph. In \cref{sec:parameterizations} we use the results from \cref{sec:reducing-modules} to compute kernels for the {\sc Thinness} problem parameterized by the $\interval$- and $\cluster$-modular cardinality, neighborhood diversity, twin-cover number, and vertex cover number of the input graph.
 In \cref{sec:sim-int} we present \FPT algorithms for the {\sc Simultaneous Interval Number} problem parameterized by the $\cluster$-modular cardinality plus the solution size, neighborhood diversity plus the solution size, twin-cover number, and vertex cover number. We summarize our algorithmic results and present some open problems in \cref{sec:open-problems}.
-In Appendix~\ref{sec:modw-vs-lmimw} we show that there exist graph families with bounded modular-width and unbounded linear mim-width, completing the diagram of \cref{fig:diagram}. In Appendix~\ref{sec:counterexample} we show a counterexample to a possible generalization of the results of \cref{sec:reducing-modules}. In Appendix~\ref{sec:lower-bounds} we observe that polynomial kernels are unlikely to exist for the \textsc{Thinness} {and \textsc{Simultaneous Interval Number} problems} parameterized by some common graph parameters, including treewidth, modular-width, and the thinness {and simultaneous interval number themselves}; {we moved this section to the appendix because its proofs are nowadays standard in the field of parameterized complexity.}
+In \cref{sec:modw-vs-lmimw} we show that there exist graph families with bounded modular-width and unbounded linear mim-width, completing the diagram of \cref{fig:diagram}. In \cref{sec:counterexample} we show a counterexample to a possible generalization of the results of \cref{sec:reducing-modules}. In \cref{sec:lower-bounds} we observe that polynomial kernels are unlikely to exist for the \textsc{Thinness} {and \textsc{Simultaneous Interval Number} problems} parameterized by some common graph parameters, including treewidth, modular-width, and the thinness {and simultaneous interval number themselves}; {we moved this section to the appendix because its proofs are nowadays standard in the field of parameterized complexity.}
 
 \section{Preliminaries}
 \label{sec:preliminaries}
@@ -622,7 +622,7 @@ A similar lemma holds for modules that induce interval graphs that are not compl
 \end{proof}
 
 In \cref{prop:contract-interval-module}, the choice of replacing $H$ with two independent vertices is superfluous: in fact, replacing the module with any non-complete interval graph would maintain the thinness of the whole graph. Recalling that interval graphs are exactly the graphs of thinness one, it seems sensible to ask whether \cref{prop:contract-interval-module} could be generalized to modules of greater thinness. In particular, \emph{is the thinness of a graph $G$ maintained when modules of thinness two are replaced by any other graph $H'$ such that $\thin(H') = 2$?} 
-The answer is negative, and we defer the construction of a counterexample to Appendix~\ref{sec:counterexample}.
+The answer is negative, and we defer the construction of a counterexample to \cref{sec:counterexample}.
 
 % \vspace{0.5em}
 Combining \cref{prop:contract-complete-module} and \cref{prop:contract-interval-module}, we see that if a module $H$ induces an interval graph, almost all vertices of $H$ can be removed without altering the thinness of the graph. Given a \textsc{Thinness} instance and a partition of the input graph into $\interval$-modules, this can be used in a preprocessing step to reduce the size of the input graph, and thus obtain a kernel. We thus need a way to efficiently calculate the minimum number of modules in an $\interval$-modular partition of the graph, and this is done in the next section.
@@ -960,6 +960,8 @@ Possible avenues of research that this work leaves open include:
 
 \newpage
 \begin{appendices}
+\crefalias{section}{appendix} % To fix crefs to appendices
+
 
 \section{Modular-width vs. linear mim-width}\label{sec:modw-vs-lmimw}
 
@@ -1074,7 +1076,7 @@ for every $n \geq 0$, $H_{n+1}$ is obtained from a bipartite claw by substitutin
 		\draw (11) to (51);
 	\end{pgfonlayer}
 \end{tikzpicture}}
-    \caption{The graphs $H_0$, $H_1$, and $H_2$ defined in \ref{sec:modw-vs-lmimw}.}
+    \caption{The graphs $H_0$, $H_1$, and $H_2$.}
     \label{fig:bip-claw}
 \end{figure}
 
@@ -1083,7 +1085,7 @@ The graphs in $\{H_n\}_{n\geq 0}$ have modular-width~7, since in the modular dec
 \begin{figure}[ht]
     \centering
         \resizebox{\textwidth}{!}{%
-\begin{tikzpicture}[scale=0.7]
+\begin{tikzpicture}[scale=0.8]
 
 \begin{scope}[xshift=0cm,yshift=0cm]
 
@@ -1193,10 +1195,10 @@ The graphs in $\{H_n\}_{n\geq 0}$ have modular-width~7, since in the modular dec
 \vertex{7.3-7.7}{1}{z11};
 
 
-\node[draw, gray!30!black,fill=gray!50,rounded corners=3,opacity=0.5, fit={(3.3,3.6) (8.3,4.5)}, inner sep=0.25pt, label=center:{\phantom{j}{\small Prime}\phantom{jaaaaaaaaaaaa}}] (F) {};
-\node[draw, gray!30!black,fill=gray!50,rounded corners=3,opacity=0.5, fit={(3.3,1.6) (8.3,2.5)}, inner sep=0.25pt, label=center:{\phantom{j}{\small Prime}\phantom{jaaaaaaaaaaaa}}] (G) {};
-\node[draw, gray!30!black,fill=gray!50,rounded corners=3,opacity=0.5, fit={(-4.4,1.6) (0.6,2.5)}, inner sep=0.25pt, label=center:{\phantom{j}{\small Prime}\phantom{jaaaaaaaaaaaa}}] (H) {};
-\node[draw, gray!30!black,fill=gray!50,rounded corners=3,opacity=0.5, fit={(11,1.6) (16,2.5)}, inner sep=0.25pt, label=center:{\phantom{j}{\small Prime}\phantom{jaaaaaaaaaaaa}}] (I) {};
+\node[draw, gray!30!black,fill=gray!50,rounded corners=3,opacity=0.5, fit={(3.3,3.6) (8.3,4.5)}, inner sep=0.25pt, label=center:{\phantom{j}{\small Prime}\phantom{jaaaaaaaaaaaaaa}}] (F) {};
+\node[draw, gray!30!black,fill=gray!50,rounded corners=3,opacity=0.5, fit={(3.3,1.6) (8.3,2.5)}, inner sep=0.25pt, label=center:{\phantom{j}{\small Prime}\phantom{jaaaaaaaaaaaaaa}}] (G) {};
+\node[draw, gray!30!black,fill=gray!50,rounded corners=3,opacity=0.5, fit={(-4.4,1.6) (0.6,2.5)}, inner sep=0.25pt, label=center:{\phantom{j}{\small Prime}\phantom{jaaaaaaaaaaaaaa}}] (H) {};
+\node[draw, gray!30!black,fill=gray!50,rounded corners=3,opacity=0.5, fit={(11,1.6) (16,2.5)}, inner sep=0.25pt, label=center:{\phantom{j}{\small Prime}\phantom{jaaaaaaaaaaaaaa}}] (I) {};
 \draw (F)--(v1);
 \draw (F)--(v2);
 \draw (F)--(v3);
@@ -1229,7 +1231,7 @@ The graphs in $\{H_n\}_{n\geq 0}$ have modular-width~7, since in the modular dec
 \end{scope}
 \end{tikzpicture} 
 }%
-\caption{Modular decomposition of the graph $H_2$ defined in \ref{sec:modw-vs-lmimw}.}
+\caption{Modular decomposition of the graph $H_2$.}
     \label{fig:H2-decomp}
 \end{figure}
 
