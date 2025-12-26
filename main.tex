@@ -11,7 +11,7 @@
 % We strongly recommend to use natbib. Your colleagues deserve to be
 % named in your text. PLEASE, ADAPT YOUR TEXT ACCORDINGLY, such that
 % citations are grammatically correct.
-\usepackage[round]{natbib}
+\usepackage[numbers]{natbib}
 
 \usepackage{amsfonts, amsthm, amsmath, amssymb}
 % \usepackage{thmtools}
@@ -285,16 +285,16 @@ On the negative side, we observe that \textsc{Thinness} and \textsc{Simultaneous
 The class of interval graphs~\citep{interval-graphs} has many useful properties that makes it amenable to fast algorithms for many common problems~\citep{Ola-interval,R-PR-interval}. Thus, many graph parameters were defined aiming at quantifying the distance of a graph to an interval graph in some way, including the \emph{interval number}~\citep{interval-number}, the \emph{track number}~\citep{multitrack-interval-graphs}, the \emph{thinness}~\citep{M-O-R-C-thinness}, and, more recently, the \emph{simultaneous interval number}~\citep{Milanic-sim}, among others. If one of these parameters is small for a class of graphs $\G$, some properties of interval graphs are possibly maintained on $\G$, and therefore some problems that are easy on interval graphs might be easy on $\G$ as well. In this work we focus on two of these parameters: the thinness and the simultaneous interval number. In particular, we will be interested in computing them efficiently. We defer their formal definitions to \cref{sec:preliminaries}. We now proceed to briefly motivate the study of these graph parameters.
 
 
-\paragraph{Thinness.} The thinness of a graph was introduced by \cite{M-O-R-C-thinness} to solve the \textsc{Maximum Independent Set} problem in polynomial time when a suitable representation of the input graph is given. The concept of thinness can be seen as a generalization of the characterization of interval graphs as those that admit an ordering $<$ of the vertices such that for every triple of vertices $u < v < w$, if $(u,w)$ is an edge, then $(v,w)$ is also an edge~\citep{forbidden-ordered-subgraphs}. The thinness of a graph is the minimum size of a partition of the vertices such that every triple of vertices $u < v < w$ either meets the condition mentioned above, or $u$ and $v$ belong to different parts of the partition. Observe that interval graphs are exactly the graphs of thinness one.
+\paragraph{Thinness.} The thinness of a graph was introduced by \citet{M-O-R-C-thinness} to solve the \textsc{Maximum Independent Set} problem in polynomial time when a suitable representation of the input graph is given. The concept of thinness can be seen as a generalization of the characterization of interval graphs as those that admit an ordering $<$ of the vertices such that for every triple of vertices $u < v < w$, if $(u,w)$ is an edge, then $(v,w)$ is also an edge~\citep{forbidden-ordered-subgraphs}. The thinness of a graph is the minimum size of a partition of the vertices such that every triple of vertices $u < v < w$ either meets the condition mentioned above, or $u$ and $v$ belong to different parts of the partition. Observe that interval graphs are exactly the graphs of thinness one.
 
 Given a suitable representation for a graph with thinness bounded by $t$, many other problems including \textsc{Clique} were shown to be solvable in \XP-time parameterized by $t$, while problems like \textsc{Capacitated $k$-Coloring} and \textsc{List $k$-Coloring} are \XP parameterized by $t$ plus the number of color classes~\citep{M-O-R-C-thinness,B-M-O-thin-tcs,C-T-V-Z--H-top-thin,tesis-diego}. It is worth noting that \textsc{Chromatic Number} is \NP-complete for $t=2$, even if the representation is given~\citep{BBOSSS-thin-coloring}.
 
 
-\paragraph{Simultaneous interval number.} The simultaneous interval number was recently introduced by \cite{Milanic-sim}. It generalizes the class of interval graphs by assigning not only an interval to each vertex, but also a subset of \emph{labels} from the set $\{1,\dots,d\}$, with $d\in \N$. The representation must be such that two vertices are adjacent in the graph if and only if their intervals \textbf{and} their sets of labels intersect. The simultaneous interval number is the minimum number $d$ for which there exists such a representation.
+\paragraph{Simultaneous interval number.} The simultaneous interval number was recently introduced by \citet{Milanic-sim}. It generalizes the class of interval graphs by assigning not only an interval to each vertex, but also a subset of \emph{labels} from the set $\{1,\dots,d\}$, with $d\in \N$. The representation must be such that two vertices are adjacent in the graph if and only if their intervals \textbf{and} their sets of labels intersect. The simultaneous interval number is the minimum number $d$ for which there exists such a representation.
 
-In their work, \cite{Milanic-sim} show that when given a suitable representation for a graph with simultaneous interval number bounded by $d$, \textsc{Clique} is \FPT parameterized by $d$, and \textsc{Independent Set} and \textsc{Dominating Set} are \FPT parameterized by $d$ plus the solution size. On the other hand, \textsc{Chromatic Number} is \NP-complete for $d=2$, even if the representation is given.
+In their work, \citet{Milanic-sim} show that when given a suitable representation for a graph with simultaneous interval number bounded by $d$, \textsc{Clique} is \FPT parameterized by $d$, and \textsc{Independent Set} and \textsc{Dominating Set} are \FPT parameterized by $d$ plus the solution size. On the other hand, \textsc{Chromatic Number} is \NP-complete for $d=2$, even if the representation is given.
 
-Unfortunately, determining the value of these two parameters is \NP-hard on general graphs \citep{Milanic-sim, thinness-np-complete}. This prompts the investigation of algorithms for these two parameters on restricted classes of inputs. For a start, \textsc{Thinness} was solved in polynomial time for cographs by \cite{tesis-diego} and for trees by \cite{thinness-of-trees}. Some classes of graphs with bounded thinness, where a bounded-size consistent solution can be obtained in polynomial time, were identified by \cite{B-B-M-P-convex-jcss}. On the other hand, not much is known about the complexity of \textsc{Simultaneous Interval Number} on restricted graph classes. 
+Unfortunately, determining the value of these two parameters is \NP-hard on general graphs \citep{Milanic-sim, thinness-np-complete}. This prompts the investigation of algorithms for these two parameters on restricted classes of inputs. For a start, \textsc{Thinness} was solved in polynomial time for cographs by \citet{tesis-diego} and for trees by \citet{thinness-of-trees}. Some classes of graphs with bounded thinness, where a bounded-size consistent solution can be obtained in polynomial time, were identified by \citet{B-B-M-P-convex-jcss}. On the other hand, not much is known about the complexity of \textsc{Simultaneous Interval Number} on restricted graph classes. 
 
 \paragraph{Our contribution.} Given the inherent hardness discussed above, a natural approach is to search for parameterized algorithms for the \textsc{Thinness} and \textsc{Simultaneous Interval Number} problems, which ask to find the value of the corresponding parameters for a given graph. In particular, previous to this work there were no known \FPT or even \XP algorithms for computing any of the two parameters.
 
@@ -302,9 +302,9 @@ The field of parameterized complexity focuses on finding fast algorithms for pro
 
 The existence of \FPT or even \XP algorithms for \textsc{Thinness} or \textsc{Simultaneous Interval Number} parameterized by the solution (the numbers $t$ and $d$, respectively) is open. These would be the most natural parameterizations to consider, but unfortunately, these algorithms seem difficult to obtain. We thus focus instead on parameterizing the problems by other relatively natural parameters based on partitions of the input graph into modules.
 
-The concept of \emph{$\G$-modular cardinality} of a graph $G$ for a fixed graph class $\G$ was introduced by \cite{modular-partitions-MFCS23} as the minimum number of parts in a partition of $G$ into modules, each inducing a graph in the class $\G$. In their article, Lafond and Luo study the complexity of domination problems parameterized by the $\G$-modular cardinality for some classes $\G$, and they use their results to show that these problems are $W[1]$-hard when parameterized by the clique-width, the modular-width, and other parameters. Additionally, positive results for problems parameterized by the $\G$-modular cardinality imply positive results when parameterized by the neighborhood diversity, the twin-cover number, and the vertex cover number. We will be focusing on the parameterizations by the $\cluster$-modular cardinality and the $\interval$-modular cardinality, where $\cluster$ is the class of unions of complete graphs, and $\interval$ is the class of interval graphs. 
+The concept of \emph{$\G$-modular cardinality} of a graph $G$ for a fixed graph class $\G$ was introduced by \citet{modular-partitions-MFCS23} as the minimum number of parts in a partition of $G$ into modules, each inducing a graph in the class $\G$. In their article, Lafond and Luo study the complexity of domination problems parameterized by the $\G$-modular cardinality for some classes $\G$, and they use their results to show that these problems are $W[1]$-hard when parameterized by the clique-width, the modular-width, and other parameters. Additionally, positive results for problems parameterized by the $\G$-modular cardinality imply positive results when parameterized by the neighborhood diversity, the twin-cover number, and the vertex cover number. We will be focusing on the parameterizations by the $\cluster$-modular cardinality and the $\interval$-modular cardinality, where $\cluster$ is the class of unions of complete graphs, and $\interval$ is the class of interval graphs. 
 
-If a parameter $p(G)$ is not greater than a function $f$ of another parameter $s(G)$ for every graph $G$, we say that $p$ \emph{generalizes} $s$. In particular, the $\interval$-modular cardinality generalizes the $\cluster$-modular cardinality. This means that obtaining a kernel for a problem parameterized by the $\interval$-modular cardinality of the input graph automatically yields a kernel for the problem parameterized by the $\cluster$-modular cardinality. In turn, the $\cluster$-modular cardinality generalizes the neighborhood diversity and the twin-cover number (both of which generalize the vertex cover number), and is less general than the modular-width. A relationship diagram of thinness and other graph width parameters can be found in a work by \cite{B-B-M-P-convex-jcss}. We combine in \cref{fig:diagram} the figure by \cite{B-B-M-P-convex-jcss} with figures by \cite{Milanic-sim},~\cite{Belm-mw}, and~\cite{modular-width}, and further include the $\cluster$- and $\interval$-modular cardinalities.
+If a parameter $p(G)$ is not greater than a function $f$ of another parameter $s(G)$ for every graph $G$, we say that $p$ \emph{generalizes} $s$. In particular, the $\interval$-modular cardinality generalizes the $\cluster$-modular cardinality. This means that obtaining a kernel for a problem parameterized by the $\interval$-modular cardinality of the input graph automatically yields a kernel for the problem parameterized by the $\cluster$-modular cardinality. In turn, the $\cluster$-modular cardinality generalizes the neighborhood diversity and the twin-cover number (both of which generalize the vertex cover number), and is less general than the modular-width. A relationship diagram of thinness and other graph width parameters can be found in a work by \citet{B-B-M-P-convex-jcss}. We combine in \cref{fig:diagram} the figure by \citet{B-B-M-P-convex-jcss} with figures by \citet{Milanic-sim}, \citet{Belm-mw}, and \citet{modular-width}, and further include the $\cluster$- and $\interval$-modular cardinalities.
 
 
 \begin{figure}[ht]
@@ -346,7 +346,7 @@ If a parameter $p(G)$ is not greater than a function $f$ of another parameter $s
     \end{tikzpicture}}
     \end{center}
     \caption{The relationships between the different width parameters that we consider in this work, and some classical ones. Here, an arrow from parameter $A$ to parameter $B$ means that $A$ is bounded by a function on $B$. Most of the relationships were known and appear in diagrams of~\citep{Milanic-sim,Belm-mw,B-B-M-P-convex-jcss,modular-width}. The remaining ones are proved in \cref{prop:interval-modular-cardinality-parametrization}, \cref{prop:neighborhood-partition-is-cluster-modular-partition,lemma:twin-cover-hcupn,lemma:si-tc}, and the results in \cref{sec:modular-cardinality,sec:parameterizations}.
-    {To explain the incomparability between thinness and modular-width, between simultaneous interval number and both $\interval$-modular cardinality and neighborhood diversity, and between $\interval$-modular cardinality and modular-width, observe that cographs have modular-width~$2$ and unbounded thinness~\citep{tesis-diego}, and complete bipartite graphs have neighborhood diversity~$2$ and unbounded simultaneous interval number~\citep{Milanic-sim}, while paths have simultaneous interval number~$1$, $\interval$-modular cardinality~$1$, and unbounded modular-width.} Cographs have bounded linear mim-width, but inspired by the ideas of \cite{H-A-R-lin-mim-trees}, we can also build graph families of bounded modular-width and unbounded linear mim-width (see \cref{sec:modw-vs-lmimw}). %%ver bien 
+    {To explain the incomparability between thinness and modular-width, between simultaneous interval number and both $\interval$-modular cardinality and neighborhood diversity, and between $\interval$-modular cardinality and modular-width, observe that cographs have modular-width~$2$ and unbounded thinness~\citep{tesis-diego}, and complete bipartite graphs have neighborhood diversity~$2$ and unbounded simultaneous interval number~\citep{Milanic-sim}, while paths have simultaneous interval number~$1$, $\interval$-modular cardinality~$1$, and unbounded modular-width.} Cographs have bounded linear mim-width, but inspired by the ideas of \citet{H-A-R-lin-mim-trees}, we can also build graph families of bounded modular-width and unbounded linear mim-width (see \cref{sec:modw-vs-lmimw}). %%ver bien 
     }\label{fig:diagram}
 \end{figure}
 
@@ -583,7 +583,7 @@ We say that $g(k)$ is the \emph{size} of the kernel.
 
 We begin by showing that if a sufficiently large group of vertices have the same neighborhood, some of them can be removed from a graph without affecting its thinness. This will be key in proving the kernelizations results for \textsc{Thinness} in \cref{sec:parameterizations}, and when showing the linear time algorithm to compute the $\interval$-modular cardinality in \cref{prop:calculate-interval-module-partition}.
 
-We state here a result by \cite{thinness-of-product-graphs} on the thinness of a graph after contracting a complete module.
+We state here a result by \citet{thinness-of-product-graphs} on the thinness of a graph after contracting a complete module.
 
 \begin{lemma}[{\citep[Theorem 35]{thinness-of-product-graphs}}]
     \label[lemma]{prop:contract-complete-module}
@@ -650,7 +650,7 @@ First, we compute the modular decomposition tree $T$ of $G$, which can be done i
         \end{align*}
         In other words, we take the vertices of the child nodes $t_i$ for which $G_{t_i}$ is a complete graph, and join them into one class to build the first class of $S_t$. Then, we add the classes of all the other partitions as they are.
 
-        As shown by \cite{modular-decomposition}, the only modules present in $G_t$ are the possible unions of elements of $\mathcal{C}$, and the submodules of elements of $\mathcal{C}$. That is to say, $G_t$ has no modules that contain some but not all vertices of some $G_i$, and some but not all vertices of some $G_j$, with $i \neq j$.
+        As shown by \citet{modular-decomposition}, the only modules present in $G_t$ are the possible unions of elements of $\mathcal{C}$, and the submodules of elements of $\mathcal{C}$. That is to say, $G_t$ has no modules that contain some but not all vertices of some $G_i$, and some but not all vertices of some $G_j$, with $i \neq j$.
 
         Let us see first that this is a valid $\cluster$-modular partition. By the previous remark, the class $\Shead$ and every element of $\Stail$ are modules. If $G_t$ is a parallel node, $\Shead$ is a union of complete graphs, meaning, a cluster. If $G_t$ is a series node, $\Shead$ is itself a complete graph, and so it is also a cluster. The elements of $\Stail$ are clusters, as they are part of the $\cluster$-modular partitions of the children of~$G_t$. Moreover, all vertices of $G_t$ are present in some set of the partition, and thus $S_t$ is a valid $\cluster$-modular partition.
 
@@ -665,7 +665,7 @@ First, we compute the modular decomposition tree $T$ of $G$, which can be done i
         
         \item \textbf{Prime}: We define $S_t$ to be the union of $S_i$ for every $1 \leq i \leq h$.
         
-        As shown by \cite{modular-decomposition}, the proper modules of $G_t$ are exactly the submodules of the associated graphs of children of $G_t$. Thus, an optimal $\cluster$-modular partition of $G_t$ must contain an optimal $\cluster$-modular partition of every child $G_i$, and so $S_t$ is optimal.
+        As shown by \citet{modular-decomposition}, the proper modules of $G_t$ are exactly the submodules of the associated graphs of children of $G_t$. Thus, an optimal $\cluster$-modular partition of $G_t$ must contain an optimal $\cluster$-modular partition of every child $G_i$, and so $S_t$ is optimal.
     \end{itemize}
 
     To achieve linear time on this algorithm, the partitions $S_t$ are not actually computed. Instead, we set a flag on each child $t_i$ of a series or parallel node $t$ such that $G_{t_i}$ belongs to $\Shead$. Recognizing these children can be done with a simple bottom-up traversal of the tree that marks each node whose associated graph is complete (i.e., a parallel node whose children are leaves). Finally, a top-down traversal of the tree allows us to propagate to which class each of the leaf nodes belongs. These operations can be performed in time linear in the number of nodes in the tree, and thus this algorithm runs in linear time.
@@ -705,7 +705,7 @@ In particular, \cref{prop:thinness-join} implies that the join of two graphs is 
             \item Each class is a module, a $C_1$ is a union of modules, and all the other classes belong to $\interval$-modular partitions of induced subgraphs.
         \end{itemize}
 
-        Let us see that $\abs{S_t}$ is minimum. Again, as shown by \cite{modular-decomposition}, the only modules of $G_t$ are unions of children of $G_t$, or submodules of children of $G_t$. Thus, in every $\interval$-modular partition $S'_t$ of $G_t$,
+        Let us see that $\abs{S_t}$ is minimum. Again, as shown by \citet{modular-decomposition}, the only modules of $G_t$ are unions of children of $G_t$, or submodules of children of $G_t$. Thus, in every $\interval$-modular partition $S'_t$ of $G_t$,
         \begin{enumerate}
             \item\label{item:union} by \cref{prop:thinness-union}, each class that induces a union of disjoint graphs must have interval graphs as connected components; and
             \item\label{item:submodules} every other class must be a submodule of one of the children of $G_t$.
@@ -729,9 +729,9 @@ In particular, \cref{prop:thinness-join} implies that the join of two graphs is 
 
         \item \textbf{Prime}: If $G_t$ is an interval graph, define $S_t \coloneqq \{V(G_t)\}$. Otherwise, $S_t \coloneqq \bigcup_{G_i \in \mathcal{C}}S_i$.
 
-        It is clear that, in both cases, $S_t$ is an $\interval$-modular partition. Also, as shown by \cite{modular-decomposition}, the only proper submodules of a prime node are the modules of children of the node. Thus, if $G_t$ is not an interval graph, the partition must be the union of $\interval$-modular partitions of the children of $G_t$, and therefore $S_t$ is optimal.
+        It is clear that, in both cases, $S_t$ is an $\interval$-modular partition. Also, as shown by \citet{modular-decomposition}, the only proper submodules of a prime node are the modules of children of the node. Thus, if $G_t$ is not an interval graph, the partition must be the union of $\interval$-modular partitions of the children of $G_t$, and therefore $S_t$ is optimal.
 
-        It remains to show how to determine if $G_t$ is an interval graph or not. In principle, one could run a linear-time algorithm that decides if a graph is interval or not on $G_t$, for example the one by \cite{B-L-interval}. The issue is that running a linear time algorithm for each of the prime nodes of the modular decomposition yields a runtime complexity of $\O(n^2)$, which is more than what we want.
+        It remains to show how to determine if $G_t$ is an interval graph or not. In principle, one could run a linear-time algorithm that decides if a graph is interval or not on $G_t$, for example the one by \citet{B-L-interval}. The issue is that running a linear time algorithm for each of the prime nodes of the modular decomposition yields a runtime complexity of $\O(n^2)$, which is more than what we want.
 
         To remedy this, we will utilize the lemmas presented in \cref{sec:reducing-modules} to reduce the number of vertices in $G_t$ without changing the thinness. First, if any one of the children of $G_t$ is not an interval graph, then, as the thinness is a hereditary property, graph $G_t$ is also not an interval graph. Otherwise, we create a graph $G'_t$ by contracting every child that is a complete graph into a single vertex, and contracting every other child that is an interval graph into two nonadjacent vertices. By \cref{prop:contract-complete-module,prop:contract-interval-module}, graph $G'_t$ has the same thinness as $G_t$. In particular, $G'_t$ is an interval graph if and only if $G_t$ is an interval graph. Thus, we finish by running a linear-time algorithm to decide if $G'_t$ is an interval graph or not.
 
@@ -766,7 +766,7 @@ The following lemmas show that the neighborhood partition of a graph is also a $
     Let $G$ be a graph with neighborhood diversity $k$, and let $V_1, \dots, V_k$ be a neighborhood partition of width $k$ of the vertices of $G$. Then each $V_i$ induces either a clique or an independent set.
 \end{lemma}
 
-\cite{modular-partitions-MFCS23} state in their article that the $\cluster$-modular cardinality generalizes the neighborhood diversity. We present a proof of this fact here for completeness.
+\citet{modular-partitions-MFCS23} state in their article that the $\cluster$-modular cardinality generalizes the neighborhood diversity. We present a proof of this fact here for completeness.
 
 \begin{lemma}
     \label[lemma]{prop:neighborhood-partition-is-cluster-modular-partition}
@@ -837,7 +837,7 @@ We first formally define the problem.
 
 \defproblem{Simultaneous Interval Number}{A graph $G$ and an integer $d \geq 0$.}{Is $\si(G) \leq d$? I.e., Does $G$ admit a $d$-simultaneous interval representation?}
 
-It was proved by \cite{Milanic-sim} that $\si(G)=0$ if and only if the graph $G$ is edgeless and that $\si(G)\leq 1$  if and only if $G$ is an interval graph. Indeed, interval graphs can be represented by their own interval representation and labeling all vertices with the set $\{1\}$.
+It was proved by \citet{Milanic-sim} that $\si(G)=0$ if and only if the graph $G$ is edgeless and that $\si(G)\leq 1$  if and only if $G$ is an interval graph. Indeed, interval graphs can be represented by their own interval representation and labeling all vertices with the set $\{1\}$.
 
 We prove here results about modules and simultaneous interval representations.
 \begin{lemma}
@@ -858,7 +858,7 @@ We can generalize this to the following property.
 \end{proof}
 
 Now, we describe the situation for modules that induce interval graphs that are not complete, which in particular include the independent sets.
-For complete bipartite graphs, it was proved by \cite{Milanic-sim} that $\si(K_{n,m})=\min\{n,m\}$. The argument used is that, in a $d$-simultaneous interval representation of a complete bipartite graph with bipartition $(X,Y)$, at most one of the sets of intervals representing $X$ and $Y$ can contain two disjoint intervals, so the other set consists of pairwise intersecting intervals that must have pairwise disjoint label sets, thus $d$ is at least the size of that set. We will make here a further observation. 
+For complete bipartite graphs, it was proved by \citet{Milanic-sim} that $\si(K_{n,m})=\min\{n,m\}$. The argument used is that, in a $d$-simultaneous interval representation of a complete bipartite graph with bipartition $(X,Y)$, at most one of the sets of intervals representing $X$ and $Y$ can contain two disjoint intervals, so the other set consists of pairwise intersecting intervals that must have pairwise disjoint label sets, thus $d$ is at least the size of that set. We will make here a further observation. 
 
 \begin{lemma}
 \label[lemma]{prop:si-interval-module}
@@ -941,7 +941,7 @@ Problem & General & $\intervalmc$ & $\cm$ & $\nd$ & $\tc$ & $\vc$ \\
 Possible avenues of research that this work leaves open include:
 
 \begin{itemize}
-    \item Is \textsc{Thinness} \FPT (or even \textsf{XP}) when parameterized by the solution size, that is, the desired thinness of the input graph? Note that both a positive or a negative answer are compatible with the non-existence of a polynomial kernel proved in \cref{theorem:thinness-kernelization-lower-bound}. Combining the results by \cite{tesis-diego} and \cite{thinness-np-complete}, we can reduce an instance of the \textsc{Non-Betweenness} problem to an instance of \textsc{Thinness}. The thinness of the constructed graph depends in part on the size of the \textsc{Non-Betweenness} instance, and thus leaves open the possibility of a polynomial-time algorithm for \textsc{Thinness} when the thinness of the input graph is bounded by a constant.
+    \item Is \textsc{Thinness} \FPT (or even \textsf{XP}) when parameterized by the solution size, that is, the desired thinness of the input graph? Note that both a positive or a negative answer are compatible with the non-existence of a polynomial kernel proved in \cref{theorem:thinness-kernelization-lower-bound}. Combining the results by \citet{tesis-diego} and \citet{thinness-np-complete}, we can reduce an instance of the \textsc{Non-Betweenness} problem to an instance of \textsc{Thinness}. The thinness of the constructed graph depends in part on the size of the \textsc{Non-Betweenness} instance, and thus leaves open the possibility of a polynomial-time algorithm for \textsc{Thinness} when the thinness of the input graph is bounded by a constant.
     \item Is \textsc{Thinness} \FPT (or even \textsf{XP}) when parameterized by other parameters, like for example the treewidth of the input graph? The total order involved in the definition of thinness makes it unclear to be amenable to a {\sf CMSO} logic formulation in order to apply Courcelle's theorem~\citep{Courcelle90}. On the other hand, note that \cref{theorem:thinness-kernelization-lower-bound} implies that \textsc{Thinness} is unlikely to admit polynomial kernels parameterized by treewidth. 
     \item Does \textsc{Thinness} admit polynomial kernels when parameterized by the vertex cover or the twin-cover number of the input graph?
     %Something about approximation?
@@ -967,7 +967,7 @@ Possible avenues of research that this work leaves open include:
 
 Let $G$ be a graph. Given a linear layout $v_1,v_2, \dots, v_n$ of $V(G)$, the \textit{mim of a cut} $v_1, \dots, v_i | v_{i+1}, \dots, v_n$
 is the maximum number of edges of an induced matching in the bipartite graph with bipartition $A_i\coloneqq\{v_1, \dots, v_i\}, B_i\coloneqq\{v_{n+1}, \dots, v_n\}$ and edge set formed by the edges o $G$ with one endpoint in $A_i$ and the other in $B_i$. The \textit{mim-width of the linear layout} is the maximum mim over its cuts, and the \textit{linear mim-width of graph $G$}, denoted by $\lmimw(G)$, is the minimum mim-width over its linear layouts.
-\cite{Saether-branch} proved the \NP-hardness for deciding both mim-width and linear mim-width, and, moreover, that they do not admit either \FPT or constant-factor approximation algorithms under common complexity assumptions.
+\citet{Saether-branch} proved the \NP-hardness for deciding both mim-width and linear mim-width, and, moreover, that they do not admit either \FPT or constant-factor approximation algorithms under common complexity assumptions.
 
 We describe here a graph family of bounded modular-width and unbounded linear mim-width. 
 
@@ -1080,7 +1080,7 @@ for every $n \geq 0$, $H_{n+1}$ is obtained from a bipartite claw by substitutin
     \label{fig:bip-claw}
 \end{figure}
 
-The graphs in $\{H_n\}_{n\geq 0}$ have modular-width~7, since in the modular decomposition tree, every prime node is a bipartite claw, a 7-vertex graph. We will show next that $\lmimw(H_n)=n$ for every $n \geq 0$. The construction and the proof are inspired by the construction by \cite{H-A-R-lin-mim-trees} of a family of trees with unbounded linear mim-width.
+The graphs in $\{H_n\}_{n\geq 0}$ have modular-width~7, since in the modular decomposition tree, every prime node is a bipartite claw, a 7-vertex graph. We will show next that $\lmimw(H_n)=n$ for every $n \geq 0$. The construction and the proof are inspired by the construction by \citet{H-A-R-lin-mim-trees} of a family of trees with unbounded linear mim-width.
 
 \begin{figure}[ht]
     \centering
@@ -1268,7 +1268,7 @@ Here we prove that graph $G'$ in \cref{fig:counterexample} is 2-thin, while $G$ 
         \includegraphics[width=0.4\linewidth]{img/single-cycle-module.pdf}
         \caption{$\thin(G') = 2$.}
     \end{subfigure}
-    \caption{For some graphs, replacing a module of thinness 2 with another graph of thinness 2 decreases the thinness of the graph. Here, dotted lines denote modules, meaning that every vertex adjacent to the dotted line is adjacent to every vertex inside the dotted line. Graph $G$ was found by running the algorithms by \cite{thinness-repo}.}
+    \caption{For some graphs, replacing a module of thinness 2 with another graph of thinness 2 decreases the thinness of the graph. Here, dotted lines denote modules, meaning that every vertex adjacent to the dotted line is adjacent to every vertex inside the dotted line. Graph $G$ was found by running the algorithms by \citet{thinness-repo}.}
     \label{fig:counterexample}
 \end{figure}
 
@@ -1317,7 +1317,7 @@ The definition implies that in the incompatibility graph $G_<$ of a graph $G$ wi
 % consistent with ${<}$.
 % \end{theorem}
 
-\cite{thinness-of-product-graphs} showed that in a consistent solution for a thinness $k$ graph there is always a set of $k$ vertices that belong to different classes such that each vertex in the set has a non-neighbor greater than it. We formalize this with the following definition and \cref{prop:irreducible-clique}.
+\citet{thinness-of-product-graphs} showed that in a consistent solution for a thinness $k$ graph there is always a set of $k$ vertices that belong to different classes such that each vertex in the set has a non-neighbor greater than it. We formalize this with the following definition and \cref{prop:irreducible-clique}.
 \begin{definition}[Irreducible clique]
     An \emph{irreducible clique of size $\ell$} of an incompatibility graph $G_<$ of a graph $G$ is a clique $C \coloneqq\{v_1, \dots,v_\ell\}$ of $G_<$ such that for every vertex $v_i \in C$ there exists another vertex $w > v_i$ such that $(v_i, w) \not\in E(G)$.
 \end{definition}
@@ -1449,7 +1449,7 @@ Finally, we arrive at a proof of \cref{prop:G-not-2-thin} by combining \cref{pro
 \section{Kernelization lower bounds}
 \label{sec:lower-bounds}
 
-In this section we present some parameterizations of \textsc{Thinness} {and of \textsc{Simultaneous Interval Number}} for which there are no polynomial kernels under some standard complexity assumptions. For this, we will use the cross-composition framework introduced by \cite{kernelization-cross-composition}. 
+In this section we present some parameterizations of \textsc{Thinness} {and of \textsc{Simultaneous Interval Number}} for which there are no polynomial kernels under some standard complexity assumptions. For this, we will use the cross-composition framework introduced by \citet{kernelization-cross-composition}. 
 In their paper, they define the concept of \textsc{and}-cross-composition. First, they define the following relation. 
 
 In this section, $\Sigma$ will denote a finite set of symbols, and $\Sigma^*$ will denote the set of finite strings of symbols in $\Sigma$. 
@@ -1468,9 +1468,9 @@ In this section, $\Sigma$ will denote a finite set of symbols, and $\Sigma^*$ wi
     Let $L \subseteq \Sigma^*$  be a language, let $\mathcal{R}$ be a polynomial equivalence relation on $\Sigma^*$, and let $\mathcal{Q} \subseteq \Sigma^* \times \N$ be a parameterized problem. An \emph{\textsc{and}-cross-composition of $L$ into $\mathcal{Q}$} (with respect to $\mathcal{R}$) is an algorithm that, given $t$ instances $x_1, x_2, \dots, x_t \in \Sigma^*$ of $L$ belonging to the same equivalence class of $\mathcal{R}$, takes time polynomial in $\sum_{i=1}^t \abs{x_i}$ and outputs an instance $(y, k) \in \Sigma^* \times \N$ such that $k$ is polynomially bounded in $\max_i \abs{x_i} + \log t$, and the instance $(y, k)$ belongs to $\mathcal{Q}$ if and only if all instances $x_i$ belong to $L$.
 \end{definition}
 
-The cross-composition framework is a generalization of earlier work by \cite{composition-kernelization}. A conjecture presented there was proved later by \cite{and-distillation-conjecture-proof}, which allows us to state the following theorem.
+The cross-composition framework is a generalization of earlier work by \citet{composition-kernelization}. A conjecture presented there was proved later by \citet{and-distillation-conjecture-proof}, which allows us to state the following theorem.
 
-\begin{theorem}[\!\citep{kernelization-cross-composition}]
+\begin{theorem}[\citep{kernelization-cross-composition}]
 \label{theorem:and-cross-composition-kernelization-lower-bound}
     Let $L \subseteq \Sigma^*$ be an \NP-hard language and let $\mathcal{Q} \subseteq \Sigma^* \times \N$ be a parameterized problem. If $L$ \textsc{and}-cross-composes into $\mathcal{Q}$, then $\mathcal{Q}$ has no polynomial compression, assuming \Hip.
 \end{theorem}
