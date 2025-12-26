@@ -126,9 +126,9 @@
 %modificado par el tamaño
 \newcommand{\declarefunction}[2][]{%
     \ifthenelse{\isempty{#1}}{%
-        \expandafter\newcommand\csname #2\endcsname{{\textsf{\textup{\smaller[0.7]{#2}}}}\xspace}%
+        \expandafter\newcommand\csname #2\endcsname{{\textsf{\textup{#2}}}\xspace}%
     }{%
-        \expandafter\newcommand\csname #1\endcsname{{\textsf{\textup{\smaller[0.7]{#2}}}}\xspace}%
+        \expandafter\newcommand\csname #1\endcsname{{\textsf{\textup{#2}}}\xspace}%
     }%
 }
 
