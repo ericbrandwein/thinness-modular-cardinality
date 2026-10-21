@@ -17,21 +17,21 @@
 
 -- MINOR COMMENTS --
 
-page 2, line 22: The ordering of the references seems to be arbitrary. I would prefer a numerical or chronological ordering.
+[DONE -- chose chronological] page 2, line 22: The ordering of the references seems to be arbitrary. I would prefer a numerical or chronological ordering.
 
-page 2, line 34: I would suggest to add some space between this paragraph and the one before to make clear that is not part of the "Simultaneous interval number" paragraph. You could also give this paragraph a name, e.g., "Computation complexity" or something like that.
+[DONE] page 2, line 34: I would suggest to add some space between this paragraph and the one before to make clear that is not part of the "Simultaneous interval number" paragraph. You could also give this paragraph a name, e.g., "Computation complexity" or something like that.
 
-page 2, line -4: "not much is known" I would say, nothing is known so far, or are there any results?
+[DONE] page 2, line -4: "not much is known" I would say, nothing is known so far, or are there any results?
 
-page 3, line 12: You have to add the word "decidable" before "problem" as a kernel for a non-decidable problem does not imply an FPT algorithm.
+[DONE] page 3, line 12: You have to add the word "decidable" before "problem" as a kernel for a non-decidable problem does not imply an FPT algorithm.
 
-page 3, line 12: [17, Lemma 2] should be [17, Lemma 2.2]
+[DONE] page 3, line 12: [17, Lemma 2] should be [17, Lemma 2.2]
 
-page 4, line 2: Wouldn't it be better to use your formulation "A generalizes B"?
+[DONE] page 4, line 2: Wouldn't it be better to use your formulation "A generalizes B"?
 
 page 5: You do not give a definition of interval graphs. I think it would be helpful if you do so.
 
-page 5, line -10: I would replace "neighbors of a vertex in X" by "neighbors of X".
+[DONE] page 5, line -10: I would replace "neighbors of a vertex in X" by "neighbors of X".
 
 [DONE] page 6: You use k for the thinness here. Elsewhere in the paper, you use t. I would prefer to use t here either.
 
@@ -45,25 +45,25 @@ page 10: I think you should give a definition of a join (and the respective nota
 
 [DONE] page 11, line 10: "Each class is a module, a C_1 is a union of modules". Firstly, the 's' of "as" is missing. Secondly, you justification is not correct since the union of modules is not necessarily a module. Nevertheless, it works since C_1 is a union of connected components.
 
-page 11, line 23: "arbitrary child that is an interval graph" -> "arbitrary child that is a non-complete interval graph"
+[DONE] page 11, line 23: "arbitrary child that is an interval graph" -> "arbitrary child that is a non-complete interval graph"
 
-page 12: I would suggest to define the problem THINNESS similar as you define SIMULTANEOUS INTERVAL NUMBER on page 14. As you use both problem names already in the introduction, it might be a good idea to define the problems there.
+[DONE] page 12: I would suggest to define the problem THINNESS similar as you define SIMULTANEOUS INTERVAL NUMBER on page 14. As you use both problem names already in the introduction, it might be a good idea to define the problems there.
 
-page 12, line -3: "we present on Lemmas" -> "we present in Lemmas"
+[DONE] page 12, line -3: "we present on Lemmas" -> "we present in Lemmas"
 
-page 13, line -10: "there v and w are not adjacent" -> "then v and w are not adjacent"
+[DONE] page 13, line -10: "there v and w are not adjacent" -> "then v and w are not adjacent"
 
-page 15, line 24: "lies entirely at the left of" -> "lies entirely to the left of"
+[DONE] page 15, line 24: "lies entirely at the left of" -> "lies entirely to the left of"
 
 page 15, line -10: I would suggest to give the property of the connected components of G \ X directly at the definition of the twin-cover. In my opinion, this makes it much easier to understand what a twin-cover is. I would also suggest to clarify that the vertices are twins in G (and not only in their component of G \ X).
 
-page 17, line 1: Why don't you write just "twin-cover number" instead of "size of the minimum twin-cover"?
+[DONE -- no reason, changed everywhere] page 17, line 1: Why don't you write just "twin-cover number" instead of "size of the minimum twin-cover"?
 
-page 17, line 6: "Theorem 20" -> "Corollary 20"
+[DONE] page 17, line 6: "Theorem 20" -> "Corollary 20"
 
-page 17: "FPT (or even XP)" (3 times). This sounds wrong to me. "or even" implies for me that being XP is a stronger property than being FPT. However, the reverse is true. So either swap FPT and XP in the phrase or replace "or even" with "or at least".
+[DONE] page 17: "FPT (or even XP)" (3 times). This sounds wrong to me. "or even" implies for me that being XP is a stronger property than being FPT. However, the reverse is true. So either swap FPT and XP in the phrase or replace "or even" with "or at least".
 
-page 21: line 3: "the edges o G" -> "the edges of G"
+[DONE] page 21: line 3: "the edges o G" -> "the edges of G"
 
 page 22, last two lines of the proof of Thm. 22: This is not a sentence.
 
