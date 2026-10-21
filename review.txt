@@ -1,0 +1,112 @@
+1. I could not follow you in the running time arguments for Theorem 7. Could you state more explicitly how you traverse the modular decomposition tree and when do you check for the interval graph property.
+
+2. Is the bound given in Lemma 12 optimal or is it possible that there is also a polynomial bound? This question is of particular interest as if the bound can be improved to polynomial, then this would directly imply a polynomial kernel for thinness when parameterized by the twin cover number and vertex cover number. If this is not the case, then your third open problem would definitely need some new algorithmic insights. If it is open whether there is a polynomial bound, then I would suggest to address this directly after Lemma 12 and in the open problem description.
+
+3. Are you using open or closed intervals in your definition of interval representations and simultaneous interval representations? There are some places where you seem to assume that the intervals are open intervals but you never state this explicitly. One place is line 1 of page 15 where you say that the interval intersects the interval (x,y). In my opinion, this only works if the intervals are open. Similarly, in the proof of Lemma 17 you place the interval representation of H in some sub-interval of A. Again, I think this only works directly if the intervals are open since this ensures that this sub-interval is not just the right end-point of A. I am sure that for simultaneous interval representations, it does not matter whether you use open or closed intervals, due to the result of Frankl and Maehara [1]. Nevertheless, you should give a short hint about this when you are defining the simultaneous interval representations.
+
+[1] Peter Frankl and Hiroshi Maehara. Open-interval graphs versus closed-interval graphs. Discrete Mathematics, 63(1):97–100, 1987. https://doi.org/10.1016/0012-365X(87)90156-7
+
+4. proof of Lemma 17: 
+  * In the first paragraph, your arguments are a little bit sloppy. The vertices with the disjoints intervals are not necessarily the vertices v and w. Nevertheless, the graph constructed by deleting all but v and w or all but the two vertices with disjoint intervals are isomorphic, right? I would state this here explicitly.
+  * You only write that you replace the interval A. However, you also have to delete the interval B, right?
+
+5. proof of Lemma 32:
+  * I do not get your proof of the right-to-left direction. How does Lemma 31 imply that G has thinness 2?
+  * page 26, line 7: Why has v to share a class with u in S? As far as I can see, Lemma 28 only implies that v shares some class with either u or w. Is this right? If so, you have to also consider the case for w.
+
+
+-- MINOR COMMENTS --
+
+page 2, line 22: The ordering of the references seems to be arbitrary. I would prefer a numerical or chronological ordering.
+
+page 2, line 34: I would suggest to add some space between this paragraph and the one before to make clear that is not part of the "Simultaneous interval number" paragraph. You could also give this paragraph a name, e.g., "Computation complexity" or something like that.
+
+page 2, line -4: "not much is known" I would say, nothing is known so far, or are there any results?
+
+page 3, line 12: You have to add the word "decidable" before "problem" as a kernel for a non-decidable problem does not imply an FPT algorithm.
+
+page 3, line 12: [17, Lemma 2] should be [17, Lemma 2.2]
+
+page 4, line 2: Wouldn't it be better to use your formulation "A generalizes B"?
+
+page 5: You do not give a definition of interval graphs. I think it would be helpful if you do so.
+
+page 5, line -10: I would replace "neighbors of a vertex in X" by "neighbors of X".
+
+[DONE] page 6: You use k for the thinness here. Elsewhere in the paper, you use t. I would prefer to use t here either.
+
+[DONE -- Changed to d] page 6, line -1: Using w for the neighborhood diversity is somehow strange as you also use w for vertices.
+
+[DONE] page 7, line 13: The N should be \mathbb{N}
+
+[DONE] page 7, line -10: "linear time algorithm" -> "linear-time algorithm"
+
+page 10: I think you should give a definition of a join (and the respective notation). 
+
+[DONE] page 11, line 10: "Each class is a module, a C_1 is a union of modules". Firstly, the 's' of "as" is missing. Secondly, you justification is not correct since the union of modules is not necessarily a module. Nevertheless, it works since C_1 is a union of connected components.
+
+page 11, line 23: "arbitrary child that is an interval graph" -> "arbitrary child that is a non-complete interval graph"
+
+page 12: I would suggest to define the problem THINNESS similar as you define SIMULTANEOUS INTERVAL NUMBER on page 14. As you use both problem names already in the introduction, it might be a good idea to define the problems there.
+
+page 12, line -3: "we present on Lemmas" -> "we present in Lemmas"
+
+page 13, line -10: "there v and w are not adjacent" -> "then v and w are not adjacent"
+
+page 15, line 24: "lies entirely at the left of" -> "lies entirely to the left of"
+
+page 15, line -10: I would suggest to give the property of the connected components of G \ X directly at the definition of the twin-cover. In my opinion, this makes it much easier to understand what a twin-cover is. I would also suggest to clarify that the vertices are twins in G (and not only in their component of G \ X).
+
+page 17, line 1: Why don't you write just "twin-cover number" instead of "size of the minimum twin-cover"?
+
+page 17, line 6: "Theorem 20" -> "Corollary 20"
+
+page 17: "FPT (or even XP)" (3 times). This sounds wrong to me. "or even" implies for me that being XP is a stronger property than being FPT. However, the reverse is true. So either swap FPT and XP in the phrase or replace "or even" with "or at least".
+
+page 21: line 3: "the edges o G" -> "the edges of G"
+
+page 22, last two lines of the proof of Thm. 22: This is not a sentence.
+
+page 23, Lemma 27: The graph must be non-complete, otherwise the statement is wrong.
+
+page 23, line -4: The apostrophe is wrong her. There should be a comma.
+
+page 24, line 7: "incompatibility graph" -> "irreducable clique"
+
+page 24, line -7: I would place the C after irreducible clique.
+
+page 25, line 12: "does not share class" -> "does not share a class"
+
+page 25, proof of Lemma 32: The parentheses after the implication arrows are misplaced.
+
+page 27, line 4: I think you can give an easier argument here. Since u < w_1, it holds that w_1 is between u and v, contradicting the fact that the vertices of H' appear consecutively.
+
+page 27, line 10: "Theorem 34" -> "Claim 34" 
+
+page 28, line 2: I would replace "compression" by "kernel". You do not introduce what a compression is and you only use the fact that there is no kernel.
+
+page 28, line 15: "of Theorem 38" -> "Proof of Theorem 38"
+
+
+References:
+[1] Milanic must be Milani\v{c} and Mursic must be Mur\v{s}i\v{c}
+
+[7,8]: Moysés S. Sampaio Jr. has become M. S. S. Jr. 
+
+[11,13,21,26,36] The url is missing. 
+
+[15] I would suggest to use {I.} and the {R}ecognizable in the bibtex entry to capitalize these letters.
+
+[18] There is a doi and an url: 10.1007/978-3-642-46908-4_25; https://doi.org/10.1007/978-3-642-46908-4_25
+
+[20,22,26,37] The backslashes before the underscores in the doi and the url are not correct. In particular, the urls with underscores do not work.
+
+[21] "graphen" should be "{G}raphen" as it is German.
+
+[22] There is a journal version of this paper: R. Ganian: Improving Vertex Cover as a Graph Parameter. Discret. Math. Theor. Comput. Sci. 17(2): 77-100 (2015) https://doi.org/10.46298/dmtcs.2136
+
+[25] "Lex-bfs" should be "Lex-{BFS}"
+
+[30,35] Different to all other journal names, you don't use abbreviations here. It should be "Fundam. Math." and "Theor. Comput. Sci."
+
+[30] There is a doi and an url: 10.4064/fm-51-1-45-64; https://doi.org/10.4064/fm-51-1-45-64
