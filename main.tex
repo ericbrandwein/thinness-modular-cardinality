@@ -1348,7 +1348,7 @@ In some cases, replacing a module with a graph with the same thinness does not i
     Let $\ell \in \N$. Let $G$ be a graph with a module $M$, and $G'$ be the result of replacing $M$ with a thinness $\ell$ graph $H$ in $G$. Consider a consistent solution $(<, S)$ in $t$ classes for $G$, and suppose there exists an irreducible clique $C$ of $G[M]_<$ of size $\ell$. If there are no vertices in $V(G) \setminus M$ between the vertices of $C$ according to $<$ that share a class in $S$ with the vertices in $C$, then there exists a consistent solution in $t$ classes for $G'$ where all the vertices in $V(H)$ are consecutive in the order.
 \end{lemma}
 \begin{proof}
-    Suppose $(<, S)$ is a consistent solution for $G$ in $t$ classes where the $\ell$ vertices $C$ of an irreducible clique of $G[M]_<$ have no vertex of $V(G) \setminus M$ between them. Let $(<_H, S_H)$ be an optimal consistent solution for $H$.
+    Suppose $(<, S)$ is a consistent solution for $G$ in $t$ classes where the $\ell$ vertices of an irreducible clique $C$ of $G[M]_<$ have no vertex of $V(G) \setminus M$ between them. Let $(<_H, S_H)$ be an optimal consistent solution for $H$.
     
     We construct a solution $(<', S')$ in $t$ classes as follows.
     To construct $<'$, we remove all vertices of $M$ from the order $<$, and replace the greatest vertex of $C$ with the vertices in $V(H)$, ordered according to $<_H$. The partition $S'$ is defined by identifying the $\ell$ classes of $S_H$ with the $\ell$ different classes to which the vertices of $C$ belong in the partition $S$.

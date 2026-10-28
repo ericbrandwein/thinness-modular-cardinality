@@ -73,7 +73,7 @@ page 22, last two lines of the proof of Thm. 22: This is not a sentence.
 
 [DONE] page 24, line 7: "incompatibility graph" -> "irreducable clique"
 
-page 24, line -7: I would place the C after irreducible clique.
+[DONE] page 24, line -7: I would place the C after irreducible clique.
 
 page 25, line 12: "does not share class" -> "does not share a class"
 
