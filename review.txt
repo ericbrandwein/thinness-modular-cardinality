@@ -85,7 +85,7 @@ page 27, line 10: "Theorem 34" -> "Claim 34"
 
 page 28, line 2: I would replace "compression" by "kernel". You do not introduce what a compression is and you only use the fact that there is no kernel.
 
-page 28, line 15: "of Theorem 38" -> "Proof of Theorem 38"
+[DONE] page 28, line 15: "of Theorem 38" -> "Proof of Theorem 38"
 
 
 References:
