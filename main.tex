@@ -1419,7 +1419,7 @@ The vertices of $V(G') \setminus H'$ must belong to one of the two classes of $S
     Either every vertex in $\{d,e,f\}$ is lower than $v$, or every vertex in $\{d,e,f\}$ is greater than $v$.
 \end{claim}
 \begin{proof}
-Suppose this is not the case, and there exist two vertices $w_1, w_2 \in \{d,e,f\}$ such that $w_1 < v < w_2$. As $w_1$ and $w_2$ are adjacent but $v$ and $w_2$ are not, we have that $w_1$ and $v$ belong to different classes. By the same argument, if $u$ is also greater than $w_1$, they cannot belong to the same class either. Thus, $u < w_1$. However, by \hyperref[def:incompatibility-graph]{the definition of incompatibility graph}, there exists a vertex $x$ greater than $v$ in $H'$ that is adjacent to $u$. As $x$ is not adjacent to $w_1$, vertices $w_1$ and $u$ belong to different classes. As a result, $u$, $v$, and $w_1$ belong to three different classes, which contradicts the fact that $S$ consists of only two classes.
+Suppose this is not the case, and there exist two vertices $w_1, w_2 \in \{d,e,f\}$ such that $w_1 < v < w_2$. As $w_1$ and $w_2$ are adjacent but $v$ and $w_2$ are not, we have that $w_1$ and $v$ belong to different classes. By the same argument, if $u$ is also greater than $w_1$, they cannot belong to the same class either. Thus, $u < w_1$. However, this means that $u < w_1 < v$, and hence the vertices of $H'$ do not appear consecutively, contradicting the hypotesis of the lemma.
 \end{proof}
 
 Note that $e$ cannot be between $v$ and $a$, as otherwise $e$ and $a$ would form an inconsistent triple with $u$ or $v$, depending on the class to which $e$ belongs. In general, no vertex that is a non-neighbor of a vertex $y \in \{a,b,c\}$ can be between $v$ and $y$. 
