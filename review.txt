@@ -67,7 +67,7 @@ page 15, line -10: I would suggest to give the property of the connected compone
 
 page 22, last two lines of the proof of Thm. 22: This is not a sentence.
 
-page 23, Lemma 27: The graph must be non-complete, otherwise the statement is wrong.
+[DONE] page 23, Lemma 27: The graph must be non-complete, otherwise the statement is wrong.
 
 page 23, line -4: The apostrophe is wrong her. There should be a comma.
 
