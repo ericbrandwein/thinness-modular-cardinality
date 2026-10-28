@@ -1385,9 +1385,9 @@ The converse of \cref{prop:replacing-module-maintains-thinness-if-irreducible-cl
 \begin{proof}
 Let $\doubleCycleModule$ be the union of two cycles on 4 vertices. Note that $\thin(\singleCycleGraph[\singleCycleModule]) = \thin(\doubleCycleModule) = 2$.
 
-$\impliedby$) By \cref{prop:irreducible-clique}, the incompatibility graph $\singleCycleGraph[\singleCycleModule]_{<'}$ contains an irreducible clique of size 2. Therefore, this implication is deduced directly from \cref{prop:replacing-module-maintains-thinness-if-irreducible-clique-consecutive}.
+$(\Leftarrow)$ By \cref{prop:irreducible-clique}, the incompatibility graph $\singleCycleGraph[\singleCycleModule]_{<'}$ contains an irreducible clique of size 2. Therefore, this implication is deduced directly from \cref{prop:replacing-module-maintains-thinness-if-irreducible-clique-consecutive}.
 
-$\implies)$ Suppose for a contradiction that $\thin(\doubleCycleGraph) = 2$ and $\singleCycleModule$ does not appear consecutively in any optimal consistent solution for $\singleCycleGraph$.
+$(\Rightarrow)$ Suppose for a contradiction that $\thin(\doubleCycleGraph) = 2$ and $\singleCycleModule$ does not appear consecutively in any optimal consistent solution for $\singleCycleGraph$.
 
 Let $\Gamma \coloneqq (<, S)$ be an optimal consistent solution for $\doubleCycleGraph$. Let $u$ be the first vertex according to $<$ that belongs to $V(\doubleCycleModule)$, and define $C$ to be the set of vertices of the connected component of $u$ in $\doubleCycleModule$, which induces one of the two cycles of $\doubleCycleModule$. Additionally, denote the other cycle of $\doubleCycleModule$ as $C'\coloneqq V(\doubleCycleModule) \setminus C$. 
 
