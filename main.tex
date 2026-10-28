@@ -1359,7 +1359,7 @@ In some cases, replacing a module with a graph with the same thinness does not i
         \item \underline{$u \in V(H)$ and $v, w \not\in V(H)$:} There exists a vertex $x \in C$ that belongs to the same class as $u$ in $S$ and also satisfies $x < v < w$. Thus, if $w$ is adjacent to $u$ and $v$ belongs to the same class as $u$ in $S'$, then $w$ is also adjacent to $x$, and $v$ belongs to the same class as $x$ in $S$. Therefore, as $(<, S)$ is a consistent solution, the set $\{u,v,w\}$ must be a consistent triple.
         \item \underline{$u \not\in V(H)$, $v \in V(H)$, and $w \not\in V(H)$:} There exists a vertex $x \in C$ in the same class as $v$ in $S$. There are two possibilities:
         \begin{enumerate}
-            \item We have $x < u$, in which case $u$ appears between two vertices of $C$ in $<$. By hypothesis, vertex $u$ does not share class with $v$, and so this triple is consistent.
+            \item We have $x < u$, in which case $u$ appears between two vertices of $C$ in $<$. By hypothesis, vertex $u$ does not share a class with $v$, and so this triple is consistent.
             \item Otherwise, we have $x > u$. As $\{u, x, w\}$ does not form an inconsistent triple in $(<, S)$, the same thing happens for $\{u, v, w\}$ in $(<', S')$.
         \end{enumerate}
         \item \underline{$u, v \not\in V(H)$ and $w \in V(H)$:} There is a vertex $x \in C$ that is greater than both $u$ and $v$ according to $<$, and that forms a consistent triple with them. As vertex $w$ has the same neighborhood as $x$ in $G \setminus H$, the triple $\{u, v, w\}$ is also consistent.

@@ -75,7 +75,7 @@ page 22, last two lines of the proof of Thm. 22: This is not a sentence.
 
 [DONE] page 24, line -7: I would place the C after irreducible clique.
 
-page 25, line 12: "does not share class" -> "does not share a class"
+[DONE] page 25, line 12: "does not share class" -> "does not share a class"
 
 page 25, proof of Lemma 32: The parentheses after the implication arrows are misplaced.
 
