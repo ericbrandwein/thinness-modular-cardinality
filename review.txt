@@ -71,7 +71,7 @@ page 22, last two lines of the proof of Thm. 22: This is not a sentence.
 
 [DONE - there was no apostrophe in that line; I guess you meant semicolon] page 23, line -4: The apostrophe is wrong her. There should be a comma.
 
-page 24, line 7: "incompatibility graph" -> "irreducable clique"
+[DONE] page 24, line 7: "incompatibility graph" -> "irreducable clique"
 
 page 24, line -7: I would place the C after irreducible clique.
 

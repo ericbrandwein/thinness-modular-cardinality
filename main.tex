@@ -1304,6 +1304,7 @@ The definition implies that in the incompatibility graph $G_<$ of a graph $G$ wi
 
 \citet{thinness-of-product-graphs} showed that in a consistent solution for a thinness $t$ graph there is always a set of $t$ vertices that belong to different classes such that each vertex in the set has a non-neighbor greater than it. We formalize this with the following definition and \cref{prop:irreducible-clique}.
 \begin{definition}[Irreducible clique]
+    \label{def:irreducible-clique}
     An \emph{irreducible clique of size $\ell$} of an incompatibility graph $G_<$ of a graph $G$ is a clique $C \coloneqq\{v_1, \dots,v_\ell\}$ of $G_<$ such that for every vertex $v_i \in C$ there exists another vertex $w > v_i$ such that $(v_i, w) \not\in E(G)$.
 \end{definition}
 
@@ -1333,7 +1334,7 @@ We now prove some properties of the order between the vertices inside and outsid
     Let $G$ be a graph, and $M$ be a module of $G$ with a neighbor $v$. In every consistent solution $(<, S)$ for $G$, if $v$ shares a class in $S$ with a vertex $u$ in an irreducible clique of the incompatibility graph $G[M]_<$, then $u < v$.
 \end{lemma}
 \begin{proof}
-    By \hyperref[def:incompatibility-graph]{the definition of incompatibility graph}, there exists a vertex $w \in M$ that is not adjacent to $u$ such that $u < w$. Thus, $v$ must be larger than $u$, as otherwise $\{v, u, w\}$ would form an inconsistent triple.
+    By \hyperref[def:irreducible-clique]{the definition of irreducible clique}, there exists a vertex $w \in M$ that is not adjacent to $u$ such that $u < w$. Thus, $v$ must be larger than $u$, as otherwise $\{v, u, w\}$ would form an inconsistent triple.
 \end{proof}
 
 \begin{definition}
