@@ -1,6 +1,15 @@
 \newcommand{\graph}[1][k]{G_{#1}}
 
-In this section, we prove that the bound in \cref{lemma:twin-cover-hcupn} is tight. To show this, for every $k \in \N$ with $k \geq 2$, we build a graph $\graph$ of $2^k + k$ vertices such that $\clustermc(\graph) = 2^{\vc(\graph)} + \vc(\graph)$. As every vertex cover is also a twin-cover, this will prove the tightness of \cref{lemma:twin-cover-hcupn}.
+In this section, we prove the following lemma.
+
+\begin{lemma}
+    \label{lemma:gap-between-intevalmc-and-vc}
+    There exists an infinite class of graphs $G$ such that $\intervalmc(G) = 2^{\vc(G)} + \vc(G)$. 
+\end{lemma}
+
+As $\vc(G) \geq \tc(G)$ and $\intervalmc(G) \leq \clustermc(G)$ for every graph $G$, this will in particular prove that the bound in \cref{lemma:twin-cover-hcupn} is tight.
+
+To prove \cref{lemma:gap-between-intevalmc-and-vc}, for every $k \in \N$ with $k \geq 3$, we build a graph $\graph$ of $2^k + k$ vertices with $\intervalmc(G) = 2^{\vc(\graph)} + \vc(\graph)$.
 
 The graph $\graph$ is constructed as follows.
 Let $X$ be a set of $k$ vertices, and for each subset $X' \subseteq X$, let $v_{X'}$ be a vertex. We define
@@ -38,24 +47,7 @@ In other words, we create a set $X$ of vertices, and create one extra vertex $v_
     \label{fig:G-k}
 \end{figure}
 
-The main property of the graph $\graph$ is that no two vertices have the same neighborhood, either closed or open.
-\begin{lemma}
-    \label{lemma:no-twins-in-G}
-    For every edge $(x, v_{X'}) \in E(\graph)$, we have that $N[x] \neq N[v_{X'}]$.
-\end{lemma}
-\begin{proof}
-    As $k \geq 2$, each vertex $x \in X$ has at least two neighbors outside of $X$. On the other hand, $v_{X'}$ has no neighbors outside of $X$. Hence $x$ has a neighbor that $v_{X'}$ does not have.
-\end{proof}
-
-\begin{lemma}
-    \label{lemma:no-false-twins-in-G}
-    For every pair of non-adjacent vertices $u, w \in V(\graph)$, we have that $N(u) \neq N(w)$.
-\end{lemma}
-\begin{proof}
-    If $u, w \notin X$, they have different neighborhoods inside $X$, and thus $N(u) \neq N(w)$. On the other hand, if one of them, say $u$, belongs to $X$, then the vertex $v_{\{u\}}$ is adjacent to $u$ and not to $w$.
-\end{proof}
-
-With these two lemmas, we close this section by determining $\vc(\graph)$ and $\clustermc(\graph)$.
+It is easy to see that the vertex cover number of $\graph$ is exactly $k$.
 \begin{lemma}
     \label{lemma:vc-G}
     $\vc(\graph) = k$.
@@ -66,18 +58,20 @@ With these two lemmas, we close this section by determining $\vc(\graph)$ and $\
     By the definition of vertex cover, every edge in $\graph$ must have an endpoint in every vertex cover of $\graph$. In particular, the matching of size $k$ formed by the edges $(x, v_{\{x\}})$ for each $x \in X$ shows that every vertex cover must have size at least $k$. Thus, we also have $\vc(\graph) \geq k$, which gives the statement of the lemma.
 \end{proof}
 
+It remains to determine the $\interval$-modular cardinality of $G$.
+
 \begin{lemma}
-    \label{lemma:clustermc-G}
-    $\clustermc(\graph) = 2^k + k$.
+    \label{lemma:intervalmc-G}
+    $\intervalmc(G) = 2^k + k$.
 \end{lemma}
 \begin{proof}
-    As $|V(\graph)| = 2^k + k$, this is equivalent to proving that the only $\cluster$-modular partition of $\graph$ is the one that has one part per vertex.
+    As $|V(\graph)| = 2^k + k$, this is equivalent to proving that the only $\interval$-modular partition of $\graph$ is the one that has one part per vertex.
 
-    Suppose, to the contrary, that there exists a $\cluster$-modular partition $\mathcal{M}$ of $\graph$ into fewer parts. Then some module $M \in \mathcal{M}$ contains two distinct vertices $u$ and $w$, which are either adjacent or not. We show that both cases lead to a contradiction.
+    The graph $\graph$ has two connected components: the one containing $v_\emptyset$, and the one $C$ containing all other vertices in $V(\graph)$. Notice that $C$ does not induce an interval graph when $k \geq 3$, as it contains an induced cycle of size four. Moreover, both $\{v_\emptyset\}$ and $C$ are modules of $\graph$. Hence, as shown by \citet{modular-decomposition}, every $\interval$-modular partition of $\graph$ consists of $\{v_\emptyset\}$ and proper submodules of $C$. To finish the proof, we show that all proper submodules of $C$ have size one.
 
-    Suppose first that $u$ and $w$ are adjacent, so they are the two endpoints of an edge $(x, v_{X'})$. By \cref{lemma:no-twins-in-G}, these two vertices are not twins. As every pair of adjacent vertices in a part of a $\cluster$-modular partition must be twins, this yields a contradiction.
+    To reach a contradiction, suppose there exists some proper submodule $M$ of $C$ of size at least two.
 
-    Otherwise, $u$ and $w$ are not neighbors. By \cref{lemma:no-false-twins-in-G}, one of them, say $u$, has a neighbor $z$ that is not a neighbor of $w$. By the previous paragraph, every pair of adjacent vertices belong to different parts. Hence, $z \notin M$. Therefore, the two vertices $u$ and $w$ in $M$ have different neighborhoods outside $M$, and thus $M$ is not a module. This contradicts the definition of $\cluster$-modular partition.
+    If all vertices in $M$ are outside $X$, there are two vertices in $M$ with different neighborhoods in $X$, contradicting that $M$ is a module. Hence, there exists a vertex $x \in X$ that belongs to $M$. Let $y$ be a vertex of $M$ distinct from $x$. The vertex $v_{\{x\}}$ must also belong to $M$, as otherwise there would be a vertex outside of $M$ that is adjacent to $x$ and not to $y$. This forces every neighbor of $x$ different from $v_{\{x\}}$ to also belong to $M$, as none of them are adjacent to $v_{\{x\}}$. This includes all vertices $v_{X'}$ where $x \in X'$. For each other vertex $x' \in X$, there exists a vertex $v_{X'}$ in $M$ such that $x, x' \in X'$. The vertex $x'$ is not a neighbor of $x$, and thus must also belong to $M$. We can therefore repeat the previous argument with every $x' \in X$ instead of $x$ to show that every vertex of $C$ belongs to $M$, contradicting that $M$ is a proper submodule of $C$.
 \end{proof}
 
-Combining \cref{lemma:vc-G,lemma:clustermc-G}, we obtain that $\clustermc(\graph) = 2^{\vc(\graph)} + \vc(\graph)$ for every $k \geq 2$, and thus the bound in \cref{lemma:twin-cover-hcupn} is tight, even when replacing the twin-cover number with the vertex cover number.
+Combining \cref{lemma:vc-G,lemma:intervalmc-G}, we obtain that $\intervalmc(\graph) = 2^{\vc(\graph)} + \vc(\graph)$ for every $k \geq 3$. This implies \cref{lemma:gap-between-intevalmc-and-vc}.

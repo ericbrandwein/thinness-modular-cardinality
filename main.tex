@@ -806,7 +806,7 @@ The following lemma shows that the $\cluster$-modular cardinality of a graph gen
     Now, we prove that sets $P_1,\dots,P_{2^k}$ are clusters. To see that, it is sufficient to show that if $a,b \in P_i$ are adjacent, then $N[a] = N[b]$. As neither $a$ nor $b$ are in $X$, they are twins, and so $N[a] = N[b]$.
 \end{proof}
 
-The bound of \cref{lemma:twin-cover-hcupn} is tight even when replacing the twin-cover number with the vertex cover number; we prove this in \cref{sec:clustermc-vs-twin-cover}. On the other hand, the twin-cover number, similarly to the neighborhood diversity, can be arbitrarily larger than the $\cluster$-modular cardinality. The class of complete bipartite graphs $K_{n,n}$ serves as an example here, as those graphs have $\cluster$-modular cardinality two and twin-cover number $n$.
+The bound of \cref{lemma:twin-cover-hcupn} is tight even when replacing the twin-cover number with the vertex cover number and the $\cluster$-modular cardinality with the $\interval$-modular cardinality; we prove this in \cref{sec:clustermc-vs-twin-cover}. On the other hand, the twin-cover number, similarly to the neighborhood diversity, can be arbitrarily larger than the $\cluster$-modular cardinality. The class of complete bipartite graphs $K_{n,n}$ serves as an example here, as those graphs have $\cluster$-modular cardinality two and twin-cover number $n$.
 
 \begin{theorem}
     \label{prop:twin-cover-parametrization}
@@ -940,7 +940,7 @@ Possible avenues of research that this work leaves open include:
 \begin{itemize}
     \item Is \textsc{Thinness} \FPT (or at least \textsf{XP}) when parameterized by the solution size, that is, the desired thinness of the input graph? Note that both a positive or a negative answer are compatible with the non-existence of a polynomial kernel proved in \cref{theorem:thinness-kernelization-lower-bound}. Combining the results by \citet{tesis-diego} and \citet{thinness-np-complete}, we can reduce an instance of the \textsc{Non-Betweenness} problem to an instance of \textsc{Thinness}. The thinness of the constructed graph depends in part on the size of the \textsc{Non-Betweenness} instance, and thus leaves open the possibility of a polynomial-time algorithm for \textsc{Thinness} when the thinness of the input graph is bounded by a constant.
     \item Is \textsc{Thinness} \FPT (or at least \textsf{XP}) when parameterized by other parameters, like for example the treewidth of the input graph? The total order involved in the definition of thinness makes it unclear to be amenable to a {\sf CMSO} logic formulation in order to apply Courcelle's theorem~\citep{Courcelle90}. On the other hand, note that \cref{theorem:thinness-kernelization-lower-bound} implies that \textsc{Thinness} is unlikely to admit polynomial kernels parameterized by treewidth. 
-    \item Does \textsc{Thinness} admit polynomial kernels when parameterized by the vertex cover or the twin-cover number of the input graph? Our tightness result in \cref{sec:clustermc-vs-twin-cover} implies that a significantly different approach from ours should be taken to obtain such a kernel.
+    \item Does \textsc{Thinness} admit polynomial kernels when parameterized by the vertex cover or the twin-cover number of the input graph? Our result in \cref{sec:clustermc-vs-twin-cover} of the tightness of the bound in \cref{lemma:twin-cover-hcupn} implies that a significantly different approach from ours should be taken to obtain such a kernel.
     %Something about approximation?
     \item {Is \textsc{Simultaneous Interval Number}  \FPT (or at least \textsf{XP}) when parameterized by the $\cluster$-modular cardinality or the $\interval$-modular cardinality?}
 \end{itemize}
@@ -1499,7 +1499,7 @@ We now prove \cref{theorem:thinness-kernelization-lower-bound}. The proof is qui
 \end{proof}
 
 
-\section{Tightness of the $\tc$ bound on $\clustermc$}
+\section{Tightness of the $\vc$ bound on $\intervalmc$}
 \label{sec:clustermc-vs-twin-cover}
 \input{clustermc-vs-twin-cover.tex}
 
