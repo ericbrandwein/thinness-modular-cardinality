@@ -7,7 +7,7 @@
 [1] Peter Frankl and Hiroshi Maehara. Open-interval graphs versus closed-interval graphs. Discrete Mathematics, 63(1):97–100, 1987. https://doi.org/10.1016/0012-365X(87)90156-7
 
 4. proof of Lemma 17: 
-  * In the first paragraph, your arguments are a little bit sloppy. The vertices with the disjoints intervals are not necessarily the vertices v and w. Nevertheless, the graph constructed by deleting all but v and w or all but the two vertices with disjoint intervals are isomorphic, right? I would state this here explicitly.
+  [DONE] * In the first paragraph, your arguments are a little bit sloppy. The vertices with the disjoints intervals are not necessarily the vertices v and w. Nevertheless, the graph constructed by deleting all but v and w or all but the two vertices with disjoint intervals are isomorphic, right? I would state this here explicitly.
   * You only write that you replace the interval A. However, you also have to delete the interval B, right?
 
 5. proof of Lemma 32:
