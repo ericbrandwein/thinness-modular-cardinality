@@ -55,7 +55,7 @@
 
 [DONE] page 15, line 24: "lies entirely at the left of" -> "lies entirely to the left of"
 
-page 15, line -10: I would suggest to give the property of the connected components of G \ X directly at the definition of the twin-cover. In my opinion, this makes it much easier to understand what a twin-cover is. I would also suggest to clarify that the vertices are twins in G (and not only in their component of G \ X).
+[DONE] page 15, line -10: I would suggest to give the property of the connected components of G \ X directly at the definition of the twin-cover. In my opinion, this makes it much easier to understand what a twin-cover is. I would also suggest to clarify that the vertices are twins in G (and not only in their component of G \ X).
 
 [DONE -- no reason, changed everywhere] page 17, line 1: Why don't you write just "twin-cover number" instead of "size of the minimum twin-cover"?
 
