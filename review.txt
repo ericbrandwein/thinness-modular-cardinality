@@ -65,7 +65,7 @@
 
 [DONE] page 21: line 3: "the edges o G" -> "the edges of G"
 
-page 22, last two lines of the proof of Thm. 22: This is not a sentence.
+[DONE] page 22, last two lines of the proof of Thm. 22: This is not a sentence.
 
 [DONE] page 23, Lemma 27: The graph must be non-complete, otherwise the statement is wrong.
 
