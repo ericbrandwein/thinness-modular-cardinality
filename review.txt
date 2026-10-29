@@ -81,9 +81,9 @@ page 22, last two lines of the proof of Thm. 22: This is not a sentence.
 
 [DONE] page 27, line 4: I think you can give an easier argument here. Since u < w_1, it holds that w_1 is between u and v, contradicting the fact that the vertices of H' appear consecutively.
 
-page 27, line 10: "Theorem 34" -> "Claim 34" 
+[DONE] page 27, line 10: "Theorem 34" -> "Claim 34" 
 
-page 28, line 2: I would replace "compression" by "kernel". You do not introduce what a compression is and you only use the fact that there is no kernel.
+[DONE] page 28, line 2: I would replace "compression" by "kernel". You do not introduce what a compression is and you only use the fact that there is no kernel.
 
 [DONE] page 28, line 15: "of Theorem 38" -> "Proof of Theorem 38"
 
