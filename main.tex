@@ -1397,7 +1397,8 @@ The converse of \cref{prop:replacing-module-maintains-thinness-if-irreducible-cl
 \begin{proof}
 Let $\doubleCycleModule$ be the union of two cycles on 4 vertices. Note that $\thin(\singleCycleGraph[\singleCycleModule]) = \thin(\doubleCycleModule) = 2$.
 
-$(\Leftarrow)$ By \cref{prop:irreducible-clique}, the incompatibility graph $\singleCycleGraph[\singleCycleModule]_{<'}$ contains an irreducible clique of size 2. Therefore, this implication is deduced directly from \cref{prop:replacing-module-maintains-thinness-if-irreducible-clique-consecutive}.
+$(\Leftarrow)$ By \cref{prop:irreducible-clique}, the incompatibility graph $\singleCycleGraph[\singleCycleModule]_{<'}$ contains an irreducible clique $C$ of size 2. 
+Hence, instantiating \cref{prop:replacing-module-maintains-thinness-if-irreducible-clique-consecutive} with $G \coloneq \singleCycleGraph$, $M \coloneq \singleCycleModule$, $G' \coloneq \doubleCycleGraph$, the irreducible clique $C$ of the consistent solution $(<' ,S')$, and $\ell \coloneq 2$, we have that there exists a consistent solution in $2$ classes for $\doubleCycleGraph$. As the thinness is hereditary and $\thin(\doubleCycleModule) = 2$, this gives us the left implication.
 
 $(\Rightarrow)$ Suppose for a contradiction that $\thin(\doubleCycleGraph) = 2$ and $\singleCycleModule$ does not appear consecutively in any optimal consistent solution for $\singleCycleGraph$.
 

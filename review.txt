@@ -11,7 +11,7 @@
   [DONE -- yes] * You only write that you replace the interval A. However, you also have to delete the interval B, right?
 
 5. proof of Lemma 32:
-  * I do not get your proof of the right-to-left direction. How does Lemma 31 imply that G has thinness 2?
+  [DONE] * I do not get your proof of the right-to-left direction. How does Lemma 31 imply that G has thinness 2?
   * page 26, line 7: Why has v to share a class with u in S? As far as I can see, Lemma 28 only implies that v shares some class with either u or w. Is this right? If so, you have to also consider the case for w.
 
 
