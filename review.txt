@@ -8,7 +8,7 @@
 
 4. proof of Lemma 17: 
   [DONE] * In the first paragraph, your arguments are a little bit sloppy. The vertices with the disjoints intervals are not necessarily the vertices v and w. Nevertheless, the graph constructed by deleting all but v and w or all but the two vertices with disjoint intervals are isomorphic, right? I would state this here explicitly.
-  * You only write that you replace the interval A. However, you also have to delete the interval B, right?
+  [DONE -- yes] * You only write that you replace the interval A. However, you also have to delete the interval B, right?
 
 5. proof of Lemma 32:
   * I do not get your proof of the right-to-left direction. How does Lemma 31 imply that G has thinness 2?
