@@ -663,6 +663,8 @@ We present two lemmas that will be useful to compute an optimal $\interval$-modu
     Let $G_1$ and $G_2$ be graphs. Then $\thin(G_1 \cup G_2) = \max\{\thin(G_1), \thin(G_2)\}$.
 \end{lemma}
 
+The \emph{join} $G_1 \lor G_2$ of two graphs $G_1$ and $G_2$ is the result of taking the union of both graphs and adding all possible edges between a vertex in $V(G_1)$ and a vertex in $V(G_2)$. 
+
 \begin{lemma}[Thinness of the join {\citep[Theorem 27]{thinness-of-product-graphs}}]
     \label[lemma]{prop:thinness-join}
     Let $G_1$ and $G_2$ be graphs. If $G_1$ is complete, then $\thin(G_1 \lor G_2) = \thin(G_2)$. If neither $G_1$ nor $G_2$ are complete, then $\thin(G_1 \lor G_2) = \thin(G_1) + \thin(G_2)$.

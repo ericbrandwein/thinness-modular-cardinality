@@ -41,7 +41,7 @@
 
 [DONE] page 7, line -10: "linear time algorithm" -> "linear-time algorithm"
 
-page 10: I think you should give a definition of a join (and the respective notation). 
+[DONE] page 10: I think you should give a definition of a join (and the respective notation). 
 
 [DONE] page 11, line 10: "Each class is a module, a C_1 is a union of modules". Firstly, the 's' of "as" is missing. Secondly, you justification is not correct since the union of modules is not necessarily a module. Nevertheless, it works since C_1 is a union of connected components.
 
