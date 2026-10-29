@@ -89,24 +89,24 @@ page 22, last two lines of the proof of Thm. 22: This is not a sentence.
 
 
 References:
-[1] Milanic must be Milani\v{c} and Mursic must be Mur\v{s}i\v{c}
+[DONE] [1] Milanic must be Milani\v{c} and Mursic must be Mur\v{s}i\v{c}
 
-[7,8]: Moysés S. Sampaio Jr. has become M. S. S. Jr. 
+[DONE] [7,8]: Moysés S. Sampaio Jr. has become M. S. S. Jr.
 
-[11,13,21,26,36] The url is missing. 
+[DONE] [11,13,21,26,36] The url is missing.
 
-[15] I would suggest to use {I.} and the {R}ecognizable in the bibtex entry to capitalize these letters.
+[DONE] [15] I would suggest to use {I.} and the {R}ecognizable in the bibtex entry to capitalize these letters.
 
-[18] There is a doi and an url: 10.1007/978-3-642-46908-4_25; https://doi.org/10.1007/978-3-642-46908-4_25
+[DONE] [18] There is a doi and an url: 10.1007/978-3-642-46908-4_25; https://doi.org/10.1007/978-3-642-46908-4_25
 
-[20,22,26,37] The backslashes before the underscores in the doi and the url are not correct. In particular, the urls with underscores do not work.
+[DONE] [20,22,26,37] The backslashes before the underscores in the doi and the url are not correct. In particular, the urls with underscores do not work.
 
-[21] "graphen" should be "{G}raphen" as it is German.
+[DONE] [21] "graphen" should be "{G}raphen" as it is German.
 
-[22] There is a journal version of this paper: R. Ganian: Improving Vertex Cover as a Graph Parameter. Discret. Math. Theor. Comput. Sci. 17(2): 77-100 (2015) https://doi.org/10.46298/dmtcs.2136
+[DONE] [22] There is a journal version of this paper: R. Ganian: Improving Vertex Cover as a Graph Parameter. Discret. Math. Theor. Comput. Sci. 17(2): 77-100 (2015) https://doi.org/10.46298/dmtcs.2136
 
-[25] "Lex-bfs" should be "Lex-{BFS}"
+[DONE] [25] "Lex-bfs" should be "Lex-{BFS}"
 
-[30,35] Different to all other journal names, you don't use abbreviations here. It should be "Fundam. Math." and "Theor. Comput. Sci."
+[DONE] [30,35] Different to all other journal names, you don't use abbreviations here. It should be "Fundam. Math." and "Theor. Comput. Sci."
 
-[30] There is a doi and an url: 10.4064/fm-51-1-45-64; https://doi.org/10.4064/fm-51-1-45-64
+[DONE] [30] There is a doi and an url: 10.4064/fm-51-1-45-64; https://doi.org/10.4064/fm-51-1-45-64
