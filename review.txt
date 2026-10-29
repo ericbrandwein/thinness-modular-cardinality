@@ -1,4 +1,4 @@
-1. I could not follow you in the running time arguments for Theorem 7. Could you state more explicitly how you traverse the modular decomposition tree and when do you check for the interval graph property.
+[DONE -- added some flags to the algorithm] 1. I could not follow you in the running time arguments for Theorem 7. Could you state more explicitly how you traverse the modular decomposition tree and when do you check for the interval graph property.
 
 2. Is the bound given in Lemma 12 optimal or is it possible that there is also a polynomial bound? This question is of particular interest as if the bound can be improved to polynomial, then this would directly imply a polynomial kernel for thinness when parameterized by the twin cover number and vertex cover number. If this is not the case, then your third open problem would definitely need some new algorithmic insights. If it is open whether there is a polynomial bound, then I would suggest to address this directly after Lemma 12 and in the open problem description.
 

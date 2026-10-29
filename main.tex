@@ -677,15 +677,19 @@ In particular, \cref{prop:thinness-join} implies that the join of two graphs is 
 \end{theorem}
 \begin{proof}
 \newcommand{\Stail}{\mathsf{tail}}
-    The proof follows the structure of the one for \cref{prop:calculate-cluster-module-partition}. We compute the modular decomposition tree $T$ of $G$. Then, for each node $G_t \in T$ (which is an induced subgraph of $G$), we compute an optimal $\interval$-modular partition $S_t$ of the vertices of $G_t$ depending on the type of the node $G_t$. Let $\mathcal{C} \coloneqq \{G_1, \dots, G_h\}$ be the children of $G_t$ in $T$, if there are any, and let $S_1,\dots, S_h$ be their respective optimal $\interval$-modular partitions.
+    The proof follows the structure of the one for \cref{prop:calculate-cluster-module-partition}. We compute the modular decomposition tree $T$ of $G$. Then, for each node $G_t \in T$ (which is an induced subgraph of $G$), we compute an optimal $\interval$-modular partition $S_t$ of the vertices of $G_t$ depending on the type of the node $G_t$. We do this in a bottom-up fashion, beginning with the leaves of the decomposition. We additionally store two flags for $G_t$, indicating if it is a complete graph and if it is an interval graph, respectively.
+    
+    Let $\mathcal{C} \coloneqq \{G_1, \dots, G_h\}$ be the children of $G_t$ in $T$, if there are any, and let $S_1,\dots, S_h$ be their respective optimal $\interval$-modular partitions.
     \begin{itemize}
-        \item \textbf{Leaf}: The only class in $S_t$ is formed by the only vertex in $G_t$. This vertex is trivially an interval module, and the partition is unique, thus optimal.
+        \item \textbf{Leaf}: The only class in $S_t$ is formed by the only vertex in $G_t$. This vertex is trivially an interval module, and the partition is unique, thus optimal. Moreover, $G_t$ is both a complete and an interval graph.
         \item \textbf{Parallel}: We build $S_t$ by taking the union of the children that induce interval graphs as class $C_1$, and taking the union of the partitions of all the other children. More formally, if $\mathcal{I}$ is the subset of the children $\mathcal{C}$ that induce interval graphs: 
         \begin{align*}
             C_1 &\coloneqq \bigcup_{G_i \in \mathcal{I}}V(G_i)\\
             S_t &\coloneqq \{C_1\} \cup \bigcup_{G_i \in \mathcal{C}\setminus\mathcal{I}}S_i.
         \end{align*}
         
+        To decide which children are interval graphs, we use the flag computed earlier for each one of them.
+
         Note that $S_t$ is in fact an $\interval$-modular partition:
         \begin{itemize}
             \item All the classes induce interval graphs, as $C_1$ is a union of interval graphs (and thus by \cref{prop:thinness-union} it is an interval graph), and all the other classes belong to $\interval$-modular partitions of the children of $G_t$, and thus are also interval graphs.
@@ -698,6 +702,9 @@ In particular, \cref{prop:thinness-join} implies that the join of two graphs is 
             \item\label{item:submodules} every other class must be a submodule of one of the children of $G_t$.
         \end{enumerate}
         Partition $S_t$ minimizes both the number of classes of type \ref{item:union} and the number of classes of type \ref{item:submodules}, and is therefore of minimum size.
+
+        Finally, the graph $G_t$ cannot be a complete graph, and it is an interval graph if and only if all of its children are also interval graphs by \cref{prop:thinness-union}.
+
         \item \textbf{Series}: We define $S_t$ as $\{C_1\} \cup \Stail$, where
         \begin{itemize}
             \item $C_1$ contains all vertices belonging to complete children of $G_t$, and all vertices of one arbitrary child that is a non-complete interval graph if it exists; and
@@ -714,6 +721,8 @@ In particular, \cref{prop:thinness-join} implies that the join of two graphs is 
 
         Furthermore, $S'_t$ is forced to contain $\interval$-modular partitions of the children of $G_t$ that do not induce interval graphs. Therefore, $S_t$ contains no more classes than $S'_t$.
 
+        Finally, the graph $G_t$ is complete only if all of its children are complete, and is an interval graph only if $C_1$ contains all vertices of $G_t$.
+
         \item \textbf{Prime}: If $G_t$ is an interval graph, define $S_t \coloneqq \{V(G_t)\}$. Otherwise, $S_t \coloneqq \bigcup_{G_i \in \mathcal{C}}S_i$.
 
         It is clear that, in both cases, $S_t$ is an $\interval$-modular partition. Also, as shown by \citet{modular-decomposition}, the only proper submodules of a prime node are the modules of children of the node. Thus, if $G_t$ is not an interval graph, the partition must be the union of $\interval$-modular partitions of the children of $G_t$, and therefore $S_t$ is optimal.
@@ -722,7 +731,7 @@ In particular, \cref{prop:thinness-join} implies that the join of two graphs is 
 
         To remedy this, we will utilize the lemmas presented in \cref{sec:reducing-modules} to reduce the number of vertices in $G_t$ without changing the thinness. First, if any one of the children of $G_t$ is not an interval graph, then, as the thinness is a hereditary property, graph $G_t$ is also not an interval graph. Otherwise, we create a graph $G'_t$ by contracting every child that is a complete graph into a single vertex, and contracting every other child that is an interval graph into two nonadjacent vertices. By \cref{prop:contract-complete-module,prop:contract-interval-module}, graph $G'_t$ has the same thinness as $G_t$. In particular, $G'_t$ is an interval graph if and only if $G_t$ is an interval graph. Thus, we finish by running a linear-time algorithm to decide if $G'_t$ is an interval graph or not.
 
-        As the number of nodes in a modular decomposition tree is $\O(n)$, and the number of vertices in $G'_t$ is at most twice the number of children of $G_t$, this algorithm takes linear time on the size of $G$, taking into account that we need to store a flag for each node that signals if a node is a complete graph or not.\qedhere
+        As the number of nodes in a modular decomposition tree is $\O(n)$, and the number of vertices in $G'_t$ is at most twice the number of children of $G_t$, this algorithm takes linear time on the size of $G$, by utilizing the flags computed earlier for the children of $G_t$.\qedhere
      \end{itemize}
 \end{proof}
 
