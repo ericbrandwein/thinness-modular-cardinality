@@ -29,7 +29,7 @@
 
 [DONE] page 4, line 2: Wouldn't it be better to use your formulation "A generalizes B"?
 
-page 5: You do not give a definition of interval graphs. I think it would be helpful if you do so.
+[DONE] page 5: You do not give a definition of interval graphs. I think it would be helpful if you do so.
 
 [DONE] page 5, line -10: I would replace "neighbors of a vertex in X" by "neighbors of X".
 
