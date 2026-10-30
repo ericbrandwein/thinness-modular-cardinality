@@ -1435,13 +1435,13 @@ The converse of \cref{prop:replacing-module-maintains-thinness-if-irreducible-cl
 \newcommand{\secondCycle}{H_2}
 \begin{lemma}
 \label[lemma]{prop:when-replacing-maintains-thinness}
-    Let $\singleCycleGraph$ be a thinness two graph with a module $\singleCycleModule$ that induces a cycle on 4 vertices. Define $\doubleCycleGraph$ to be the result of replacing $\singleCycleModule$ with the union of two cycles on 4 vertices. The thinness of $\doubleCycleGraph$ is equal to 2 if and only if there exists an optimal consistent solution $(<', S')$ for $\singleCycleGraph$ where the vertices in $\singleCycleModule$ appear consecutively in $<'$.
+    Let $\singleCycleGraph$ be a thinness two graph with a module $\singleCycleModule$ that induces a cycle on 4 vertices. Define $\doubleCycleGraph$ to be the result of replacing $\singleCycleModule$ with the disjoint union of two cycles on 4 vertices. The thinness of $\doubleCycleGraph$ is equal to 2 if and only if there exists an optimal consistent solution $(<', S')$ for $\singleCycleGraph$ where the vertices in $\singleCycleModule$ appear consecutively in $<'$.
 
     % Can be generalized to the following, but it's a little bit more involved:
     % Let $\singleCycleGraph$ be a graph with a module $\singleCycleModule$ such that $\thin(G) = \thin(G[M] = 2$. Define $G'$ to be the result of replacing $\singleCycleModule$ with a module $M'$ that induces the union of two thinness 2 graphs. The thinness of $G'$ is equal to 2 if and only if there exists an optimal consistent solution $(<, S)$ for $\singleCycleGraph$ where the vertices in $\singleCycleModule$ appear consecutively in $<$.
 \end{lemma}
 \begin{proof}
-Let $\doubleCycleModule$ be the union of two cycles on 4 vertices. Note that $\thin(\singleCycleGraph[\singleCycleModule]) = \thin(\doubleCycleModule) = 2$.
+Let $\doubleCycleModule$ be the disjoint union of two cycles on 4 vertices. Note that $\thin(\singleCycleGraph[\singleCycleModule]) = \thin(\doubleCycleModule) = 2$.
 
 $(\Leftarrow)$ By \cref{prop:irreducible-clique}, the incompatibility graph $\singleCycleGraph[\singleCycleModule]_{<'}$ contains an irreducible clique $C$ of size 2. 
 Hence, instantiating \cref{prop:replacing-module-maintains-thinness-if-irreducible-clique-consecutive} with $G \coloneq \singleCycleGraph$, $M \coloneq \singleCycleModule$, $G' \coloneq \doubleCycleGraph$, the irreducible clique $C$ of the consistent solution $(<' ,S')$, and $\ell \coloneq 2$, we have that there exists a consistent solution in $2$ classes for $\doubleCycleGraph$. As the thinness is hereditary and $\thin(\doubleCycleModule) = 2$, this shows $\thin(\doubleCycleGraph) = 2$.
