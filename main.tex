@@ -586,7 +586,7 @@ A similar lemma holds for modules that induce interval graphs that are not compl
     
     Starting from a consistent solution $(<', S')$ on $\thin(G')$ classes of the vertices of $G'$, we will construct a consistent solution $(<, S)$ of the vertices of $G$ on no more than $\thin(G')$ classes, and thus prove $\thin(G) \leq \thin(G')$.
     
-    Let $h_1$ and $h_2$ denote the two remaining vertices belonging to $H$ in $G'$ such that $h_1 <' h_2$. Take $<_H$ to be an ordering of the vertices of $H$ consistent with the partition $\{H\}$, which exists because $H$ is an interval graph. We construct solution $(<, S)$ by removing vertex $h_2$ from $(<', S')$ and replacing the vertex $h_1$ in $<'$ with all the vertices in $H$ in the order defined by $<_H$. Additionally, we assign all the vertices of $H$ to the same class as $h_1$ in $S'$. 
+    Let $h_1$ and $h_2$ denote the two remaining vertices belonging to $H$ in $G'$ such that $h_1 <' h_2$. Take $<_H$ to be an ordering of the vertices of $H$ consistent with the partition $\{H\}$, which exists because $G[H]$ is an interval graph. We construct solution $(<, S)$ by removing vertex $h_2$ from $(<', S')$ and replacing the vertex $h_1$ in $<'$ with all the vertices in $H$ in the order defined by $<_H$. Additionally, we assign all the vertices of $H$ to the same class as $h_1$ in $S'$. 
     
     We claim that $(<, S)$ is a consistent solution for $G$. We will prove this by analyzing every possible triple $u < v < w$ of vertices in $G$, and showing that they form a consistent triple. We distinguish several cases
     depending on which of the three vertices belong to $H$:
@@ -607,7 +607,7 @@ A similar lemma holds for modules that induce interval graphs that are not compl
     This proves that $(<, S)$ is a consistent solution with at most $\thin(G')$ classes for the vertices in $V(G)$, and thus $\thin(G) \leq \thin(G')$. Combining this result with $\thin(G) \geq \thin(G')$ we have that $\thin(G) = \thin(G')$.
 \end{proof}
 
-In \cref{prop:contract-interval-module}, the choice of replacing $H$ with two independent vertices is superfluous: in fact, replacing the module with any non-complete interval graph would maintain the thinness of the whole graph. Recalling that interval graphs are exactly the graphs of thinness one, it seems sensible to ask whether \cref{prop:contract-interval-module} could be generalized to modules of greater thinness. In particular, \emph{is the thinness of a graph $G$ maintained when modules of thinness two are replaced by any other graph $H'$ such that $\thin(H') = 2$?} 
+In \cref{prop:contract-interval-module}, the choice of replacing $H$ with two independent vertices is arbitrary: in fact, replacing the module with any non-complete interval graph would maintain the thinness of the whole graph. Recalling that interval graphs are exactly the graphs of thinness one, it seems sensible to ask whether \cref{prop:contract-interval-module} could be generalized to modules of greater thinness. In particular, \emph{is the thinness of a graph $G$ maintained when modules of thinness two are replaced by any other graph $H'$ such that $\thin(H') = 2$?} 
 The answer is negative, and we defer the construction of a counterexample to \cref{sec:counterexample}.
 
 % \vspace{0.5em}
