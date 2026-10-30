@@ -634,7 +634,7 @@ First, we compute the modular decomposition tree $T$ of $G$, which can be done i
             \Shead &\coloneqq \bigcup_{G_i \in \mathcal{K}} V(G_i)\\
             \Stail &\coloneqq \bigcup_{G_i \in \mathcal{C} \setminus \mathcal{K}} S_{t_i}. 
         \end{align*}
-        In other words, we take the vertices of the child nodes $t_i$ for which $G_{t_i}$ is a complete graph, and join them into one class to build the first class of $S_t$. Then, we add the classes of all the other partitions as they are.
+        In other words, we take the vertices of the child nodes $t_i$ for which $G_{t_i}$ is a complete graph, and join them into one class to build the first class of $S_t$. Then, we add the classes of all the other partitions as they are. If $\Shead$ is empty, we just define $S_t \coloneqq \Stail$.
 
         As shown by \citet{modular-decomposition}, the only modules present in $G_t$ are the possible unions of elements of $\mathcal{C}$, and the submodules of elements of $\mathcal{C}$. That is to say, $G_t$ has no modules that contain some but not all vertices of some $G_i$, and some but not all vertices of some $G_j$, with $i \neq j$.
 
@@ -647,7 +647,7 @@ First, we compute the modular decomposition tree $T$ of $G$, which can be done i
             \item \emph{$G_t$ is a parallel node}: Every element of $\mathcal{C}$ is a connected graph. As $G_j$ is not complete, it cannot be part of a cluster.
             \item \emph{$G_t$ is a series node}: Let $G_l$ be another element of $\mathcal{C}$ present in $Q^i_t$. Every vertex of $G_j$ is adjacent to every vertex of $G_l$. As $G_j$ is not complete, there are two nonadjacent vertices $v$ and $w$ in $V(G_j)$ that are each adjacent to a vertex $u$ in $G_l$. Thus, $v$, $w$, and $u$ cannot be part of the same cluster. 
         \end{itemize}
-        These two cases show that the previous scenario cannot happen, and so every class of $Q_t$ is either a union of elements of $\mathcal{C}$ that are complete graphs, or submodules of elements of $\mathcal{C}$. Moreover, there cannot be more than one class of $Q_t$ that is a union of elements of $\mathcal{C}$, because otherwise we could join those classes into only one, reducing the size of $Q_t$. Also, there cannot be a proper submodule of an element $G_i$ of $\mathcal{C}$ that is a complete graph as a class in $Q_t$, as otherwise we could join that submodule with the rest of $G_i$ to reduce the size of $Q_t$. Thus, the union of the elements of $\mathcal{C}$ that are complete graphs defines a class in $Q_t$. Finally, as each other class is a submodule of an element of $\mathcal{C}$, the classes that have some vertex of a given graph $G_i$ must form a partition of the vertices of $G_i$, meaning, they should be a $\cluster$-modular partition of $G_i$. Partition $Q_t$ then contains an optimal cluster partition of each $G_i$, and necessarily has the same amount of classes as $S_t$.
+        These two cases show that the previous scenario cannot happen, and so every class of $Q_t$ is either a union of elements of $\mathcal{C}$ that are complete graphs, or submodules of elements of $\mathcal{C}$. Moreover, there cannot be more than one class of $Q_t$ that is a union of elements of $\mathcal{C}$, because otherwise we could join those classes into only one, reducing the size of $Q_t$. Also, there cannot be a proper submodule of an element $G_i$ of $\mathcal{C}$ that is a complete graph as a class in $Q_t$, as otherwise we could join that submodule with the rest of $G_i$ to reduce the size of $Q_t$. Thus, if $\mathcal{K}$ is nonempty, the union of the elements of $\mathcal{C}$ that are complete graphs defines a class in $Q_t$. Finally, as each other class is a submodule of an element of $\mathcal{C}$, the classes that have some vertex of a given graph $G_i$ must form a partition of the vertices of $G_i$, meaning, they should be a $\cluster$-modular partition of $G_i$. Partition $Q_t$ then contains an optimal cluster partition of each $G_i$, and necessarily has the same amount of classes as $S_t$.
         
         \item \textbf{Prime}: We define $S_t$ to be the union of $S_i$ for every $1 \leq i \leq h$.
         
@@ -688,7 +688,8 @@ In particular, \cref{prop:thinness-join} implies that the join of two graphs is 
             C_1 &\coloneqq \bigcup_{G_i \in \mathcal{I}}V(G_i)\\
             S_t &\coloneqq \{C_1\} \cup \bigcup_{G_i \in \mathcal{C}\setminus\mathcal{I}}S_i.
         \end{align*}
-        
+        If $C_1$ is empty, we just define $S_t \coloneqq \bigcup_{G_i \in \mathcal{C}}S_i$.
+
         To decide which children are interval graphs, we use the flag computed earlier for each one of them.
 
         Note that $S_t$ is in fact an $\interval$-modular partition:
