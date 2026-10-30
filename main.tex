@@ -257,7 +257,7 @@ width=0.3mm}, c2/.style={line width=0.2mm} }
 \begin{abstract}
 Recently, Lafond and Luo [MFCS 2023] defined the $\mathcal{G}$-modular cardinality of a graph $G$ as the minimum size of a partition of $V(G)$ into modules that belong to a graph class $\mathcal{G}$. We analyze the complexity of calculating parameters that generalize interval graphs when parameterized by the $\mathcal{G}$-modular cardinality, where $\mathcal{G}$ corresponds either to the class of interval graphs or to the disjoint union of complete graphs. Namely, we analyze the complexity of computing the thinness and the simultaneous interval number of a graph.
 
-We present a linear kernel for the \textsc{Thinness} problem parameterized by the $\textsf{interval}$-modular cardinality and an \textsf{FPT} algorithm for \textsc{Simultaneous Interval Number} when parameterized by the $\textsf{cluster}$-modular cardinality plus the solution size. The $\textsf{interval}$-modular cardinality of a graph is not greater than the $\textsf{cluster}$-modular cardinality, which in turn generalizes the neighborhood diversity and the twin-cover number. Thus, our results imply a linear kernel for \textsc{Thinness} when parameterized by the neighborhood diversity of the input graph, \textsf{FPT} algorithms for \textsc{Thinness} when parameterized by the twin-cover number and vertex cover number, and \textsf{FPT} algorithms for \textsc{Simultaneous Interval Number} when parameterized by the neighborhood diversity plus the solution size, twin-cover number, and vertex cover number. To the best of our knowledge, prior to our work no parameterized algorithms (\textsf{FPT} or \textsf{XP}) for computing the thinness or the simultaneous interval number were known.
+We present a kernel with at most $2k$ vertices for the \textsc{Thinness} problem parameterized by the $\textsf{interval}$-modular cardinality $k$ and an \textsf{FPT} algorithm for \textsc{Simultaneous Interval Number} when parameterized by the $\textsf{cluster}$-modular cardinality plus the solution size. The $\textsf{interval}$-modular cardinality of a graph is not greater than the $\textsf{cluster}$-modular cardinality, which in turn generalizes the neighborhood diversity and the twin-cover number. Thus, our results imply a kernel with at most $2k$ vertices for \textsc{Thinness} when parameterized by the neighborhood diversity $k$ of the input graph, \textsf{FPT} algorithms for \textsc{Thinness} when parameterized by the twin-cover number and vertex cover number, and \textsf{FPT} algorithms for \textsc{Simultaneous Interval Number} when parameterized by the neighborhood diversity plus the solution size, twin-cover number, and vertex cover number. To the best of our knowledge, prior to our work no parameterized algorithms (\textsf{FPT} or \textsf{XP}) for computing the thinness or the simultaneous interval number were known.
 
 On the negative side, we observe that \textsc{Thinness} and \textsc{Simultaneous Interval Number} parameterized by tree\-width, pathwidth, bandwidth, (linear) mim-width, clique-width, modular-width, or even the thinness or simultaneous interval number themselves, admit no polynomial kernels assuming $\mathsf{NP} \not\subseteq \mathsf{coNP}/\mathsf{poly}$.
 \end{abstract}
@@ -337,7 +337,7 @@ If a parameter $p(G)$ is not greater than a function $f$ of another parameter $s
 \end{figure}
 
 The article that introduces the $\G$-modular cardinality~\citep{modular-partitions-MFCS23}\footnote{Full proofs can be found in~\citep{modular-partitions-arxiv}.} presents a polynomial-time algorithm to obtain it for an arbitrary graph when $\G$ meets conditions that are satisfied by the classes $\cluster$ and $\interval$, but their algorithm does not explicitly run in linear time. Thus, we first show that computing the $\cluster$- and $\interval$-modular cardinality of a graph can be done in linear time in \cref{prop:calculate-cluster-module-partition,prop:calculate-interval-module-partition}. 
- In the case of the $\interval$-modular cardinality, this necessitates the results in \cref{prop:contract-complete-module,prop:contract-interval-module}, which allow the elimination of most of the vertices of a module that induces an interval graph without modifying the thinness of the whole graph. These results cannot be easily generalized to modules that induce graphs with bounded thinness; we show this in \cref{sec:counterexample} by providing a counterexample to a possible generalization of them. Then, we use these results to present linear kernels for the \textsc{Thinness} problem when parameterized by the $\interval$-modular cardinality (\cref{prop:interval-modular-cardinality-parametrization}) and neighborhood diversity (\cref{prop:neighborhood-diversity-parametrization}) of the input graph, and exponential kernels when parameterized by the twin-cover number (\cref{prop:twin-cover-parametrization}) and vertex cover number (\cref{prop:vertex-cover-parametrization}). Additionally, we show \FPT algorithms for the \textsc{Simultaneous Interval Number} problem parameterized by the $\cluster$-modular cardinality plus the solution size (\cref{theorem:si-param-cm}), neighborhood diversity plus the solution size (\cref{corol:si-param-nd-vc}), twin-cover number (\cref{cor:si-param-twin-cover}), and vertex cover number (\cref{corol:si-param-nd-vc}). For kernelization lower bounds, we observe in \cref{theorem:thinness-kernelization-lower-bound} that no polynomial kernels are likely to exist for the \textsc{Thinness} or \textsc{Simultaneous Interval Number} problems when parameterized by a number of graph parameters, including treewidth, modular-width, and the thinness and simultaneous interval number themselves. Finally, in \cref{sec:modw-vs-lmimw} we complete the relationships of \cref{fig:diagram} by proving that modular-width and linear mim-width do not generalize one another.
+ In the case of the $\interval$-modular cardinality, this necessitates the results in \cref{prop:contract-complete-module,prop:contract-interval-module}, which allow the elimination of most of the vertices of a module that induces an interval graph without modifying the thinness of the whole graph. These results cannot be easily generalized to modules that induce graphs with bounded thinness; we show this in \cref{sec:counterexample} by providing a counterexample to a possible generalization of them. Then, we use these results to present kernels with at most $2k$ vertices for the \textsc{Thinness} problem when parameterized by the $\interval$-modular cardinality (\cref{prop:interval-modular-cardinality-parametrization}) and neighborhood diversity (\cref{prop:neighborhood-diversity-parametrization}) $k$ of the input graph, and exponential kernels when parameterized by the twin-cover number (\cref{prop:twin-cover-parametrization}) and vertex cover number (\cref{prop:vertex-cover-parametrization}). Additionally, we show \FPT algorithms for the \textsc{Simultaneous Interval Number} problem parameterized by the $\cluster$-modular cardinality plus the solution size (\cref{theorem:si-param-cm}), neighborhood diversity plus the solution size (\cref{corol:si-param-nd-vc}), twin-cover number (\cref{cor:si-param-twin-cover}), and vertex cover number (\cref{corol:si-param-nd-vc}). For kernelization lower bounds, we observe in \cref{theorem:thinness-kernelization-lower-bound} that no polynomial kernels are likely to exist for the \textsc{Thinness} or \textsc{Simultaneous Interval Number} problems when parameterized by a number of graph parameters, including treewidth, modular-width, and the thinness and simultaneous interval number themselves. Finally, in \cref{sec:modw-vs-lmimw} we complete the relationships of \cref{fig:diagram} by proving that modular-width and linear mim-width do not generalize one another.
 
 In order to achieve the results mentioned above, we highlight, in particular, the following technical contributions: determining in \cref{prop:contract-interval-module} that almost all vertices belonging to a module that induces an interval graph can be eliminated without modifying the thinness of the graph, and presenting an \FPT algorithm for \textsc{Simultaneous Interval Number} when parameterized by the $\cluster$-modular cardinality plus the solution size in \cref{theorem:si-param-cm} by reducing the problem to a limited number of small instances.
 
@@ -743,7 +743,7 @@ We are now ready to present the kernels for {\sc Thinness} parameterized by the 
 
 \begin{theorem}
     \label{prop:interval-modular-cardinality-parametrization}
-    For every graph $G$, $\thin(G) \leq 2\cdot\intervalmc(G)$. In addition, {\sc Thinness} admits a linear kernel when parameterized by the $\interval$-modular cardinality of the input graph.
+    For every graph $G$, $\thin(G) \leq 2\cdot\intervalmc(G)$. In addition, {\sc Thinness} admits a kernel with at most $2k$ vertices when parameterized by the $\interval$-modular cardinality $k$ of the input graph.
 \end{theorem}
 \begin{proof}
     We reduce an instance $(G, t, k)$ of \textsc{Thinness} parameterized by $\interval$-modular cardinality (where $t$ is the thinness parameter and $k$ is the $\interval$-modular cardinality of $G$) to an instance $(G', t', k')$ in time $n^{\mathcal{O}(1)}$ such that $t' = t$, $k' = k$, and $\abs{V(G')} \leq 2k$.
@@ -780,7 +780,7 @@ Combining \cref{prop:interval-modular-cardinality-parametrization} with \cref{pr
 
 \begin{theorem}
 \label{prop:neighborhood-diversity-parametrization}
-    {\sc Thinness} is \FPT when parameterized by the neighborhood diversity of the input graph. Moreover, the problem admits a linear kernel.
+    {\sc Thinness} is \FPT when parameterized by the neighborhood diversity $k$ of the input graph. Moreover, the problem admits a kernel with at most $2k$ vertices.
 \end{theorem}
 
 
@@ -814,7 +814,7 @@ The bound of \cref{lemma:twin-cover-hcupn} is tight even when replacing the twin
     {\sc Thinness} is \FPT when parameterized by the twin-cover number of the input graph.
 \end{theorem}
 \begin{proof}
-    Let $G$ be a graph with twin-cover number $k$. By \cref{lemma:twin-cover-hcupn}, $\cm(G) \leq 2^k + k$. We thus use the algorithm from \cref{prop:interval-modular-cardinality-parametrization} to obtain a kernel of size $\O(2^k)$.
+    Let $G$ be a graph with twin-cover number $k$. By \cref{lemma:twin-cover-hcupn}, $\cm(G) \leq 2^k + k$. We thus use the algorithm from \cref{prop:interval-modular-cardinality-parametrization} to obtain a kernel with $\O(2^k)$ vertices.
 \end{proof}
 
 Note that the kernel presented above is not polynomial, as the bound on the $\cluster$-modular cardinality given a twin-cover of size $k$ is $\O(2^k)$.
@@ -930,12 +930,12 @@ Problem & General & $\intervalmc$ & $\cm$ & $\nd$ & $\tc$ & $\vc$ \\
 \midrule
 \textsc{$\interval$-MC}  & linear & & & & &  \\
 \textsc{$\cluster$-MC}  & linear & & & & & \\
-\textsc{Thinness}  & ~\NP-c~ & linear kernel & linear kernel & linear kernel & ~\FPT~ & \FPT \\
+\textsc{Thinness}  & ~\NP-c~ & $2k$-vertex kernel & $2k$-vertex kernel & $2k$-vertex kernel & ~\FPT~ & \FPT \\
 \textsc{Sim. Int. Num.}~~~  & ~\NP-c~ & ? & \FPT $(\cm + d)$ & \FPT $(\nd + d)$ & ~\FPT~ & \FPT\\
 \bottomrule
 \end{tabular}
 % }
-\caption{Parameterized complexity results. The parameter $d$ represents the solution size.}\label{tab:results}
+\caption{Parameterized complexity results. The parameter $d$ represents the solution size, and $k$ represents the parameter of the corresponding column.}\label{tab:results}
 \end{table}%
 
 Possible avenues of research that this work leaves open include:

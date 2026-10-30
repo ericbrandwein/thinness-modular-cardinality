@@ -10,6 +10,7 @@ Smaller changes:
 - On Lemma 32, we changed the names of the cycles of H to H_1 and H_2.
 
 We detected some additional errors and fixed them:
+- Our kernels are not strictly linear on the size of the resulting graph, but they do have a linear number of vertices.
 - On Figure 1, a comparison between interval-modular cardinality and simultaneous interval number was missing.
 - On Theorem 4, we talked about a complete subgraph being a parallel node instead of a series node.
 - On Theorem 7, the bound O(n^2) understated the time complexity of the naive algorithm.
