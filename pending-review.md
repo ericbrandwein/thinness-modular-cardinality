@@ -51,5 +51,5 @@ Line numbers refer to `main.tex` as of 2026-10-30. Lemma/theorem numbers are the
 - [IGNORED] **"Contract … into two nonadjacent vertices"** (L751, and Theorem 7 at L733). Section 2 defines contraction as replacing a module by a *single* vertex; Lemma 3 deletes all but two nonadjacent vertices. Say "remove all but two nonadjacent vertices of every other part".
 - [IGNORED] **"Neighborhood partition of width k"** (L764, L774). "Width" is never defined; "with k parts".
 - [DONE] **L742:** "twin-cover, and vertex cover" → "twin-cover number, and vertex cover number".
-- **Lemma 12** (L796–798). Some of P₁, …, P_{2ᵏ} may be empty, so the partition has *at most* 2ᵏ + k parts; say so or discard empty parts.
-- **L820:** "the kernel presented above is not polynomial" → "is exponential in k". Could mention that Appendix D shows this approach cannot do better.
+- [DONE] **Lemma 12** (L796–798). Some of P₁, …, P_{2ᵏ} may be empty, so the partition has *at most* 2ᵏ + k parts; say so or discard empty parts.
+- [IGNORED] **L820:** "the kernel presented above is not polynomial" → "is exponential in k". Could mention that Appendix D shows this approach cannot do better.
