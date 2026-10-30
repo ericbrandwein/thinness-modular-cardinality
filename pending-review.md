@@ -23,10 +23,10 @@ Line numbers refer to `main.tex` as of 2026-10-30. Lemma/theorem numbers are the
 - [IGNORED] **Reference to the wrong lemma** (L1294). "These statements will be proved in Lemma 33 and Lemma 31": the second should be Lemma 32 (`prop:when-replacing-maintains-thinness`).
 - [IGNORED] **Fig. 5 caption** (L1261). It says thin(G) = 3, but only thin(G) ≥ 3 is proved. Either prove the upper bound or write "thin(G) ≥ 3".
 - **Theorem 22** (L1245–1247).
-  - The proof doesn't argue that the cuts C₁, C₂, C₃ are distinct. If two coincided, that cut would have mim 2n > n, so this is easy to add.
-  - The n+1 upper bound for the given layout is stated without justification.
-  - "Modular-width 7" (L1080) holds only for n ≥ 1, since H₀ has modular-width 2.
-- **Lemma 32 (⇐)** (L1444). Say explicitly that Lemma 31's hypothesis holds trivially because H′ is consecutive.
+  - [Already justified] The proof doesn't argue that the cuts C₁, C₂, C₃ are distinct. If two coincided, that cut would have mim 2n > n, so this is easy to add.
+  - [IGNORED] The n+1 upper bound for the given layout is stated without justification.
+  - [DONE] "Modular-width 7" (L1080) holds only for n ≥ 1, since H₀ has modular-width 2.
+- [IGNORED] **Lemma 32 (⇐)** (L1444). Say explicitly that Lemma 31's hypothesis holds trivially because H′ is consecutive.
 
 ## Typos and wording
 

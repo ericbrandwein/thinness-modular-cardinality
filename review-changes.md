@@ -15,5 +15,5 @@ We detected some additional errors and fixed them:
 - On Theorem 7, the bound O(n^2) understated the time complexity of the naive algorithm.
 - On Lemma 17, there was an edge case when the intervals of A had no labels.  
 - On Theorem 37, the choice of p for Thinness and Simultaneous Interval Number could in principle be greater than the parameter p.
-
+- On Appendix A, the graph H_0 does not have modular-width 7.
 Finally, we corrected all the mistakes and applied the wise suggestions that the reviewer proposed.
