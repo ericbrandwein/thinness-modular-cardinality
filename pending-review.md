@@ -17,7 +17,7 @@ Line numbers refer to `main.tex` as of 2026-10-30. Lemma/theorem numbers are the
 - [IGNORED] **Lemma 15** (L845). The proof only shows si(G) ≤ si(G|_H). Add one sentence for the other direction: G|_H is an induced subgraph of G.
 - [IGNORED] **Lemma 18** (L870). It is introduced as "a corollary of Lemma 15", but the proof doesn't use Lemma 15.
 - **Theorem 7, prime case** (L731, L735).
-  - "O(n²)" understates the naive cost, which can be O(n(n+m)); "superlinear" is safer.
+  - [DONE] "O(n²)" understates the naive cost, which can be O(n(n+m)); "superlinear" is safer.
   - The linear-time argument only bounds the vertices of G′ₜ. Mention that the total size of the quotient graphs is O(n+m), so the edges are covered too.
 - **Theorem 8** (L748–752). t′ = t is unbounded. If t ≥ 2k, output a trivial yes-instance so the kernel size really is bounded by k.
 - **Reference to the wrong lemma** (L1294). "These statements will be proved in Lemma 33 and Lemma 31": the second should be Lemma 32 (`prop:when-replacing-maintains-thinness`).

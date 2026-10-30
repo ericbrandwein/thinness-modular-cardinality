@@ -12,6 +12,7 @@ Smaller changes:
 We detected some additional errors and fixed them:
 - On Figure 1, a comparison between interval-modular cardinality and simultaneous interval number was missing.
 - On Theorem 4, we talked about a complete subgraph being a parallel node instead of a series node.
+- On Theorem 7, the bound O(n^2) understated the time complexity of the naive algorithm.
 - On Lemma 17, there was an edge case when the intervals of A had no labels.  
 - On Theorem 37, the choice of p for Thinness and Simultaneous Interval Number could in principle be greater than the parameter p.
 
