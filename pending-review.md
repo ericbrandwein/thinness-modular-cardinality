@@ -67,3 +67,12 @@ Line numbers refer to `main.tex` as of 2026-10-30. Lemma/theorem numbers are the
 - **L833:** "We prove here the bounds shown in Fig. 1" → only one relation is proved here (Lemma 18, si vs. twin-cover number).
 - **L858:** "which in particular include the independent sets" → "independent sets of size at least 2".
 - **L863:** "|H| ≥ 2" is redundant given that G[H] is not complete.
+
+## Section 7 (Conclusions and open problems)
+
+- **Open problem 4 skips the natural next step** (L948). The "?" in Table 1 (SI, 𝗂𝗇𝗍𝖾𝗋𝗏𝖺𝗅-mc column) is about 𝗂𝗇𝗍𝖾𝗋𝗏𝖺𝗅-mc *plus d*, but the open problem only asks about 𝖼𝗅𝗎𝗌𝗍𝖾𝗋-mc or 𝗂𝗇𝗍𝖾𝗋𝗏𝖺𝗅-mc *alone*. Suggest also asking: is SI FPT parameterized by 𝗂𝗇𝗍𝖾𝗋𝗏𝖺𝗅-mc + d?
+- **Table 1, Thinness by tc and vc** (L933). The cells say "FPT", but Theorem 13 gives a kernel with O(2ᵏ) vertices, and the introduction calls these "exponential kernels". Consider "O(2ᵏ)-vertex kernel" for consistency.
+- **Table 1, rows 𝗂𝗇𝗍𝖾𝗋𝗏𝖺𝗅-MC / 𝖼𝗅𝗎𝗌𝗍𝖾𝗋-MC** (L931–932). "linear" next to "kernel" cells could be misread; "linear time" or O(n + m).
+- **L944:** "both a positive or a negative answer" → "both a positive and a negative answer".
+- **L945:** "makes it unclear to be amenable to a CMSO logic formulation" → "makes it unclear whether the problem can be expressed in CMSO logic".
+- **L946:** "parameterized by the vertex cover or the twin-cover number" → "vertex cover number".

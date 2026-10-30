@@ -928,8 +928,8 @@ We summarize our complexity and algorithmic results in \cref{tab:results}.
 \toprule
 Problem & General & $\intervalmc$ & $\cm$ & $\nd$ & $\tc$ & $\vc$ \\
 \midrule
-\textsc{$\interval$-MC}  & linear & & & & &  \\
-\textsc{$\cluster$-MC}  & linear & & & & & \\
+\textsc{$\interval$-MC}  & linear time & & & & &  \\
+\textsc{$\cluster$-MC}  & linear time & & & & & \\
 \textsc{Thinness}  & ~\NP-c~ & $2k$-vertex kernel & $2k$-vertex kernel & $2k$-vertex kernel & ~\FPT~ & \FPT \\
 \textsc{Sim. Int. Num.}~~~  & ~\NP-c~ & ? & \FPT $(\cm + d)$ & \FPT $(\nd + d)$ & ~\FPT~ & \FPT\\
 \bottomrule
@@ -941,9 +941,9 @@ Problem & General & $\intervalmc$ & $\cm$ & $\nd$ & $\tc$ & $\vc$ \\
 Possible avenues of research that this work leaves open include:
 
 \begin{itemize}
-    \item Is \textsc{Thinness} \FPT (or at least \textsf{XP}) when parameterized by the solution size, that is, the desired thinness of the input graph? Note that both a positive or a negative answer are compatible with the non-existence of a polynomial kernel proved in \cref{theorem:thinness-kernelization-lower-bound}. Combining the results by \citet{tesis-diego} and \citet{thinness-np-complete}, we can reduce an instance of the \textsc{Non-Betweenness} problem to an instance of \textsc{Thinness}. The thinness of the constructed graph depends in part on the size of the \textsc{Non-Betweenness} instance, and thus leaves open the possibility of a polynomial-time algorithm for \textsc{Thinness} when the thinness of the input graph is bounded by a constant.
-    \item Is \textsc{Thinness} \FPT (or at least \textsf{XP}) when parameterized by other parameters, like for example the treewidth of the input graph? The total order involved in the definition of thinness makes it unclear to be amenable to a {\sf CMSO} logic formulation in order to apply Courcelle's theorem~\citep{Courcelle90}. On the other hand, note that \cref{theorem:thinness-kernelization-lower-bound} implies that \textsc{Thinness} is unlikely to admit polynomial kernels parameterized by treewidth. 
-    \item Does \textsc{Thinness} admit polynomial kernels when parameterized by the vertex cover or the twin-cover number of the input graph? Our result in \cref{sec:clustermc-vs-twin-cover} of the tightness of the bound in \cref{lemma:twin-cover-hcupn} implies that a significantly different approach from ours should be taken to obtain such a kernel.
+    \item Is \textsc{Thinness} \FPT (or at least \textsf{XP}) when parameterized by the solution size, that is, the desired thinness of the input graph? Note that both a positive and a negative answer are compatible with the non-existence of a polynomial kernel proved in \cref{theorem:thinness-kernelization-lower-bound}. Combining the results by \citet{tesis-diego} and \citet{thinness-np-complete}, we can reduce an instance of the \textsc{Non-Betweenness} problem to an instance of \textsc{Thinness}. The thinness of the constructed graph depends in part on the size of the \textsc{Non-Betweenness} instance, and thus leaves open the possibility of a polynomial-time algorithm for \textsc{Thinness} when the thinness of the input graph is bounded by a constant.
+    \item Is \textsc{Thinness} \FPT (or at least \textsf{XP}) when parameterized by other parameters, like for example the treewidth of the input graph? The total order involved in the definition of thinness makes it unclear whether the problem can be expressed in {\sf CMSO} logic in order to apply Courcelle's theorem~\citep{Courcelle90}. On the other hand, note that \cref{theorem:thinness-kernelization-lower-bound} implies that \textsc{Thinness} is unlikely to admit polynomial kernels parameterized by treewidth. 
+    \item Does \textsc{Thinness} admit polynomial kernels when parameterized by the vertex cover number or the twin-cover number of the input graph? Our result in \cref{sec:clustermc-vs-twin-cover} of the tightness of the bound in \cref{lemma:twin-cover-hcupn} implies that a significantly different approach from ours should be taken to obtain such a kernel.
     %Something about approximation?
     \item {Is \textsc{Simultaneous Interval Number}  \FPT (or at least \textsf{XP}) when parameterized by the $\cluster$-modular cardinality or the $\interval$-modular cardinality?}
 \end{itemize}
