@@ -62,7 +62,7 @@ Line numbers refer to `main.tex` as of 2026-10-30. Lemma/theorem numbers are the
 - **Lemma 16's proof** (L855). "Thus its interval intersects (x, y)" needs one line: that interval meets the interval whose left endpoint is x, so its right endpoint is > x; similarly its left endpoint is < y.
 - **Theorem 19, isolated cliques** (L891). "si(G) is the same after removing the isolated cliques" is false if the rest is edgeless and some isolated clique has an edge. Harmless because d ≥ 2 is assumed, but either state the d ≥ 2 assumption first or say "for d ≥ 1, G admits a d-representation iff …".
 - **Theorem 19, uses of "no isolated cliques"** (L893–895). Lemma 15 needs H to have neighbors outside H, and the "at least |M′ᵢ| labels" argument needs nonempty label sets. Both follow from having no isolated cliques; say so.
-- **Theorem 19, variable names** (L897). t is the thinness elsewhere in the paper; rename the number of intervals (e.g. r).
+- [DONE] **Theorem 19, variable names** (L897). t is the thinness elsewhere in the paper; rename the number of intervals (e.g. r).
 - **L836:** "I.e., Does" → "i.e., does".
 - **L833:** "We prove here the bounds shown in Fig. 1" → only one relation is proved here (Lemma 18, si vs. twin-cover number).
 - **L858:** "which in particular include the independent sets" → "independent sets of size at least 2".
