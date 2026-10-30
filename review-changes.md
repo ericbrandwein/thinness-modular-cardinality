@@ -16,4 +16,6 @@ We detected some additional errors and fixed them:
 - On Lemma 17, there was an edge case when the intervals of A had no labels.  
 - On Theorem 37, the choice of p for Thinness and Simultaneous Interval Number could in principle be greater than the parameter p.
 - On Appendix A, the graph H_0 does not have modular-width 7.
+- Miscelaneous typos.
+
 Finally, we corrected all the mistakes and applied the wise suggestions that the reviewer proposed.

@@ -30,14 +30,14 @@ Line numbers refer to `main.tex` as of 2026-10-30. Lemma/theorem numbers are the
 
 ## Typos and wording
 
-- L966: B_i ≔ {v_{n+1}, …, v_n} → v_{i+1}.
-- L1245: "a linear layout of lmimw(H_{n+1})" → "a linear layout of H_{n+1}".
-- L1418: "betwee" → "between"; also "G ∖ H" → "G ∖ M".
-- L1444: "this gives us the left statement" is unclear; e.g. "this shows thin(G) = 2".
-- L1452: "u <′ u′" → "u < u′" (this proof works in Γ = (<, S)).
-- L1478: "hypotesis" → "hypothesis".
-- L1484: "it belongs to a different class from w₂" → "from w₃".
-- L357: "A cluster is a union of cliques" → "a disjoint union of cliques".
+- [DONE] L966: B_i ≔ {v_{n+1}, …, v_n} → v_{i+1}.
+- [DONE] L1245: "a linear layout of lmimw(H_{n+1})" → "a linear layout of H_{n+1}".
+- [DONE] L1418: "betwee" → "between"; also "G ∖ H" → "G ∖ M".
+- [DONE] L1444: "this gives us the left statement" is unclear; e.g. "this shows thin(G) = 2".
+- [DONE] L1452: "u <′ u′" → "u < u′" (this proof works in Γ = (<, S)).
+- [DONE] L1478: "hypotesis" → "hypothesis".
+- [DONE] L1484: "it belongs to a different class from w₂" → "from w₃".
+- [DONE] L357: "A cluster is a union of cliques" → "a disjoint union of cliques".
 - L346: "we moved this section to the appendix" reads like a reply to the reviewer. The organization paragraph also never mentions Appendix D.
-- L339 / L620: the footnote citing the arXiv full version appears twice.
-- L1533: `\textsf{NP}` / `\textsf{coNP}` instead of the `\NP` / `\coNP` macros.
+- [DONE] L339 / L620: the footnote citing the arXiv full version appears twice.
+- [IGNORED] L1533: `\textsf{NP}` / `\textsf{coNP}` instead of the `\NP` / `\coNP` macros.
