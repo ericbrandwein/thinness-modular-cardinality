@@ -10,6 +10,7 @@ Smaller changes:
 - On Lemma 32, we changed the names of the cycles of H to H_1 and H_2.
 
 We detected some additional errors and fixed them:
+- On Figure 1, a comparison between interval-modular cardinality and simultaneous interval number was missing.
 - On Theorem 4, we talked about a complete subgraph being a parallel node instead of a series node.
 - On Theorem 37, the choice of p for Thinness and Simultaneous Interval Number could in principle be greater than the parameter p.
 
