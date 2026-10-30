@@ -626,32 +626,32 @@ As mentioned in the introduction, the article that introduces the $\G$-modular c
 \begin{proof}
 \newcommand{\Shead}{C_1}
 \newcommand{\Stail}{\mathsf{tail}}
-First, we compute the modular decomposition tree $T$ of $G$, which can be done in linear time~\citep{modular-decomposition-linear-cournier,modular-decomposition-linear-mcconnell,modular-decomposition-linear}. Then, for each node $G_t \in T$ (which is an induced subgraph of $G$), we compute an optimal $\cluster$-modular partition $S_t$ of the vertices of $G_t$ depending on the type of the node $G_t$. Let $\mathcal{C} \coloneqq \{G_1, \dots, G_h\}$ be the children of $G_t$ in $T$, if there are any. 
+First, we compute the modular decomposition tree $T$ of $G$, which can be done in linear time~\citep{modular-decomposition-linear-cournier,modular-decomposition-linear-mcconnell,modular-decomposition-linear}. Then, for each node $G_t \in T$ (which is an induced subgraph of $G$), we compute an optimal $\cluster$-modular partition $S_t$ of the vertices of $G_t$ depending on the type of the node $G_t$. Let $\mathcal{C} \coloneqq \{G_{t_1}, \dots, G_{t_h}\}$ be the children of $G_t$ in $T$, if there are any. 
     \begin{itemize}
         \item \textbf{Leaf}: The only class in $S_t$ is formed by the only vertex in $G_t$. This vertex is trivially a cluster module, and the partition is unique, thus optimal.
         \item \textbf{Parallel or Series}: Let $\mathcal{K} \subseteq \mathcal{C}$ be the children of $G_t$ that are complete graphs. We define $S_t \coloneqq \{\Shead\} \cup \Stail$, where
         \begin{align*}
-            \Shead &\coloneqq \bigcup_{G_i \in \mathcal{K}} V(G_i)\\
-            \Stail &\coloneqq \bigcup_{G_i \in \mathcal{C} \setminus \mathcal{K}} S_{t_i}. 
+            \Shead &\coloneqq \bigcup_{G_{t_i} \in \mathcal{K}} V(G_{t_i})\\
+            \Stail &\coloneqq \bigcup_{G_{t_i} \in \mathcal{C} \setminus \mathcal{K}} S_{t_i}. 
         \end{align*}
         In other words, we take the vertices of the child nodes $t_i$ for which $G_{t_i}$ is a complete graph, and join them into one class to build the first class of $S_t$. Then, we add the classes of all the other partitions as they are. If $\Shead$ is empty, we just define $S_t \coloneqq \Stail$.
 
-        As shown by \citet{modular-decomposition}, the only modules present in $G_t$ are the possible unions of elements of $\mathcal{C}$, and the submodules of elements of $\mathcal{C}$. That is to say, $G_t$ has no modules that contain some but not all vertices of some $G_i$, and some but not all vertices of some $G_j$, with $i \neq j$.
+        As shown by \citet{modular-decomposition}, the only modules present in $G_t$ are the possible unions of elements of $\mathcal{C}$, and the submodules of elements of $\mathcal{C}$. That is to say, $G_t$ has no modules that contain some but not all vertices of some $G_{t_i}$, and some but not all vertices of some $G_{t_j}$, with $i \neq j$.
 
         Let us see first that this is a valid $\cluster$-modular partition. By the previous remark, the class $\Shead$ and every element of $\Stail$ are modules. If $G_t$ is a parallel node, $\Shead$ is a union of complete graphs, meaning, a cluster. If $G_t$ is a series node, $\Shead$ is itself a complete graph, and so it is also a cluster. The elements of $\Stail$ are clusters, as they are part of the $\cluster$-modular partitions of the children of~$G_t$. Moreover, all vertices of $G_t$ are present in some set of the partition, and thus $S_t$ is a valid $\cluster$-modular partition.
 
         Next, let us see that it is optimal. Suppose there is an optimal partition $Q_t$ of the vertices of $G_t$ that uses fewer classes than $S_t$. As noted before, the classes of $Q_t$ must each be either a union of elements of $\mathcal{C}$, or submodules of elements of $\mathcal{C}$.
         
-        Suppose that some class $Q^i_t$ of $Q_t$ is a union of more than one element of $\mathcal{C}$, and that one of these elements $G_j$ is not complete. We distinguish two cases:
+        Suppose that some class $Q^i_t$ of $Q_t$ is a union of more than one element of $\mathcal{C}$, and that one of these elements $G_{t_j}$ is not complete. We distinguish two cases:
         \begin{itemize}
-            \item \emph{$G_t$ is a parallel node}: Every element of $\mathcal{C}$ is a connected graph. As $G_j$ is not complete, it cannot be part of a cluster.
-            \item \emph{$G_t$ is a series node}: Let $G_l$ be another element of $\mathcal{C}$ present in $Q^i_t$. Every vertex of $G_j$ is adjacent to every vertex of $G_l$. As $G_j$ is not complete, there are two nonadjacent vertices $v$ and $w$ in $V(G_j)$ that are each adjacent to a vertex $u$ in $G_l$. Thus, $v$, $w$, and $u$ cannot be part of the same cluster. 
+            \item \emph{$G_t$ is a parallel node}: Every element of $\mathcal{C}$ is a connected graph. As $G_{t_j}$ is not complete, it cannot be part of a cluster.
+            \item \emph{$G_t$ is a series node}: Let $G_{t_l}$ be another element of $\mathcal{C}$ present in $Q^i_t$. Every vertex of $G_{t_j}$ is adjacent to every vertex of $G_{t_l}$. As $G_{t_j}$ is not complete, there are two nonadjacent vertices $v$ and $w$ in $V(G_{t_j})$ that are each adjacent to a vertex $u$ in $G_{t_l}$. Thus, $v$, $w$, and $u$ cannot be part of the same cluster. 
         \end{itemize}
-        These two cases show that the previous scenario cannot happen, and so every class of $Q_t$ is either a union of elements of $\mathcal{C}$ that are complete graphs, or submodules of elements of $\mathcal{C}$. Moreover, there cannot be more than one class of $Q_t$ that is a union of elements of $\mathcal{C}$, because otherwise we could join those classes into only one, reducing the size of $Q_t$. Also, there cannot be a proper submodule of an element $G_i$ of $\mathcal{C}$ that is a complete graph as a class in $Q_t$, as otherwise we could join that submodule with the rest of $G_i$ to reduce the size of $Q_t$. Thus, if $\mathcal{K}$ is nonempty, the union of the elements of $\mathcal{C}$ that are complete graphs defines a class in $Q_t$. Finally, as each other class is a submodule of an element of $\mathcal{C}$, the classes that have some vertex of a given graph $G_i$ must form a partition of the vertices of $G_i$, meaning, they should be a $\cluster$-modular partition of $G_i$. Partition $Q_t$ then contains an optimal cluster partition of each $G_i$, and necessarily has the same amount of classes as $S_t$.
+        These two cases show that the previous scenario cannot happen, and so every class of $Q_t$ is either a union of elements of $\mathcal{C}$ that are complete graphs, or submodules of elements of $\mathcal{C}$. Moreover, there cannot be more than one class of $Q_t$ that is a union of elements of $\mathcal{C}$, because otherwise we could join those classes into only one, reducing the size of $Q_t$. Also, there cannot be a proper submodule of an element $G_{t_i}$ of $\mathcal{C}$ that is a complete graph as a class in $Q_t$, as otherwise we could join that submodule with the rest of $G_{t_i}$ to reduce the size of $Q_t$. Thus, if $\mathcal{K}$ is nonempty, the union of the elements of $\mathcal{C}$ that are complete graphs defines a class in $Q_t$. Finally, as each other class is a submodule of an element of $\mathcal{C}$, the classes that have some vertex of a given graph $G_{t_i}$ must form a partition of the vertices of $G_{t_i}$, meaning, they should be a $\cluster$-modular partition of $G_{t_i}$. Partition $Q_t$ then contains an optimal cluster partition of each $G_{t_i}$, and necessarily has the same amount of classes as $S_t$.
         
-        \item \textbf{Prime}: We define $S_t$ to be the union of $S_i$ for every $1 \leq i \leq h$.
+        \item \textbf{Prime}: We define $S_t$ to be the union of $S_{t_i}$ for every $1 \leq i \leq h$.
         
-        Every prime graph is connected and not complete, so $\{V(G_t)\}$ is not a valid $\cluster$-modular partition. As shown by \citet{modular-decomposition}, the proper modules of $G_t$ are exactly the submodules of the associated graphs of children of $G_t$. Thus, an optimal $\cluster$-modular partition of $G_t$ must contain an optimal $\cluster$-modular partition of every child $G_i$, and so $S_t$ is optimal.
+        Every prime graph is connected and not complete, so $\{V(G_t)\}$ is not a valid $\cluster$-modular partition. As shown by \citet{modular-decomposition}, the proper modules of $G_t$ are exactly the submodules of the associated graphs of children of $G_t$. Thus, an optimal $\cluster$-modular partition of $G_t$ must contain an optimal $\cluster$-modular partition of every child $G_{t_i}$, and so $S_t$ is optimal.
     \end{itemize}
 
     To achieve linear time on this algorithm, the partitions $S_t$ are not actually computed. Instead, we set a flag on each child $t_i$ of a series or parallel node $t$ such that $G_{t_i}$ belongs to $\Shead$. Recognizing these children can be done with a simple bottom-up traversal of the tree that marks each node whose associated graph is complete (i.e., a series node whose children are leaves). Finally, a top-down traversal of the tree allows us to propagate to which class each of the leaf nodes belongs. These operations can be performed in time linear in the number of nodes in the tree, and thus this algorithm runs in linear time.
@@ -680,22 +680,22 @@ In particular, \cref{prop:thinness-join} implies that the join of two graphs is 
 \newcommand{\Stail}{\mathsf{tail}}
     The proof follows the structure of the one for \cref{prop:calculate-cluster-module-partition}. We compute the modular decomposition tree $T$ of $G$. Then, for each node $G_t \in T$ (which is an induced subgraph of $G$), we compute an optimal $\interval$-modular partition $S_t$ of the vertices of $G_t$ depending on the type of the node $G_t$. We do this in a bottom-up fashion, beginning with the leaves of the decomposition. We additionally store two flags for $G_t$, indicating if it is a complete graph and if it is an interval graph, respectively.
     
-    Let $\mathcal{C} \coloneqq \{G_1, \dots, G_h\}$ be the children of $G_t$ in $T$, if there are any, and let $S_1,\dots, S_h$ be their respective optimal $\interval$-modular partitions.
+    Let $\mathcal{C} \coloneqq \{G_{t_1}, \dots, G_{t_h}\}$ be the children of $G_t$ in $T$, if there are any, and let $S_{t_1},\dots, S_{t_h}$ be their respective optimal $\interval$-modular partitions.
     \begin{itemize}
         \item \textbf{Leaf}: The only class in $S_t$ is formed by the only vertex in $G_t$. This vertex is trivially an interval module, and the partition is unique, thus optimal. Moreover, $G_t$ is both a complete and an interval graph.
         \item \textbf{Parallel}: We build $S_t$ by taking the union of the children that induce interval graphs as class $C_1$, and taking the union of the partitions of all the other children. More formally, if $\mathcal{I}$ is the subset of the children $\mathcal{C}$ that induce interval graphs: 
         \begin{align*}
-            C_1 &\coloneqq \bigcup_{G_i \in \mathcal{I}}V(G_i)\\
-            S_t &\coloneqq \{C_1\} \cup \bigcup_{G_i \in \mathcal{C}\setminus\mathcal{I}}S_i.
+            C_1 &\coloneqq \bigcup_{G_{t_i} \in \mathcal{I}}V(G_{t_i})\\
+            S_t &\coloneqq \{C_1\} \cup \bigcup_{G_{t_i} \in \mathcal{C}\setminus\mathcal{I}}S_{t_i}.
         \end{align*}
-        If $C_1$ is empty, we just define $S_t \coloneqq \bigcup_{G_i \in \mathcal{C}}S_i$.
+        If $C_1$ is empty, we just define $S_t \coloneqq \bigcup_{G_{t_i} \in \mathcal{C}}S_{t_i}$.
 
         To decide which children are interval graphs, we use the flag computed earlier for each one of them.
 
         Note that $S_t$ is in fact an $\interval$-modular partition:
         \begin{itemize}
             \item All the classes induce interval graphs, as $C_1$ is a union of interval graphs (and thus by \cref{prop:thinness-union} it is an interval graph), and all the other classes belong to $\interval$-modular partitions of the children of $G_t$, and thus are also interval graphs.
-            \item As the graphs in $\mathcal{I}$ are connected components of $G_t$, the class $C_1$ is a module of $G_t$. On the other hand, every class $S_i$ is a module in its respective child $G_i$, and retains this status in $G_t$, as no vertex in $S_i$ is adjacent to a vertex outside of $G_i$.
+            \item As the graphs in $\mathcal{I}$ are connected components of $G_t$, the class $C_1$ is a module of $G_t$. On the other hand, every class $S_{t_i}$ is a module in its respective child $G_{t_i}$, and retains this status in $G_t$, as no vertex in $S_{t_i}$ is adjacent to a vertex outside of $G_{t_i}$.
         \end{itemize}
 
         Let us see that $\abs{S_t}$ is minimum. Again, as shown by \citet{modular-decomposition}, the only modules of $G_t$ are unions of children of $G_t$, or submodules of children of $G_t$. Thus, in every $\interval$-modular partition $S'_t$ of $G_t$,
@@ -725,7 +725,7 @@ In particular, \cref{prop:thinness-join} implies that the join of two graphs is 
 
         Finally, the graph $G_t$ is complete if and only if all of its children are complete, and is an interval graph if and only if $C_1$ contains all vertices of $G_t$.
 
-        \item \textbf{Prime}: If $G_t$ is an interval graph, define $S_t \coloneqq \{V(G_t)\}$. Otherwise, $S_t \coloneqq \bigcup_{G_i \in \mathcal{C}}S_i$.
+        \item \textbf{Prime}: If $G_t$ is an interval graph, define $S_t \coloneqq \{V(G_t)\}$. Otherwise, $S_t \coloneqq \bigcup_{G_{t_i} \in \mathcal{C}}S_{t_i}$.
 
         It is clear that, in both cases, $S_t$ is an $\interval$-modular partition. Also, as shown by \citet{modular-decomposition}, the only proper submodules of a prime node are the modules of children of the node. Thus, if $G_t$ is not an interval graph, the partition must be the union of $\interval$-modular partitions of the children of $G_t$, and therefore $S_t$ is optimal.
 
