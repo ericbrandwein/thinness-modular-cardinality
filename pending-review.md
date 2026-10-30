@@ -76,3 +76,11 @@ Line numbers refer to `main.tex` as of 2026-10-30. Lemma/theorem numbers are the
 - **L944:** "both a positive or a negative answer" → "both a positive and a negative answer".
 - **L945:** "makes it unclear to be amenable to a CMSO logic formulation" → "makes it unclear whether the problem can be expressed in CMSO logic".
 - **L946:** "parameterized by the vertex cover or the twin-cover number" → "vertex cover number".
+
+## Appendix A (Modular-width vs. linear mim-width)
+
+- **Upper bound in Theorem 22** (already IGNORED above, recorded for reference): checked by hand, the given layout H¹, u₁, u₂, H², x, u₃, H³ does have mim ≤ n + 1 at every cut (worst cut is inside H²: n edges of H² plus u₁x).
+- **Substitution definition** (L980). "V(G′) = V(G) ∪ V(H) ∖ {v}" is ambiguous; write (V(G) ∖ {v}) ∪ V(H).
+- **Lower bound, H¹ entirely after C₂?** (L~1249). "All the vertices of H¹ must appear before C₂" only rules out H¹ crossing C₂; it should also say H¹ has a vertex before C₂ (because C₁ precedes C₂ and edges of H¹ cross C₁), and symmetrically for H³.
+- **Closing open question** (L~1254). Could be sharpened: prime graphs have at least 4 vertices, so modular-width is 2 (cographs, bounded linear mim-width) or at least 4; the question is only about modular-width 4, 5 and 6.
+- **Style:** this appendix uses `\autoref`, the rest of the paper `\cref`. [DONE] Edge notation unified to (x, y) and the `\TODO{Unify edge notation}` removed.
