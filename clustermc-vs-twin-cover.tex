@@ -9,7 +9,7 @@ In this section, we prove the following lemma.
 
 As $\vc(G) \geq \tc(G)$ and $\intervalmc(G) \leq \clustermc(G)$ for every graph $G$, this will in particular prove that the bound in \cref{lemma:twin-cover-hcupn} is tight.
 
-To prove \cref{lemma:gap-between-intevalmc-and-vc}, for every $k \in \N$ with $k \geq 3$, we build a graph $\graph$ of $2^k + k$ vertices with $\intervalmc(G) = 2^{\vc(\graph)} + \vc(\graph)$.
+To prove \cref{lemma:gap-between-intevalmc-and-vc}, for every $k \in \N$ with $k \geq 3$, we build a graph $\graph$ of $2^k + k$ vertices with $\intervalmc(\graph) = 2^{\vc(\graph)} + \vc(\graph)$.
 
 The graph $\graph$ is constructed as follows.
 Let $X$ be a set of $k$ vertices, and for each subset $X' \subseteq X$, let $v_{X'}$ be a vertex. We define
@@ -58,7 +58,7 @@ It is easy to see that the vertex cover number of $\graph$ is exactly $k$.
     By the definition of vertex cover, every edge in $\graph$ must have an endpoint in every vertex cover of $\graph$. In particular, the matching of size $k$ formed by the edges $(x, v_{\{x\}})$ for each $x \in X$ shows that every vertex cover must have size at least $k$. Thus, we also have $\vc(\graph) \geq k$, which gives the statement of the lemma.
 \end{proof}
 
-It remains to determine the $\interval$-modular cardinality of $G$.
+It remains to determine the $\interval$-modular cardinality of $\graph$.
 
 \begin{lemma}
     \label{lemma:intervalmc-G}

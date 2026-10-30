@@ -105,3 +105,9 @@ Line numbers refer to `main.tex` as of 2026-10-30. Lemma/theorem numbers are the
 - **Convention for Π(𝗉)** (L1536). The proof outputs ((G′, k), p) with p ≥ 𝗉(G′), i.e. the parameter is an upper bound given with the input. Say this explicitly when defining Π(𝗉); it is why the proof checks p ≥ 𝗉(G′).
 - **L1531:** "Whether Thinness admits any kernel …" → also Simultaneous Interval Number.
 - **L1498–1500:** "First, they define the following relation." is followed by the paragraph about Σ, not by the definition. Move the Σ sentence before it.
+
+## Appendix D (Tightness of the vc bound on 𝗂𝗇𝗍𝖾𝗋𝗏𝖺𝗅-mc)
+
+- **G vs. Gₖ** (clustermc-vs-twin-cover.tex L12, L61, L65). "𝗂𝗇𝗍𝖾𝗋𝗏𝖺𝗅-mc(G)" should be 𝗂𝗇𝗍𝖾𝗋𝗏𝖺𝗅-mc(Gₖ) (the `\graph` macro); in particular the statement of Lemma 40 uses G.
+- **L10, "this will in particular prove that the bound in Lemma 12 is tight"**: correct, but it takes a short chain that a reader has to reconstruct: 2^vc + vc = 𝗂𝗇𝗍𝖾𝗋𝗏𝖺𝗅-mc ≤ 𝖼𝗅𝗎𝗌𝗍𝖾𝗋-mc ≤ 2^tc + tc ≤ 2^vc + vc, so equality holds throughout. One line would help.
+- **`\TODO{AI disclosure}`** (main.tex L1553) is still in the appendices and renders in red in the PDF; it's the only `\TODO` left in the source.
