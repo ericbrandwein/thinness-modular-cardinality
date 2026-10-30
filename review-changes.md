@@ -12,6 +12,7 @@ Smaller changes:
 We detected some additional errors and fixed them:
 - On Figure 1, a comparison between interval-modular cardinality and simultaneous interval number was missing.
 - On Theorem 4, we talked about a complete subgraph being a parallel node instead of a series node.
+- On Lemma 17, there was an edge case when the intervals of A had no labels.  
 - On Theorem 37, the choice of p for Thinness and Simultaneous Interval Number could in principle be greater than the parameter p.
 
 Finally, we corrected all the mistakes and applied the wise suggestions that the reviewer proposed.
