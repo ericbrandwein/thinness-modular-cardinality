@@ -95,3 +95,13 @@ Line numbers refer to `main.tex` as of 2026-10-30. Lemma/theorem numbers are the
 - **L1400:** "The converse … is also true when referring to the graphs of Fig. 4" → Lemma 32 is about any thinness-2 graph G′ with a C₄ module, not only Fig. 4.
 - **Lemma 32 statement** (L1410): "the union of two cycles" → "the disjoint union of two cycles".
 - **Definition of replacing a module** (L1356): "neighbors of every vertex of V(H) in V(G′)" → "in G′". Also, this is the same operation as the *substitution* defined in Appendix A; consider defining it once.
+
+## Appendix C (Kernelization lower bounds)
+
+(The open subitem about crediting Lemma 5 for SI of a disjoint union, L1529 and L1542, is already listed under item 2 above.)
+
+- [DONE] **Modular-width does not satisfy the hypothesis of Theorem 37** (L1526, L1529). By the definition in Section 2, mw(K₁) = 2 > max{|V(K₁)|, |E(K₁)|} = 1. Trivial edge case, but mw is listed as an example. The proof only needs 𝗉 to be polynomially bounded, so relax the hypothesis to "𝗉(G) ≤ q(|V(G)| + |E(G)|) for some polynomial q" and set p ≔ maxᵢ q(|V(Gᵢ)| + |E(Gᵢ)|). This covers mw (q(n) = n + 2) and keeps everything else unchanged.
+- **Polynomial equivalence relation and large k** (L1538). "We can consider only the instances with k ≤ |V(G)|": R has to be defined on all of Σ*, and with k in binary the number of distinct values of k in S is not polynomially bounded. Standard fix: put all malformed strings in one class and all instances with k ≥ |V(G)| (resp. k ≥ |E(G)|) in another, which the composition maps to a trivial yes-instance.
+- **Convention for Π(𝗉)** (L1536). The proof outputs ((G′, k), p) with p ≥ 𝗉(G′), i.e. the parameter is an upper bound given with the input. Say this explicitly when defining Π(𝗉); it is why the proof checks p ≥ 𝗉(G′).
+- **L1531:** "Whether Thinness admits any kernel …" → also Simultaneous Interval Number.
+- **L1498–1500:** "First, they define the following relation." is followed by the paragraph about Σ, not by the definition. Move the Σ sentence before it.
