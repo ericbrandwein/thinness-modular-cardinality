@@ -360,13 +360,13 @@ A subset $X$ of $V(G)$ is \emph{complete} (or a \emph{clique}) if every pair of 
 A \emph{modular partition} of a graph is a partition of its vertex set into modules. The \textit{contraction of $X$ into a  vertex} is defined as the graph $\contract{G}{X}$ resulting of removing all vertices in $X$ from $G$ and adding a new vertex $x$ adjacent to all neighbors of $X$.
 
 A module is \emph{proper} if it is not $V(G)$. 
-A proper module $X$ is \emph{maximal} if there is no strict superset of $X$ that is a proper module. The maximal modules of a graph $G$ form a partitive family~\citep{modular-decomposition-partitive}, and thus a unique decomposition tree can be defined over a graph $G$ such that each node is a maximal module that does not overlap with other maximal modules (see \cref{fig:mod-decomp}). The \emph{modular decomposition tree} of $G$ is a rooted tree $T$ defined recursively as follows:
+The modules of a graph $G$ form a partitive family~\citep{modular-decomposition-partitive}, and thus a unique decomposition tree can be defined over a graph $G$ such that each node is a \emph{strong} module, that is, a module that does not overlap with other modules (see \cref{fig:mod-decomp}). The \emph{modular decomposition tree} of $G$ is a rooted tree $T$ defined recursively as follows:
 \begin{itemize}
     \item The root of the tree is the entire graph $G$.
     \item If $G$ contains only one vertex, then the root is called a \emph{Leaf} node.
     \item If $G$ is disconnected, then the children of the root are the modular decomposition trees of the connected components of $G$, and the root is called a \emph{Parallel} node.
-    \item If the complement of $G$ is disconnected, then the children of the root are the modular decomposition trees of the connected components of $\overline{G}$, and the root is a \emph{Series} node.
-    \item Otherwise, the root is a \emph{Prime} node, and its children are the modular decomposition trees of the maximal modules of $G$.
+    \item If the complement of $G$ is disconnected, then the children of the root are the modular decomposition trees of $G[V(C)]$ for each connected component $C$ of $\overline{G}$, and the root is a \emph{Series} node.
+    \item Otherwise, the root is a \emph{Prime} node, and its children are the modular decomposition trees of the maximal proper submodules of $G$.
 \end{itemize}
 
 \begin{figure}[ht]
