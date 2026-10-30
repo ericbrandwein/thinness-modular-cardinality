@@ -53,3 +53,17 @@ Line numbers refer to `main.tex` as of 2026-10-30. Lemma/theorem numbers are the
 - [DONE] **L742:** "twin-cover, and vertex cover" → "twin-cover number, and vertex cover number".
 - [DONE] **Lemma 12** (L796–798). Some of P₁, …, P_{2ᵏ} may be empty, so the partition has *at most* 2ᵏ + k parts; say so or discard empty parts.
 - [IGNORED] **L820:** "the kernel presented above is not polynomial" → "is exponential in k". Could mention that Appendix D shows this approach cannot do better.
+
+## Section 6 (Parameterizations for computing the simultaneous interval number)
+
+- **Lemma 17 is false for d = 0** (L863). Take G = P₃ and H = V(G) (or G = P₃ + K₁ and H the P₃). G′ = 2K₁ has a 0-representation with v, w disjoint, but G needs d ≥ 1. The new "empty label set → use label {1}" sentence also needs label 1 to exist. Fix: state the lemma for d ≥ 1. Theorem 19 is unaffected (it assumes d ≥ 2).
+- **Theorem 19 applies Lemmas 16 and 17 to several modules at once** (L895). Both lemmas are stated for a single module, while a constrained instance fixes a choice for every M′ᵢ simultaneously. Add one sentence: both constructions only change the intervals of the vertices of that module (Lemma 16 shrinks them; Lemma 17 places them inside A), so the constraints on the other modules are preserved and the lemmas can be applied one module at a time.
+- **Corollary 20's proof** (L909) never says what happens when d is large. Add: if d ≥ max{1, k(k−1)/2 + k}, answer yes; otherwise d < f(k), so 𝖼𝗅𝗎𝗌𝗍𝖾𝗋-mc + d is bounded by a function of k.
+- **Lemma 16's proof** (L855). "Thus its interval intersects (x, y)" needs one line: that interval meets the interval whose left endpoint is x, so its right endpoint is > x; similarly its left endpoint is < y.
+- **Theorem 19, isolated cliques** (L891). "si(G) is the same after removing the isolated cliques" is false if the rest is edgeless and some isolated clique has an edge. Harmless because d ≥ 2 is assumed, but either state the d ≥ 2 assumption first or say "for d ≥ 1, G admits a d-representation iff …".
+- **Theorem 19, uses of "no isolated cliques"** (L893–895). Lemma 15 needs H to have neighbors outside H, and the "at least |M′ᵢ| labels" argument needs nonempty label sets. Both follow from having no isolated cliques; say so.
+- **Theorem 19, variable names** (L897). t is the thinness elsewhere in the paper; rename the number of intervals (e.g. r).
+- **L836:** "I.e., Does" → "i.e., does".
+- **L833:** "We prove here the bounds shown in Fig. 1" → only one relation is proved here (Lemma 18, si vs. twin-cover number).
+- **L858:** "which in particular include the independent sets" → "independent sets of size at least 2".
+- **L863:** "|H| ≥ 2" is redundant given that G[H] is not complete.
