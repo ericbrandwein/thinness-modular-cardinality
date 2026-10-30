@@ -15,7 +15,7 @@ Line numbers refer to `main.tex` as of 2026-10-30. Lemma/theorem numbers are the
 
 - [DONE] **Lemma 17, second direction** (L867). H's vertices get A's label set. If H has no neighbors outside H and A's label set is empty, the edges inside H are lost. Theorem 19 is unaffected (there H is independent), but the lemma as stated has the hole. Fix: in that case place H's representation in a fresh region with label 1.
 - [IGNORED] **Lemma 15** (L845). The proof only shows si(G) ≤ si(G|_H). Add one sentence for the other direction: G|_H is an induced subgraph of G.
-- **Lemma 18** (L870). It is introduced as "a corollary of Lemma 15", but the proof doesn't use Lemma 15.
+- [IGNORED] **Lemma 18** (L870). It is introduced as "a corollary of Lemma 15", but the proof doesn't use Lemma 15.
 - **Theorem 7, prime case** (L731, L735).
   - "O(n²)" understates the naive cost, which can be O(n(n+m)); "superlinear" is safer.
   - The linear-time argument only bounds the vertices of G′ₜ. Mention that the total size of the quotient graphs is O(n+m), so the edges are covered too.
