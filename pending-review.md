@@ -8,7 +8,7 @@ Line numbers refer to `main.tex` as of 2026-10-30. Lemma/theorem numbers are the
 2. [DONE] **Theorem 37, choice of p** (L1539). The hypothesis only gives 𝗉(G) ≤ max{|V(G)|, |E(G)|}, but the proof sets p = maxᵢ|V(Gᵢ)| for Thinness and p = maxᵢ|E(Gᵢ)| for SI. Neither is guaranteed to bound 𝗉(G′). Use p = maxᵢ(|V(Gᵢ)| + |E(Gᵢ)|) in both cases.
    - The fact that a disjoint union of graphs has a d-simultaneous interval representation iff each graph does is credited to Lemma 5 (thinness of the union), which only covers thinness. The same problem appears at L1526 ("as Lemma 5 shows"). It is easy (place the representations side by side) but needs its own sentence.
 3. [DONE] **Theorem 4, running-time paragraph** (L657). "complete (i.e., a *parallel* node whose children are leaves)" should say *series*.
-4. **Lemma 3, missing case** (L594). The case analysis leaves out u, v, w ∈ H. It is trivial (consistent by <_H with H in a single class), but the list claims to be exhaustive.
+4. [IGNORED] **Lemma 3, missing case** (L594). The case analysis leaves out u, v, w ∈ H. It is trivial (consistent by <_H with H in a single class), but the list claims to be exhaustive.
 5. **Fig. 1 caption** (L335). Nothing shows that si does not generalize the 𝗂𝗇𝗍𝖾𝗋𝗏𝖺𝗅-mc: paths have 𝗂𝗇𝗍𝖾𝗋𝗏𝖺𝗅-mc 1. Suggestion: cycles Cₙ (n ≥ 5) are prime and not interval, so their 𝗂𝗇𝗍𝖾𝗋𝗏𝖺𝗅-mc is n, while si(Cₙ) ≤ 2. The caption should also say that paths have unbounded neighborhood diversity, which is what makes si incomparable with neighborhood diversity.
 
 ## Minor gaps and imprecisions
