@@ -4,7 +4,7 @@ Changes after the review:
 2. Added Appendix D, which shows that the bound of Lemma 12 is tight, even when comparing vertex cover number and interval-modular cardinality.
 3. Changed to open intervals everywhere.
 4. Cleaned up the proof of Lemma 17.
-5. Clarified the forward direction, and fixed Lemma 31 so that it implies what we want here. Also added a figure of the construction.
+5. Clarified the text, and fixed Lemma 31 so that it implies what we want on Lemma 32. Also added a figure of the construction.
 
 Smaller changes:
 - On Lemma 32, we changed the names of the cycles of H to H_1 and H_2.

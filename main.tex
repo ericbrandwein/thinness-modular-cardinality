@@ -1449,7 +1449,7 @@ Let $\Gamma \coloneqq (<, S)$ be an optimal consistent solution for $\doubleCycl
 
 Note that in every possible order of $\firstCycle$, vertex $u$ forms an irreducible clique with some other vertex $w$ in the corresponding incompatibility graph. Consider the solution $\Gamma'$ induced by the vertices of $\doubleCycleGraph \setminus \secondCycle$ in $\Gamma$. This solution $\Gamma'$ is also a solution for $\singleCycleGraph$ (up to isomorphism), and hence, by hypothesis, the module $\singleCycleModule$ does not appear consecutively in $\Gamma'$. Thus, by the contrapositive of \cref{prop:replacing-module-maintains-thinness-if-irreducible-clique-consecutive}, there exists a vertex $v \in V(\doubleCycleGraph) \setminus \doubleCycleModule$ that shares a class with $u$ in $S$ and such that $u < v < w$. Additionally, by \cref{prop:vertex-that-breaks-irreducible-clique-is-adjacent}, $v$ is adjacent to the vertices in $\doubleCycleModule$.
 
-The vertices in $\secondCycle$ also contain a vertex $u'$ in the same class as $u$ in $S$, as $\secondCycle$ induces a cycle, which is a thinness two graph. By \cref{prop:neighbors-of-modules-that-share-class-are-greater}, vertex $u'$ must be smaller than $v$. Note that $u <' u'$, as $u$ is the first vertex of $\doubleCycleModule$. Also, by \hyperref[def:incompatibility-graph]{the definition of incompatibility graph}, there exists a vertex $x \in \firstCycle$ that is greater than $w$ and is adjacent to $u$. We therefore have that $\{u, u', x\}$ forms an inconsistent triple, which contradicts the fact that $\Gamma$ is a consistent solution.
+By \cref{prop:irreducible-clique}, there exists an irreducible clique $C$ of size two in $\doubleCycleGraph[\secondCycle]_{<}$, as $\secondCycle$ induces a cycle, which is a thinness two graph. Moreover, the two vertices in $C$ belong to different classes in $S$, so $C$ contains a vertex $u'$ in the same class as $u$ in $S$. By \cref{prop:neighbors-of-modules-that-share-class-are-greater}, vertex $u'$ must be smaller than $v$. Note that $u <' u'$, as $u$ is the first vertex of $\doubleCycleModule$. Also, by \hyperref[def:incompatibility-graph]{the definition of incompatibility graph}, there exists a vertex $x \in \firstCycle$ that is greater than $w$ and is adjacent to $u$. We therefore have that $\{u, u', x\}$ forms an inconsistent triple, which contradicts the fact that $\Gamma$ is a consistent solution.
 \end{proof}
 
 The following lemma along with \cref{prop:when-replacing-maintains-thinness} will finish the proof.
@@ -1546,6 +1546,8 @@ We now prove \cref{theorem:thinness-kernelization-lower-bound}. The proof is qui
 \section{Tightness of the $\vc$ bound on $\intervalmc$}
 \label{sec:clustermc-vs-twin-cover}
 \input{clustermc-vs-twin-cover.tex}
+
+\TODO{AI disclosure}
 
 \end{appendices}
 
