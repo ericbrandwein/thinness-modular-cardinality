@@ -84,3 +84,14 @@ Line numbers refer to `main.tex` as of 2026-10-30. Lemma/theorem numbers are the
 - **Lower bound, H¹ entirely after C₂?** (L~1249). "All the vertices of H¹ must appear before C₂" only rules out H¹ crossing C₂; it should also say H¹ has a vertex before C₂ (because C₁ precedes C₂ and edges of H¹ cross C₁), and symmetrically for H³.
 - **Closing open question** (L~1254). Could be sharpened: prime graphs have at least 4 vertices, so modular-width is 2 (cographs, bounded linear mim-width) or at least 4; the question is only about modular-width 4, 5 and 6.
 - **Style:** this appendix uses `\autoref`, the rest of the paper `\cref`. [DONE] Edge notation unified to (x, y) and the `\TODO{Unify edge notation}` removed.
+
+## Appendix B (Counterexample to reducing 2-thin modules)
+
+- **Lemma 31's hypothesis should fix the order** (L1363). "For every vertex v ∈ V(G) ∖ M that is between two vertices u and w of C …, u and v belong to different classes" does not say which of u, w is the smaller one. Read symmetrically, it requires v to differ from *both*, and then the contrapositive in Lemma 32 only gives "v shares a class with u or with w" (the reviewer's original objection). The proof only uses the smaller one. Fix: "for every v ∈ V(G) ∖ M and u, w ∈ C with u < v < w, …".
+- **Lemma 32 (⇒), "in every possible order of H₁, u forms an irreducible clique with some w"** (L1425) is stated without justification. One line: let w be the earlier of u's two neighbors in the cycle; the later neighbor x is adjacent to u and not to w, so (u, w) ∈ G[H₁]_<; u has a later non-neighbor (the vertex opposite to u) and w has one (x).
+- **Lemma 33, "without loss of generality a < b < c"** (L1446). Fine by the symmetry of the prism, but d, e, f have to be relabeled accordingly (the argument later uses a–d, b–e, c–f). Say "(relabeling d, e, f accordingly)".
+- **Lemma 33, "by Lemma 29, v < {a, b, c}"** (L1446). Lemma 29 gives u < y for y in u's class; v < y then follows from H′ being consecutive. Half a sentence.
+- **L1464, final step.** Lemmas 32 and 33 give thin(G) ≠ 2; "not 2-thin" also needs thin(G) ≥ thin(H) = 2. Trivial, but the sentence just says "combining".
+- **L1400:** "The converse … is also true when referring to the graphs of Fig. 4" → Lemma 32 is about any thinness-2 graph G′ with a C₄ module, not only Fig. 4.
+- **Lemma 32 statement** (L1410): "the union of two cycles" → "the disjoint union of two cycles".
+- **Definition of replacing a module** (L1356): "neighbors of every vertex of V(H) in V(G′)" → "in G′". Also, this is the same operation as the *substitution* defined in Appendix A; consider defining it once.

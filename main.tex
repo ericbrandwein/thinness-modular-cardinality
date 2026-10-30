@@ -1360,7 +1360,7 @@ In some cases, replacing a module with a graph with the same thinness does not i
 
 \begin{lemma}
 \label[lemma]{prop:replacing-module-maintains-thinness-if-irreducible-clique-consecutive}
-    Let $\ell \in \N$. Let $G$ be a graph with a module $M$, and $G'$ be the result of replacing $M$ with a thinness $\ell$ graph $H$ in $G$. Consider a consistent solution $(<, S)$ in $t$ classes for $G$, and suppose there exists an irreducible clique $C$ of $G[M]_<$ of size $\ell$. Suppose that for every vertex $v \in V(G) \setminus M$ that is between two vertices $u$ and $w$ of $C$ according to $<$, we have that $u$ and $v$ belong to different classes of $S$. Then there exists a consistent solution in $t$ classes for $G'$ where all the vertices in $V(H)$ are consecutive in the order.
+    Let $\ell \in \N$. Let $G$ be a graph with a module $M$, and $G'$ be the result of replacing $M$ with a thinness $\ell$ graph $H$ in $G$. Consider a consistent solution $(<, S)$ in $t$ classes for $G$, and suppose there exists an irreducible clique $C$ of $G[M]_<$ of size $\ell$. Suppose that for every vertex $v \in V(G) \setminus M$ and $u, w \in C$ with $u < v < w$, we have that $u$ and $v$ belong to different classes of $S$. Then there exists a consistent solution in $t$ classes for $G'$ where all the vertices in $V(H)$ are consecutive in the order.
 \end{lemma}
 \begin{proof}
     Suppose $(<, S)$ is a consistent solution for $G$ in $t$ classes as in the statement of the lemma. Let $(<_H, S_H)$ be an optimal consistent solution for $H$.
