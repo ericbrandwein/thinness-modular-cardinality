@@ -5,7 +5,7 @@ Line numbers refer to `main.tex` as of 2026-10-30. Lemma/theorem numbers are the
 ## Real gaps
 
 1. [DONE] **Lemma 32 (⇒), application of Lemma 29** (L1452). Lemma 29 needs u′ to belong to an irreducible clique of G[H]_<, but u′ is only "some vertex of H₂ in u's class". Fix: take an irreducible clique of G[H₂]_< of size 2 (Lemma 27). Its two vertices lie in different classes, so one of them is in u's class. Call that one u′.
-2. **Theorem 37, choice of p** (L1539). The hypothesis only gives 𝗉(G) ≤ max{|V(G)|, |E(G)|}, but the proof sets p = maxᵢ|V(Gᵢ)| for Thinness and p = maxᵢ|E(Gᵢ)| for SI. Neither is guaranteed to bound 𝗉(G′). Use p = maxᵢ(|V(Gᵢ)| + |E(Gᵢ)|) in both cases.
+2. [DONE] **Theorem 37, choice of p** (L1539). The hypothesis only gives 𝗉(G) ≤ max{|V(G)|, |E(G)|}, but the proof sets p = maxᵢ|V(Gᵢ)| for Thinness and p = maxᵢ|E(Gᵢ)| for SI. Neither is guaranteed to bound 𝗉(G′). Use p = maxᵢ(|V(Gᵢ)| + |E(Gᵢ)|) in both cases.
    - The fact that a disjoint union of graphs has a d-simultaneous interval representation iff each graph does is credited to Lemma 5 (thinness of the union), which only covers thinness. The same problem appears at L1526 ("as Lemma 5 shows"). It is easy (place the representations side by side) but needs its own sentence.
 3. **Theorem 4, running-time paragraph** (L657). "complete (i.e., a *parallel* node whose children are leaves)" should say *series*.
 4. **Lemma 3, missing case** (L594). The case analysis leaves out u, v, w ∈ H. It is trivial (consistent by <_H with H in a single class), but the list claims to be exhaustive.
