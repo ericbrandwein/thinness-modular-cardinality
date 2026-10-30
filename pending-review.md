@@ -47,9 +47,9 @@ Line numbers refer to `main.tex` as of 2026-10-30. Lemma/theorem numbers are the
 ## Section 5 (Parameterizations for computing the thinness)
 
 - [DONE] **"Linear kernel" vs. the definition of kernel size.** Section 2 defines the size of a kernel as a bound on |x′|, and G′ can have ~2k² edges, so under that definition the kernel is quadratic. Replaced with "a kernel with at most 2k vertices" in the abstract, the introduction, Theorem 8, Theorem 11 and Table 1 (cells now read "2k-vertex kernel"; caption explains k). Also Theorem 13's proof: "kernel of size O(2^k)" → "kernel with O(2^k) vertices".
-- **Theorem 8, k′ ≔ k** (L753). For (G′, t, k) to be a valid instance one needs 𝗂𝗇𝗍𝖾𝗋𝗏𝖺𝗅-mc(G′) ≤ k. Immediate (the images of the parts of P form an 𝗂𝗇𝗍𝖾𝗋𝗏𝖺𝗅-modular partition of G′), but not said.
-- **"Contract … into two nonadjacent vertices"** (L751, and Theorem 7 at L733). Section 2 defines contraction as replacing a module by a *single* vertex; Lemma 3 deletes all but two nonadjacent vertices. Say "remove all but two nonadjacent vertices of every other part".
-- **"Neighborhood partition of width k"** (L764, L774). "Width" is never defined; "with k parts".
-- **L742:** "twin-cover, and vertex cover" → "twin-cover number, and vertex cover number".
+- [IGNORED] **Theorem 8, k′ ≔ k** (L753). For (G′, t, k) to be a valid instance one needs 𝗂𝗇𝗍𝖾𝗋𝗏𝖺𝗅-mc(G′) ≤ k. Immediate (the images of the parts of P form an 𝗂𝗇𝗍𝖾𝗋𝗏𝖺𝗅-modular partition of G′), but not said.
+- [IGNORED] **"Contract … into two nonadjacent vertices"** (L751, and Theorem 7 at L733). Section 2 defines contraction as replacing a module by a *single* vertex; Lemma 3 deletes all but two nonadjacent vertices. Say "remove all but two nonadjacent vertices of every other part".
+- [IGNORED] **"Neighborhood partition of width k"** (L764, L774). "Width" is never defined; "with k parts".
+- [DONE] **L742:** "twin-cover, and vertex cover" → "twin-cover number, and vertex cover number".
 - **Lemma 12** (L796–798). Some of P₁, …, P_{2ᵏ} may be empty, so the partition has *at most* 2ᵏ + k parts; say so or discard empty parts.
 - **L820:** "the kernel presented above is not polynomial" → "is exponential in k". Could mention that Appendix D shows this approach cannot do better.
