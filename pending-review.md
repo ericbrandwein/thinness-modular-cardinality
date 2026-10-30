@@ -38,6 +38,6 @@ Line numbers refer to `main.tex` as of 2026-10-30. Lemma/theorem numbers are the
 - [DONE] L1478: "hypotesis" → "hypothesis".
 - [DONE] L1484: "it belongs to a different class from w₂" → "from w₃".
 - [DONE] L357: "A cluster is a union of cliques" → "a disjoint union of cliques".
-- L346: "we moved this section to the appendix" reads like a reply to the reviewer. The organization paragraph also never mentions Appendix D.
+- [DONE] L346: "we moved this section to the appendix" reads like a reply to the reviewer. The organization paragraph also never mentions Appendix D.
 - [DONE] L339 / L620: the footnote citing the arXiv full version appears twice.
 - [IGNORED] L1533: `\textsf{NP}` / `\textsf{coNP}` instead of the `\NP` / `\coNP` macros.
