@@ -1456,7 +1456,7 @@ The following lemma along with \cref{prop:when-replacing-maintains-thinness} wil
     There is no optimal consistent solution for graph $G'$ in \cref{fig:counterexample} in which all vertices in module $H'$ appear consecutively.
 \end{lemma}
 \begin{proof}
-Suppose there exists a consistent solution $(<, S)$ for $G'$ in which all vertices of $H'$ appear consecutively. By \cref{prop:G'-has-thinness-2}, this solution partitions $V(G)$ into two classes. On the other hand, by \cref{prop:irreducible-clique} and the fact that $\thin(G[H']) = 2$, there exists an irreducible clique $\{u, v\}$ of size 2 in $G[H']_<$, where $u < v$. These two vertices belong to two different classes in $S$.
+Suppose, to reach a contradiction, that there exists an optimal consistent solution $(<, S)$ for $G'$ in which all vertices of $H'$ appear consecutively. By \cref{prop:G'-has-thinness-2}, this solution partitions $V(G')$ into two classes. On the other hand, by \cref{prop:irreducible-clique} and the fact that $\thin(G'[H']) = 2$, there exists an irreducible clique $\{u, v\}$ of size 2 in $G'[H']_<$, where $u < v$. These two vertices belong to two different classes in $S$.
 
 We designate the neighbors of $H'$ in $G'$ as $\{a,b,c\}$, and the non-neighbors as $\{d,e,f\}$, as shown in \cref{fig:names}.
 \begin{figure}[h]
