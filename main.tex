@@ -1357,27 +1357,68 @@ In some cases, replacing a module with a graph with the same thinness does not i
 
 \begin{lemma}
 \label[lemma]{prop:replacing-module-maintains-thinness-if-irreducible-clique-consecutive}
-    Let $\ell \in \N$. Let $G$ be a graph with a module $M$, and $G'$ be the result of replacing $M$ with a thinness $\ell$ graph $H$ in $G$. Consider a consistent solution $(<, S)$ in $t$ classes for $G$, and suppose there exists an irreducible clique $C$ of $G[M]_<$ of size $\ell$. If there are no vertices in $V(G) \setminus M$ between the vertices of $C$ according to $<$ that share a class in $S$ with the vertices in $C$, then there exists a consistent solution in $t$ classes for $G'$ where all the vertices in $V(H)$ are consecutive in the order.
+    Let $\ell \in \N$. Let $G$ be a graph with a module $M$, and $G'$ be the result of replacing $M$ with a thinness $\ell$ graph $H$ in $G$. Consider a consistent solution $(<, S)$ in $t$ classes for $G$, and suppose there exists an irreducible clique $C$ of $G[M]_<$ of size $\ell$. Suppose that for every vertex $v \in V(G) \setminus M$ that is between two vertices $u$ and $w$ of $M$ according to $<$, we have that $u$ and $v$ belong to different classes of $S$. Then there exists a consistent solution in $t$ classes for $G'$ where all the vertices in $V(H)$ are consecutive in the order.
 \end{lemma}
 \begin{proof}
-    Suppose $(<, S)$ is a consistent solution for $G$ in $t$ classes where the $\ell$ vertices of an irreducible clique $C$ of $G[M]_<$ have no vertex of $V(G) \setminus M$ between them. Let $(<_H, S_H)$ be an optimal consistent solution for $H$.
+    Suppose $(<, S)$ is a consistent solution for $G$ in $t$ classes as in the statement of the lemma. Let $(<_H, S_H)$ be an optimal consistent solution for $H$.
     
     We construct a solution $(<', S')$ in $t$ classes as follows.
-    To construct $<'$, we remove all vertices of $M$ from the order $<$, and replace the greatest vertex of $C$ with the vertices in $V(H)$, ordered according to $<_H$. The partition $S'$ is defined by identifying the $\ell$ classes of $S_H$ with the $\ell$ different classes to which the vertices of $C$ belong in the partition $S$.
+    To construct $<'$, we remove all vertices of $M$ from the order $<$, and replace the greatest vertex of $C$ with the vertices in $V(H)$, ordered according to $<_H$. The partition $S'$ is defined by identifying the $\ell$ classes of $S_H$ with the $\ell$ different classes to which the vertices of $C$ belong in the partition $S$. \Cref{fig:replacing-module} shows an example of this construction.
+
+    \begin{figure}[ht]
+        \centering
+    \begin{tikzpicture}[xscale=1.2,
+        classA/.style={fill=black, draw=black, circle, inner sep=0pt, minimum size=5pt},
+        classB/.style={fill=black, draw=black, rectangle, inner sep=0pt, minimum size=5pt},
+        classC/.style={fill=black, draw=black, regular polygon, regular polygon sides=3, inner sep=0pt, minimum size=8pt}]
+        \draw[gray,fill=gray!10,rounded corners=5] (2.6,-0.75) rectangle (6.4,0.3);
+        \node[gray!40!black] at (6.25,0.55) {$H$};
+
+        \node[anchor=east] at (-0.6,2) {$(<, S)$};
+        \node[anchor=east] at (-0.6,0) {$(<', S')$};
+
+        \foreach \p in {(1,2),(3,2),(5,2),(7,2)} \draw[gray] \p circle (6pt);
+
+        \node[style=classC,label=above:{$x_1$}] (x1) at (0,2) {};
+        \node[style=classA,label=above:{$u_1$}] (u1) at (1,2) {};
+        \node[style=classC,label=above:{$x_2$}] (x2) at (2,2) {};
+        \node[style=classA,label=above:{$c_1$}] (c1) at (3,2) {};
+        \node[style=classB,label=above:{$x_3$}] (x3) at (4,2) {};
+        \node[style=classB,label=above:{$c_2$}] (c2) at (5,2) {};
+        \node[style=classC,label=above:{$x_4$}] (x4) at (6,2) {};
+        \node[style=classA,label=above:{$u_2$}] (u2) at (7,2) {};
+        \node[style=classB,label=above:{$x_5$}] (x5) at (8,2) {};
+
+        \node[style=classC,label=below:{$x_1$}] (y1) at (0,0) {};
+        \node[style=classC,label=below:{$x_2$}] (y2) at (1,0) {};
+        \node[style=classB,label=below:{$x_3$}] (y3) at (2,0) {};
+        \node[style=classA,label=below:{$h_1$}] (h1) at (3,0) {};
+        \node[style=classB,label=below:{$h_2$}] (h2) at (4,0) {};
+        \node[style=classA,label=below:{$h_3$}] (h3) at (5,0) {};
+        \node[style=classB,label=below:{$h_4$}] (h4) at (6,0) {};
+        \node[style=classC,label=below:{$x_4$}] (y4) at (7,0) {};
+        \node[style=classB,label=below:{$x_5$}] (y5) at (8,0) {};
+
+        \foreach \a/\b in {x1/y1,x2/y2,x3/y3,x4/y4,x5/y5} \draw[gray,dotted] (\a) -- (\b);
+        \draw[->,shorten <=7pt,shorten >=12pt] (c2) -- (4.5,0);
+    \end{tikzpicture}
+        \caption{An example of the construction in the proof of \cref{prop:replacing-module-maintains-thinness-if-irreducible-clique-consecutive}, with $\ell = 2$ and $t = 3$. The shapes of the vertices denote their classes. Top: a consistent solution $(<, S)$ for $G$, where the vertices of $M$ are circled and $C = \{c_1, c_2\}$ is the irreducible clique. Bottom: the solution $(<', S')$ for $G'$, obtained by removing the vertices of $M$ and replacing $c_2$ with the vertices of $H$ ordered according to $<_H$. The two classes of $S_H$ are identified with the classes of $c_1$ and $c_2$.}
+        \label{fig:replacing-module}
+    \end{figure}
     
-    We claim this solution is consistent. To prove this, we analyze each possible triple of vertices $u <' v <' w$ to see that they form a consistent triple.
+    We claim this solution is consistent. To prove this, we analyze each possible triple of vertices $u <' v <' w$ in $G'$ to see that they form a consistent triple.
     \begin{itemize}
-        \item \underline{$\{u, v, w\} \subseteq V(H)$ or $\{u, v, w\} \subseteq V(G') \setminus V(H)$:} This triple of vertices is consistent in either $(<, S)$ or $(<_H,S_H)$, which are induced solutions of $(<', S')$.
-        \item \underline{$u \in V(H)$ and $v, w \not\in V(H)$:} There exists a vertex $x \in C$ that belongs to the same class as $u$ in $S$ and also satisfies $x < v < w$. Thus, if $w$ is adjacent to $u$ and $v$ belongs to the same class as $u$ in $S'$, then $w$ is also adjacent to $x$, and $v$ belongs to the same class as $x$ in $S$. Therefore, as $(<, S)$ is a consistent solution, the set $\{u,v,w\}$ must be a consistent triple.
-        \item \underline{$u \not\in V(H)$, $v \in V(H)$, and $w \not\in V(H)$:} There exists a vertex $x \in C$ in the same class as $v$ in $S$. There are two possibilities:
+        \item \underline{$u, v, w \in V(H)$ or $u, v, w \in V(G') \setminus V(H)$:} This triple of vertices is consistent in either $(<_H,S_H)$ or $(<, S)$, respectively, which are induced solutions of $(<', S')$.
+        \item \underline{$u \in V(H)$ and $v, w \not\in V(H)$:} There exists a vertex $x \in C$ that belongs to the same class as $u$ in $S'$ and also satisfies $x < v < w$. As $H$ is a module, if $w$ is adjacent to $u$, then $w$ is also adjacent to $x$. Moreover, if $v$ belongs to the same class as $u$ in $S'$, it also belongs to the same class as $x$ in $S'$. The vertices $x$ and $v$ maintain their classes between $S$ and $S'$. Therefore, as $(<, S)$ is a consistent solution, the set $\{u,v,w\}$ must be a consistent triple.
+        \item \underline{$u \not\in V(H)$, $v \in V(H)$, and $w \not\in V(H)$:} There exists a vertex $x \in C$ in the same class as $v$ in $S'$. There are two possibilities:
         \begin{enumerate}
-            \item We have $x < u$, in which case $u$ appears between two vertices of $C$ in $<$. By hypothesis, vertex $u$ does not share a class with $v$, and so this triple is consistent.
-            \item Otherwise, we have $x > u$. As $\{u, x, w\}$ does not form an inconsistent triple in $(<, S)$, the same thing happens for $\{u, v, w\}$ in $(<', S')$.
+            \item We have $x < u$, in which case $u$ appears between two vertices of $C$ in $<$. By hypothesis, vertex $u$ does not share a class with $x$ in $S$. As $x$ and $u$ maintain the same class in $S'$, the vertex $u$ does not share a class with $v$ in $S'$. Hence, this triple is consistent.
+            \item Otherwise, we have $x > u$. Note that $x < w$ by construction of $<'$. As $\{u, x, w\}$ does not form an inconsistent triple in $(<, S)$, the same thing happens for $\{u, v, w\}$ in $(<', S')$.
         \end{enumerate}
-        \item \underline{$u, v \not\in V(H)$ and $w \in V(H)$:} There is a vertex $x \in C$ that is greater than both $u$ and $v$ according to $<$, and that forms a consistent triple with them. As vertex $w$ has the same neighborhood as $x$ in $G \setminus H$, the triple $\{u, v, w\}$ is also consistent.
-        \item \underline{$\{u,v\} \subseteq V(H)$ and $w \not\in V(H)$:} Vertex $w$ is either adjacent to both $u$ and $v$, or to none of them, so this triple is consistent.
+        \item \underline{$u, v \not\in V(H)$ and $w \in V(H)$:} There is a vertex $x \in C$ that is greater than both $u$ and $v$ according to $<$, and that forms a consistent triple with them in $(<, S)$. As the vertex $w$ has the same neighborhood as $x$ in $G \setminus H$ and $u$ and $v$ maintain their classes betwee $S$ and $S'$, the triple $\{u, v, w\}$ is also consistent in $(<', S')$.
+        \item \underline{$u,v \in V(H)$ and $w \not\in V(H)$:} Vertex $w$ is either adjacent to both $u$ and $v$, or to none of them, so this triple is consistent.
         \item\underline{$u \in V(H), v \not\in V(H)$, and $w \in V(H)$:} There are no vertices outside $H$ between two vertices of $H$, so this case does not happen.
-        \item\underline{$u \not\in V(H)$ and $\{v, w\} \subseteq V(H)$:} If $u$ and $v$ belong to the same class in $S'$, there is also a vertex $x \in C$ in the same class as $u$. By hypothesis, we have $u < x$. As $x$ belongs to an irreducible clique of $G[M]_<$, there exists a vertex $y \in M$ that is not a neighbor of $x$ such that $x < y$. As $(<, S)$ is a consistent solution, this means that $u$ is not a neighbor of the vertices in the module $M$, and thus is also not a neighbor of the vertices of $H$ in $G'$. Therefore, this triple is consistent.
+        \item\underline{$u \not\in V(H)$ and $v, w \in V(H)$:} If $u$ and $v$ belong to the same class in $S'$, there is also a vertex $x \in C$ in the same class as $u$ in both $S'$ and $S$. By hypothesis, we have $u < x$. As $x$ belongs to an irreducible clique of $G[M]_<$, there exists a vertex $y \in M$ that is not a neighbor of $x$ such that $x < y$. As $(<, S)$ is a consistent solution, the triple $\{u,x,y\}$ must be consistent. This means that $u$ is not a neighbor of the vertices in the module $M$, and thus is also not a neighbor of the vertices of $H$ in $G'$. Therefore, this triple is consistent.
     \end{itemize}
 \end{proof}
 
@@ -1398,13 +1439,13 @@ The converse of \cref{prop:replacing-module-maintains-thinness-if-irreducible-cl
 Let $\doubleCycleModule$ be the union of two cycles on 4 vertices. Note that $\thin(\singleCycleGraph[\singleCycleModule]) = \thin(\doubleCycleModule) = 2$.
 
 $(\Leftarrow)$ By \cref{prop:irreducible-clique}, the incompatibility graph $\singleCycleGraph[\singleCycleModule]_{<'}$ contains an irreducible clique $C$ of size 2. 
-Hence, instantiating \cref{prop:replacing-module-maintains-thinness-if-irreducible-clique-consecutive} with $G \coloneq \singleCycleGraph$, $M \coloneq \singleCycleModule$, $G' \coloneq \doubleCycleGraph$, the irreducible clique $C$ of the consistent solution $(<' ,S')$, and $\ell \coloneq 2$, we have that there exists a consistent solution in $2$ classes for $\doubleCycleGraph$. As the thinness is hereditary and $\thin(\doubleCycleModule) = 2$, this gives us the left implication.
+Hence, instantiating \cref{prop:replacing-module-maintains-thinness-if-irreducible-clique-consecutive} with $G \coloneq \singleCycleGraph$, $M \coloneq \singleCycleModule$, $G' \coloneq \doubleCycleGraph$, the irreducible clique $C$ of the consistent solution $(<' ,S')$, and $\ell \coloneq 2$, we have that there exists a consistent solution in $2$ classes for $\doubleCycleGraph$. As the thinness is hereditary and $\thin(\doubleCycleModule) = 2$, this gives us the left statement.
 
 $(\Rightarrow)$ Suppose for a contradiction that $\thin(\doubleCycleGraph) = 2$ and $\singleCycleModule$ does not appear consecutively in any optimal consistent solution for $\singleCycleGraph$.
 
 Let $\Gamma \coloneqq (<, S)$ be an optimal consistent solution for $\doubleCycleGraph$. Let $u$ be the first vertex according to $<$ that belongs to $V(\doubleCycleModule)$, and define $C$ to be the set of vertices of the connected component of $u$ in $\doubleCycleModule$, which induces one of the two cycles of $\doubleCycleModule$. Additionally, denote the other cycle of $\doubleCycleModule$ as $C'\coloneqq V(\doubleCycleModule) \setminus C$. 
 
-Note that in every possible order of $C$, vertex $u$ forms an irreducible clique with some other vertex $w$ in the corresponding incompatibility graph. Consider the solution $\Gamma'$ induced by the vertices of $\doubleCycleGraph \setminus C'$ in $\Gamma$. This solution $\Gamma'$ is also a solution for $\singleCycleGraph$ (up to isomorphism), and hence, by hypothesis, the module $\singleCycleModule$ does not appear consecutively in $\Gamma'$. Thus, by \cref{prop:replacing-module-maintains-thinness-if-irreducible-clique-consecutive}, there exists a vertex $v \in V(\doubleCycleGraph) \setminus \doubleCycleModule$ such that $u < v < w$. Additionally, vertex $v$ shares a class with $u$ in $S$, and by \cref{prop:vertex-that-breaks-irreducible-clique-is-adjacent}, it is adjacent to the vertices in $\doubleCycleModule$.
+Note that in every possible order of $C$, vertex $u$ forms an irreducible clique with some other vertex $w$ in the corresponding incompatibility graph. Consider the solution $\Gamma'$ induced by the vertices of $\doubleCycleGraph \setminus C'$ in $\Gamma$. This solution $\Gamma'$ is also a solution for $\singleCycleGraph$ (up to isomorphism), and hence, by hypothesis, the module $\singleCycleModule$ does not appear consecutively in $\Gamma'$. Thus, by the contrapositive of \cref{prop:replacing-module-maintains-thinness-if-irreducible-clique-consecutive}, there exists a vertex $v \in V(\doubleCycleGraph) \setminus \doubleCycleModule$ that shares a class with $u$ in $S$ and such that $u < v < w$. Additionally, by \cref{prop:vertex-that-breaks-irreducible-clique-is-adjacent}, $v$ is adjacent to the vertices in $\doubleCycleModule$.
 
 The vertices in $C'$ also contain a vertex $u'$ in the same class as $u$ in $S$, as $C'$ induces a cycle, which is a thinness two graph. By \cref{prop:neighbors-of-modules-that-share-class-are-greater}, vertex $u'$ must be smaller than $v$. Note that $u <' u'$, as $u$ is the first vertex of $\doubleCycleModule$. Also, by \hyperref[def:incompatibility-graph]{the definition of incompatibility graph}, there exists a vertex $x \in C$ that is greater than $w$ and is adjacent to $u$. We therefore have that $\{u, u', x\}$ forms an inconsistent triple, which contradicts the fact that $\Gamma$ is a consistent solution.
 \end{proof}
